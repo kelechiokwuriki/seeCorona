@@ -19,8 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('home-component', require('./components/HomeComponent.vue').default);
-Vue.component('summary-component', require('./components/SummaryComponent.vue').default);
+Vue.component('Summary', require('./components/SummaryComponent.vue').default);
+Vue.component('Home', require('./components/HomeComponent.vue').default);
 
 
 /**
@@ -28,7 +28,14 @@ Vue.component('summary-component', require('./components/SummaryComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import Summary from './components/SummaryComponent'
+import Home from './components/HomeComponent'
+
 
 const app = new Vue({
     el: '#app',
-});
+    components: {
+        Summary,
+        Home
+    }
+}).$mount('#app');

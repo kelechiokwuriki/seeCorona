@@ -1932,11 +1932,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       stats: [],
-      apiUrl: 'https://api.covid19api.com/'
+      apiUrl: 'https://api.covid19api.com/summary'
     };
   },
   methods: {
@@ -1946,6 +1974,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.apiUrl).then(function (response) {
         _this.stats = response.data;
       });
+    }
+  },
+  computed: {
+    statistics: function statistics() {
+      return this.stats;
     }
   },
   mounted: function mounted() {
@@ -1999,6 +2032,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2015,7 +2050,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     this.getSummaryOfCovid19Stats();
   }
 });
@@ -37392,11 +37427,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid mt-4" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-4" }, [_c("summary-component")], 1),
-      _vm._v(" "),
-      _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "container-fluid mt-4" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-4" }, [_c("Summary")], 1),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-8" }, [
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._l(_vm.statistics, function(stat) {
+                return _c("div", { staticClass: "card-body" }, [
+                  _vm._m(2, true)
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      ])
     ])
   ])
 }
@@ -37405,18 +37459,100 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-8" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header bg-dark" }, [
-          _c("h5", { staticClass: "card-title" }, [_vm._v("Countries")]),
-          _vm._v(" "),
-          _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-            _vm._v("Statistics by countries")
-          ])
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" },
+      [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+          _vm._v("CoronaVirusStats")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "card" })
+        _c(
+          "button",
+          {
+            staticClass: "navbar-toggler",
+            attrs: {
+              type: "button",
+              "data-toggle": "collapse",
+              "data-target": "#navbarSupportedContent",
+              "aria-controls": "navbarSupportedContent",
+              "aria-expanded": "false",
+              "aria-label": "Toggle navigation"
+            }
+          },
+          [_c("span", { staticClass: "navbar-toggler-icon" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+              _c("li", { staticClass: "nav-item active" }, [
+                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                  _vm._v("Summary "),
+                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                  _vm._v("Countries")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
+              _c("input", {
+                staticClass: "form-control mr-sm-2",
+                attrs: {
+                  type: "search",
+                  placeholder: "Search",
+                  "aria-label": "Search"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-success my-2 my-sm-0",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header bg-dark" }, [
+      _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Countries")]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
+        _vm._v("Statistics by countries")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [
+          _vm._v("stat.Countries.country")
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "card-subtitle" }, [
+          _vm._v("Updated 5 mins ago")
         ])
       ])
     ])
@@ -37447,37 +37583,46 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "form-group row" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.summary.Global.TotalConfirmed) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.summary.Global.TotalDeaths) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.summary.Global.TotalRecovered) +
-              "\n            "
-          )
-        ])
-      ])
+      _c(
+        "div",
+        { staticClass: "form-group row" },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _vm.summary.Global
+            ? [
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.summary.Global.TotalConfirmed) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.summary.Global.TotalDeaths) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.summary.Global.TotalRecovered) +
+                      "\n                "
+                  )
+                ])
+              ]
+            : _vm._e()
+        ],
+        2
+      )
     ])
   ])
 }
@@ -49686,9 +49831,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_SummaryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SummaryComponent */ "./resources/js/components/SummaryComponent.vue");
+/* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49707,17 +49856,23 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('home-component', __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue")["default"]);
-Vue.component('summary-component', __webpack_require__(/*! ./components/SummaryComponent.vue */ "./resources/js/components/SummaryComponent.vue")["default"]);
+Vue.component('Summary', __webpack_require__(/*! ./components/SummaryComponent.vue */ "./resources/js/components/SummaryComponent.vue")["default"]);
+Vue.component('Home', __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
 var app = new Vue({
-  el: '#app'
-});
+  el: '#app',
+  components: {
+    Summary: _components_SummaryComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Home: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+}).$mount('#app');
 
 /***/ }),
 

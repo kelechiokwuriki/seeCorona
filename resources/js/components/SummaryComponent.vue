@@ -10,23 +10,25 @@
                 <label class="col-sm-6 col-form-label">
                     <p>Global Total Confirmed Cases</p>
                 </label>
-                <label class="col-sm-6 col-form-label">
-                    {{summary.Global.TotalConfirmed}}
-                </label>
+                <template v-if="summary.Global">
+                    <label class="col-sm-6 col-form-label">
+                        {{summary.Global.TotalConfirmed}}
+                    </label>
 
-                <label class="col-sm-6 col-form-label">
-                    <p>Global Total Deaths</p>
-                </label>
-                <label class="col-sm-6 col-form-label">
-                    {{summary.Global.TotalDeaths}}
-                </label>
+                    <label class="col-sm-6 col-form-label">
+                        <p>Global Total Deaths</p>
+                    </label>
+                    <label class="col-sm-6 col-form-label">
+                        {{summary.Global.TotalDeaths}}
+                    </label>
 
-                <label class="col-sm-6 col-form-label">
-                    <p>Global Total Recovered</p>
-                </label>
-                <label class="col-sm-6 col-form-label">
-                    {{summary.Global.TotalRecovered}}
-                </label>
+                    <label class="col-sm-6 col-form-label">
+                        <p>Global Total Recovered</p>
+                    </label>
+                    <label class="col-sm-6 col-form-label">
+                        {{summary.Global.TotalRecovered}}
+                    </label>
+                </template>
             </div>
         </div>
     </div>
@@ -36,7 +38,7 @@
 <script>
     export default {
         data() {
-            return{
+            return {
                 summary: [],
                 apiUrl: 'https://api.covid19api.com/summary'
             }
@@ -49,7 +51,7 @@
                 })
             }
         },
-        mounted() {
+        created() {
             this.getSummaryOfCovid19Stats();
         }
     }
