@@ -1935,6 +1935,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37354,7 +37368,27 @@ var render = function() {
               _c("div", { staticClass: "col-sm-6 col-form-label" }, [
                 _vm._v(
                   "\n                           " +
-                    _vm._s(_vm.summary.Global.NewConfirmed) +
+                    _vm._s(_vm.summary.Global.TotalConfirmed) +
+                    "\n                       "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                           " +
+                    _vm._s(_vm.summary.Global.TotalDeaths) +
+                    "\n                       "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                           " +
+                    _vm._s(_vm.summary.Global.TotalRecovered) +
                     "\n                       "
                 )
               ])
@@ -37375,7 +37409,23 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("New Global Confirmed Cases")])
+      _c("p", [_vm._v("Global Total Confirmed Cases")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("p", [_vm._v("Global Total Deaths")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("p", [_vm._v("Global Total Recovered")])
     ])
   }
 ]

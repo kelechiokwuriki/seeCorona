@@ -8,10 +8,24 @@
                        <h6 class="card-subtitle">Global statistics</h6>
                        <div class="form-group row">
                            <div class="col-sm-6 col-form-label">
-                               <p>New Global Confirmed Cases</p>
+                               <p>Global Total Confirmed Cases</p>
                            </div>
                            <div class="col-sm-6 col-form-label">
-                               {{summary.Global.NewConfirmed}}
+                               {{summary.Global.TotalConfirmed}}
+                           </div>
+
+                           <div class="col-sm-6 col-form-label">
+                               <p>Global Total Deaths</p>
+                           </div>
+                           <div class="col-sm-6 col-form-label">
+                               {{summary.Global.TotalDeaths}}
+                           </div>
+
+                           <div class="col-sm-6 col-form-label">
+                               <p>Global Total Recovered</p>
+                           </div>
+                           <div class="col-sm-6 col-form-label">
+                               {{summary.Global.TotalRecovered}}
                            </div>
 
                        </div>
