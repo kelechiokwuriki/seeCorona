@@ -7,10 +7,10 @@
         </div>
         <div class="card-body">
             <div class="form-group row">
-                <label class="col-sm-6 col-form-label">
+                <template v-if="summary.Global">
+                    <label class="col-sm-6 col-form-label">
                     <p>Global Total Confirmed Cases</p>
                 </label>
-                <template v-if="summary.Global">
                     <label class="col-sm-6 col-form-label">
                         {{summary.Global.TotalConfirmed}}
                     </label>
@@ -28,6 +28,9 @@
                     <label class="col-sm-6 col-form-label">
                         {{summary.Global.TotalRecovered}}
                     </label>
+                </template>
+                <template v-else>
+                    <p class="card-text">No data available</p>
                 </template>
             </div>
         </div>

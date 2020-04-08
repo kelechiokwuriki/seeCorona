@@ -2034,6 +2034,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37587,10 +37590,10 @@ var render = function() {
         "div",
         { staticClass: "form-group row" },
         [
-          _vm._m(1),
-          _vm._v(" "),
           _vm.summary.Global
             ? [
+                _vm._m(1),
+                _vm._v(" "),
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
@@ -37619,7 +37622,11 @@ var render = function() {
                   )
                 ])
               ]
-            : _vm._e()
+            : [
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v("No data available")
+                ])
+              ]
         ],
         2
       )
