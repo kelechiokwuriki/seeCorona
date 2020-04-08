@@ -35,11 +35,11 @@
                         <h5 class="card-title text-white">Countries</h5>
                         <h6 class="card-subtitle mb-2 text-white">Statistics by countries</h6>
                     </div>
-                    <div class="card-body" v-for="stat in statistics">
+                    <div class="card-body" v-for="stat in countryStatistics">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">stat.Countries.country</h5>
-                                <h6 class="card-subtitle">Updated 5 mins ago</h6>
+                                <h5 class="card-title">{{ stat.Country }}</h5>
+                                <h6 class="card-subtitle">{{ stat.Date }}</h6>
                             </div>
                         </div>
                     </div>
@@ -67,8 +67,8 @@
             },
         },
         computed: {
-            statistics: function() {
-                return this.stats;
+            countryStatistics: function() {
+                return this.stats.Countries;
             }
         },
         mounted() {

@@ -1977,8 +1977,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
-    statistics: function statistics() {
-      return this.stats;
+    countryStatistics: function countryStatistics() {
+      return this.stats.Countries;
     }
   },
   mounted: function mounted() {
@@ -37444,9 +37444,19 @@ var render = function() {
             [
               _vm._m(1),
               _vm._v(" "),
-              _vm._l(_vm.statistics, function(stat) {
+              _vm._l(_vm.countryStatistics, function(stat) {
                 return _c("div", { staticClass: "card-body" }, [
-                  _vm._m(2, true)
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v(_vm._s(stat.Country))
+                      ]),
+                      _vm._v(" "),
+                      _c("h6", { staticClass: "card-subtitle" }, [
+                        _vm._v(_vm._s(stat.Date))
+                      ])
+                    ])
+                  ])
                 ])
               })
             ],
@@ -37541,22 +37551,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
         _vm._v("Statistics by countries")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v("stat.Countries.country")
-        ]),
-        _vm._v(" "),
-        _c("h6", { staticClass: "card-subtitle" }, [
-          _vm._v("Updated 5 mins ago")
-        ])
       ])
     ])
   }
