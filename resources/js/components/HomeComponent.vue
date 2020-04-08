@@ -35,14 +35,34 @@
                         <h5 class="card-title text-white">Countries</h5>
                         <h6 class="card-subtitle mb-2 text-white">Statistics by countries</h6>
                     </div>
-                    <div class="card-body" v-for="stat in countryStatistics">
+                    <table class="table table-hover" id="countryTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Country</th>
+                                <th scope="col">Total Confirmed Cases</th>
+                                <th scope="col">Total Deaths</th>
+                                <th scope="col">Total Recovered</th>
+                                <th scope="col">Date Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="stat in countryStatistics">
+                                <td>{{ stat.Country }}</td>
+                                <td>{{ stat.TotalConfirmed }}</td>
+                                <td>{{ stat.TotalDeaths }}</td>
+                                <td>{{ stat.TotalRecovered }}</td>
+                                <td>{{ stat.Date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="card-body" v-for="stat in countryStatistics">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ stat.Country }}</h5>
                                 <h6 class="card-subtitle">{{ stat.Date }}</h6>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             </div>
@@ -54,7 +74,7 @@
     export default {
         data() {
             return{
-                stats: [],
+                countryStatistics: [],
                 apiUrl: 'https://api.covid19api.com/summary'
             }
         },
@@ -62,16 +82,23 @@
             getStats() {
                 axios.get(this.apiUrl)
                 .then(response => {
-                    this.stats = response.data;
+                    this.countryStatistics = response.data.Countries;
+                }).finally(() => {
+                    $("#countryTable").Datatable({
+                        "ordering": true,
+                        "aaSorting": [],
+                        pageLength: 5,
+                        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+                    })
                 })
             },
         },
-        computed: {
-            countryStatistics: function() {
-                return this.stats.Countries;
-            }
-        },
-        mounted() {
+        // computed: {
+        //     countryStatistics: function() {
+        //         return this.stats.Countries;
+        //     }
+        // },
+        created() {
             this.getStats();
         }
     }
