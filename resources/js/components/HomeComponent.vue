@@ -8,11 +8,13 @@
            </div>
            <div class="col-sm-8">
                <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-dark">
                         <h5 class="card-title">Countries</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Statistics by countries</h6>
+                        <h6 class="card-subtitle mb-2 text-white">Statistics by countries</h6>
                     </div>
                    <div class="card-body">
+                       <div class="card">
+                       </div>
                    </div>
                </div>
            </div>

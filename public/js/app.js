@@ -1930,6 +1930,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37405,15 +37407,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-8" }, [
       _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "card-header bg-dark" }, [
           _c("h5", { staticClass: "card-title" }, [_vm._v("Countries")]),
           _vm._v(" "),
-          _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+          _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
             _vm._v("Statistics by countries")
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" })
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "card" })
+        ])
       ])
     ])
   }
@@ -37482,10 +37486,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h5", { staticClass: "card-title" }, [_vm._v("Summary")]),
+    return _c("div", { staticClass: "card-header bg-dark" }, [
+      _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Summary")]),
       _vm._v(" "),
-      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+      _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
         _vm._v("Global statistics")
       ])
     ])

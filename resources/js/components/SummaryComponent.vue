@@ -1,9 +1,9 @@
 <template>
     <!--start summary view-->
     <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">Summary</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Global statistics</h6>
+        <div class="card-header bg-dark">
+            <h5 class="card-title text-white">Summary</h5>
+            <h6 class="card-subtitle mb-2 text-white">Global statistics</h6>
         </div>
         <div class="card-body">
             <div class="form-group row">
