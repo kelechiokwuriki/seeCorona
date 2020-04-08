@@ -1,31 +1,32 @@
 <template>
     <!--start summary view-->
     <div class="card">
-        <div class="card-body">
+        <div class="card-header">
             <h5 class="card-title">Summary</h5>
-            <h6 class="card-subtitle">Global statistics</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Global statistics</h6>
+        </div>
+        <div class="card-body">
             <div class="form-group row">
-                <div class="col-sm-6 col-form-label">
+                <label class="col-sm-6 col-form-label">
                     <p>Global Total Confirmed Cases</p>
-                </div>
-                <div class="col-sm-6 col-form-label">
+                </label>
+                <label class="col-sm-6 col-form-label">
                     {{summary.Global.TotalConfirmed}}
-                </div>
+                </label>
 
-                <div class="col-sm-6 col-form-label">
+                <label class="col-sm-6 col-form-label">
                     <p>Global Total Deaths</p>
-                </div>
-                <div class="col-sm-6 col-form-label">
+                </label>
+                <label class="col-sm-6 col-form-label">
                     {{summary.Global.TotalDeaths}}
-                </div>
+                </label>
 
-                <div class="col-sm-6 col-form-label">
+                <label class="col-sm-6 col-form-label">
                     <p>Global Total Recovered</p>
-                </div>
-                <div class="col-sm-6 col-form-label">
+                </label>
+                <label class="col-sm-6 col-form-label">
                     {{summary.Global.TotalRecovered}}
-                </div>
-
+                </label>
             </div>
         </div>
     </div>
@@ -42,7 +43,7 @@
         },
         methods: {
             getSummaryOfCovid19Stats() {
-                axios.get(this.apiUrl + 'summary')
+                axios.get(this.apiUrl)
                 .then(response => {
                     this.summary = response.data;
                 })
