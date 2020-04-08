@@ -1923,10 +1923,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       stats: [],
+      summary: [],
       apiUrl: 'https://api.covid19api.com/'
     };
   },
@@ -1937,10 +1950,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.apiUrl).then(function (response) {
         _this.stats = response.data;
       });
+    },
+    getSummaryOfCovid19Stats: function getSummaryOfCovid19Stats() {
+      var _this2 = this;
+
+      axios.get(this.apiUrl + 'summary').then(function (response) {
+        _this2.summary = response.data;
+      });
     }
   },
   mounted: function mounted() {
     this.getStats();
+    this.getSummaryOfCovid19Stats();
   }
 });
 
@@ -37316,23 +37337,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [_vm._v("Summary")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "card-subtitle" }, [
+              _vm._v("Global statistics")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                           " +
+                    _vm._s(_vm.summary.Global.NewConfirmed) +
+                    "\n                       "
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-8" }, [
+        _vm._v("\n           tables\n       ")
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-4" }, [
-          _c("div", { staticClass: "card" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-8" }, [
-          _vm._v("\n           tables\n       ")
-        ])
-      ])
+    return _c("div", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("p", [_vm._v("New Global Confirmed Cases")])
     ])
   }
 ]
