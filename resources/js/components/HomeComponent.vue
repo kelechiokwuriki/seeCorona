@@ -1,7 +1,8 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid m-4">
         <div class="row">
            <div class="col-sm-4">
+               <!--start summary view-->
                <div class="card">
                    <div class="card-body">
                        <h5 class="card-title">Summary</h5>
@@ -31,6 +32,8 @@
                        </div>
                    </div>
                </div>
+               <summary-component></summary-component>
+               <!--end summary view-->
            </div>
            <div class="col-sm-8">
                tables
@@ -44,7 +47,6 @@
         data() {
             return{
                 stats: [],
-                summary: [],
                 apiUrl: 'https://api.covid19api.com/'
             }
         },
@@ -55,16 +57,9 @@
                     this.stats = response.data;
                 })
             },
-            getSummaryOfCovid19Stats() {
-                axios.get(this.apiUrl + 'summary')
-                .then(response => {
-                    this.summary = response.data;
-                })
-            }
         },
         mounted() {
             this.getStats();
-            this.getSummaryOfCovid19Stats();
         }
     }
 </script>
