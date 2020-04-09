@@ -29,7 +29,7 @@
                                     <td>{{ stat.TotalConfirmed }}</td>
                                     <td>{{ stat.TotalDeaths }}</td>
                                     <td>{{ stat.TotalRecovered }}</td>
-                                    <td>{{ stat.Date }}</td>
+                                    <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -49,6 +49,9 @@
             }
         },
         methods: {
+            moment(date) {
+                return moment(date);
+            },
             getStats() {
                 axios.get(this.apiUrl)
                 .then(response => {
