@@ -26,9 +26,9 @@
                             <tbody>
                                 <tr v-for="stat in statistics.Countries">
                                     <td>{{ stat.Country }}</td>
-                                    <td>{{ stat.TotalConfirmed }}</td>
-                                    <td>{{ stat.TotalDeaths }}</td>
-                                    <td>{{ stat.TotalRecovered }}</td>
+                                    <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
+                                    <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
+                                    <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
                                     <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
                                 </tr>
                             </tbody>

@@ -72461,11 +72461,17 @@ var render = function() {
                       return _c("tr", [
                         _c("td", [_vm._v(_vm._s(stat.Country))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(stat.TotalConfirmed))]),
+                        _c("td", [
+                          _vm._v(_vm._s(stat.TotalConfirmed.toLocaleString()))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(stat.TotalDeaths))]),
+                        _c("td", [
+                          _vm._v(_vm._s(stat.TotalDeaths.toLocaleString()))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(stat.TotalRecovered))]),
+                        _c("td", [
+                          _vm._v(_vm._s(stat.TotalRecovered.toLocaleString()))
+                        ]),
                         _vm._v(" "),
                         _c("td", [
                           _vm._v(
