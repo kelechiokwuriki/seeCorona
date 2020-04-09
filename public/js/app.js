@@ -72559,7 +72559,7 @@ var render = function() {
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.TotalConfirmed) +
+                      _vm._s(_vm.summary.TotalConfirmed.toLocaleString()) +
                       "\n                "
                   )
                 ]),
@@ -72569,7 +72569,7 @@ var render = function() {
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.TotalDeaths) +
+                      _vm._s(_vm.summary.TotalDeaths.toLocaleString()) +
                       "\n                "
                   )
                 ]),
@@ -72579,7 +72579,7 @@ var render = function() {
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.TotalRecovered) +
+                      _vm._s(_vm.summary.TotalRecovered.toLocaleString()) +
                       "\n                "
                   )
                 ])

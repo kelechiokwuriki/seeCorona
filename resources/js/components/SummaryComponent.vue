@@ -12,21 +12,21 @@
                     <p>Global Total Confirmed Cases</p>
                 </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.TotalConfirmed}}
+                        {{summary.TotalConfirmed.toLocaleString()}}
                     </label>
 
                     <label class="col-sm-6 col-form-label">
                         <p>Global Total Deaths</p>
                     </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.TotalDeaths}}
+                        {{summary.TotalDeaths.toLocaleString()}}
                     </label>
 
                     <label class="col-sm-6 col-form-label">
                         <p>Global Total Recovered</p>
                     </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.TotalRecovered}}
+                        {{summary.TotalRecovered.toLocaleString()}}
                     </label>
                 </template>
                 <template v-else>
