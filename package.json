@@ -33,8 +33,5 @@
         "jquery": "^3.4.1",
         "moment": "^2.24.0",
         "vue-axios": "^2.1.5"
-    },
-    // "scripts": {
-    //     "postinstall": "npm run prod"
-    // }
+    }
 }
