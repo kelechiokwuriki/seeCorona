@@ -8,6 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -28,6 +30,10 @@ Vue.component('Home', require('./components/HomeComponent.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+// import dt from 'datatables.net'
+
+
 import Summary from './components/SummaryComponent'
 import Home from './components/HomeComponent'
 

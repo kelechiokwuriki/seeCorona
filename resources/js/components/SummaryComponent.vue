@@ -55,7 +55,7 @@
             }
         },
         created() {
-            this.getSummaryOfCovid19Stats();
+            // this.getSummaryOfCovid19Stats();
         }
     }
 </script>

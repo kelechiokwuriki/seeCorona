@@ -13,7 +13,6 @@
         "axios": "^0.19.2",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
-        "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
@@ -25,7 +24,13 @@
     },
     "dependencies": {
         "datatables.net": "^1.10.20",
+        "datatables.net-autofill": "^2.3.4",
+        "datatables.net-autofill-dt": "^2.3.4",
+        "datatables.net-bs": "^1.10.20",
+        "datatables.net-buttons": "^1.6.1",
+        "datatables.net-buttons-dt": "^1.6.1",
         "datatables.net-dt": "^1.10.20",
+        "jquery": "^3.4.1",
         "vue-axios": "^2.1.5"
     }
 }

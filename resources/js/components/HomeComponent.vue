@@ -35,7 +35,8 @@
                         <h5 class="card-title text-white">Countries</h5>
                         <h6 class="card-subtitle mb-2 text-white">Statistics by countries</h6>
                     </div>
-                    <table class="table table-hover" id="countryTable">
+
+                    <table id="countryTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Country</th>
@@ -84,20 +85,13 @@
                 .then(response => {
                     this.countryStatistics = response.data.Countries;
                 }).finally(() => {
-                    $("#countryTable").Datatable({
-                        "ordering": true,
-                        "aaSorting": [],
-                        pageLength: 5,
-                        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
-                    })
+                    $(document).ready(function () {
+                        $.noConflict();
+                    var table = $('#countryTable').DataTable();
+                    });
                 })
             },
         },
-        // computed: {
-        //     countryStatistics: function() {
-        //         return this.stats.Countries;
-        //     }
-        // },
         created() {
             this.getStats();
         }
