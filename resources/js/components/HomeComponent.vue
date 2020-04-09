@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <!--start summary view-->
-                    <Summary></Summary>
+                    <Summary :summary="statistics.Global"></Summary>
                 <!--end summary view-->
             </div>
             <div class="col-sm-8">
@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="stat in countryStatistics">
+                                <tr v-for="stat in statistics.Countries">
                                     <td>{{ stat.Country }}</td>
                                     <td>{{ stat.TotalConfirmed }}</td>
                                     <td>{{ stat.TotalDeaths }}</td>
@@ -44,7 +44,7 @@
     export default {
         data() {
             return{
-                countryStatistics: [],
+                statistics: [],
                 apiUrl: 'https://api.covid19api.com/summary'
             }
         },
@@ -55,7 +55,8 @@
             getStats() {
                 axios.get(this.apiUrl)
                 .then(response => {
-                    this.countryStatistics = response.data.Countries;
+                    this.statistics = response.data;
+
                 }).finally(() => {
                     $(document).ready(function () {
                         var table = $('#countryTable').DataTable({

@@ -1953,7 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      countryStatistics: [],
+      statistics: [],
       apiUrl: 'https://api.covid19api.com/summary'
     };
   },
@@ -1975,7 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get(this.apiUrl).then(function (response) {
-        _this.countryStatistics = response.data.Countries;
+        _this.statistics = response.data;
       })["finally"](function () {
         $(document).ready(function () {
           var table = $('#countryTable').DataTable({
@@ -2047,21 +2047,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      summary: [],
-      apiUrl: 'https://api.covid19api.com/summary'
-    };
+    return {};
   },
-  methods: {
-    getSummaryOfCovid19Stats: function getSummaryOfCovid19Stats() {
-      var _this = this;
-
-      axios.get(this.apiUrl).then(function (response) {
-        _this.summary = response.data;
-      });
+  props: {
+    summary: {
+      type: Object
     }
-  },
-  created: function created() {// this.getSummaryOfCovid19Stats();
   }
 });
 
@@ -72436,7 +72427,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid mt-4" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-4" }, [_c("Summary")], 1),
+      _c(
+        "div",
+        { staticClass: "col-sm-4" },
+        [_c("Summary", { attrs: { summary: _vm.statistics.Global } })],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "col-sm-8" }, [
         _c("div", { staticClass: "card" }, [
@@ -72461,7 +72457,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.countryStatistics, function(stat) {
+                    _vm._l(_vm.statistics.Countries, function(stat) {
                       return _c("tr", [
                         _c("td", [_vm._v(_vm._s(stat.Country))]),
                         _vm._v(" "),
@@ -72556,14 +72552,14 @@ var render = function() {
         "div",
         { staticClass: "form-group row" },
         [
-          _vm.summary.Global
+          _vm.summary
             ? [
                 _vm._m(1),
                 _vm._v(" "),
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.Global.TotalConfirmed) +
+                      _vm._s(_vm.summary.TotalConfirmed) +
                       "\n                "
                   )
                 ]),
@@ -72573,7 +72569,7 @@ var render = function() {
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.Global.TotalDeaths) +
+                      _vm._s(_vm.summary.TotalDeaths) +
                       "\n                "
                   )
                 ]),
@@ -72583,7 +72579,7 @@ var render = function() {
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.summary.Global.TotalRecovered) +
+                      _vm._s(_vm.summary.TotalRecovered) +
                       "\n                "
                   )
                 ])

@@ -7,26 +7,26 @@
         </div>
         <div class="card-body">
             <div class="form-group row">
-                <template v-if="summary.Global">
+                <template v-if="summary">
                     <label class="col-sm-6 col-form-label">
                     <p>Global Total Confirmed Cases</p>
                 </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.Global.TotalConfirmed}}
+                        {{summary.TotalConfirmed}}
                     </label>
 
                     <label class="col-sm-6 col-form-label">
                         <p>Global Total Deaths</p>
                     </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.Global.TotalDeaths}}
+                        {{summary.TotalDeaths}}
                     </label>
 
                     <label class="col-sm-6 col-form-label">
                         <p>Global Total Recovered</p>
                     </label>
                     <label class="col-sm-6 col-form-label">
-                        {{summary.Global.TotalRecovered}}
+                        {{summary.TotalRecovered}}
                     </label>
                 </template>
                 <template v-else>
@@ -41,21 +41,12 @@
 <script>
     export default {
         data() {
-            return {
-                summary: [],
-                apiUrl: 'https://api.covid19api.com/summary'
-            }
+            return {}
         },
-        methods: {
-            getSummaryOfCovid19Stats() {
-                axios.get(this.apiUrl)
-                .then(response => {
-                    this.summary = response.data;
-                })
+        props: {
+            summary: {
+                type: Object
             }
-        },
-        created() {
-            // this.getSummaryOfCovid19Stats();
         }
     }
 </script>
