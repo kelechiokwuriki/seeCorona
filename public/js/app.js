@@ -1950,37 +1950,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1996,8 +1965,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.countryStatistics = response.data.Countries;
       })["finally"](function () {
         $(document).ready(function () {
-          $.noConflict();
-          var table = $('#countryTable').DataTable();
+          var table = $('#countryTable').DataTable({
+            "ordering": true,
+            "aaSorting": [],
+            stateSave: true,
+            pageLength: 10,
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+          });
         });
       });
     }
@@ -54842,126 +54816,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "container-fluid mt-4" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-4" }, [_c("Summary")], 1),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "table",
-              {
-                staticClass: "table table-hover",
-                attrs: { id: "countryTable" }
-              },
-              [
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.countryStatistics, function(stat) {
-                    return _c("tr", [
-                      _c("td", [_vm._v(_vm._s(stat.Country))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(stat.TotalConfirmed))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(stat.TotalDeaths))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(stat.TotalRecovered))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(stat.Date))])
-                    ])
-                  }),
-                  0
-                )
-              ]
-            )
-          ])
+  return _c("div", { staticClass: "container-fluid mt-4" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }, [_c("Summary")], 1),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dataTables_wrapper p-3 no-footer",
+              attrs: { id: "data-table_wrapper" }
+            },
+            [
+              _c(
+                "table",
+                {
+                  staticClass: "table display table-hover",
+                  staticStyle: { width: "100%" },
+                  attrs: { id: "countryTable" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.countryStatistics, function(stat) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(stat.Country))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(stat.TotalConfirmed))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(stat.TotalDeaths))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(stat.TotalRecovered))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(stat.Date))])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
         ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" },
-      [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-          _vm._v("CoronaVirusStats")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "navbar-toggler",
-            attrs: {
-              type: "button",
-              "data-toggle": "collapse",
-              "data-target": "#navbarSupportedContent",
-              "aria-controls": "navbarSupportedContent",
-              "aria-expanded": "false",
-              "aria-label": "Toggle navigation"
-            }
-          },
-          [_c("span", { staticClass: "navbar-toggler-icon" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" }
-          },
-          [
-            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-              _c("li", { staticClass: "nav-item active" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Summary "),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item" }, [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("Countries")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-              _c("input", {
-                staticClass: "form-control mr-sm-2",
-                attrs: {
-                  type: "search",
-                  placeholder: "Search",
-                  "aria-label": "Search"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-success my-2 my-sm-0",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Search")]
-              )
-            ])
-          ]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -54978,7 +54884,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Country")]),
         _vm._v(" "),
@@ -67309,12 +67215,12 @@ Vue.component('Home', __webpack_require__(/*! ./components/HomeComponent.vue */ 
 
 
 var app = new Vue({
-  el: '#app',
+  el: '#main',
   components: {
     Summary: _components_SummaryComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
     Home: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
-}).$mount('#app');
+}).$mount('#main');
 
 /***/ }),
 

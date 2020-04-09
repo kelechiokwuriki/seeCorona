@@ -75,6 +75,16 @@ body {
   background-color: #f8fafc;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background: #F37A1D;
+ border-top: 3px solid #F37A1D;   
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

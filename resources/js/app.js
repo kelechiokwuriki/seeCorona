@@ -39,9 +39,9 @@ import Home from './components/HomeComponent'
 
 
 const app = new Vue({
-    el: '#app',
+    el: '#main',
     components: {
         Summary,
         Home
     }
-}).$mount('#app');
+}).$mount('#main');
