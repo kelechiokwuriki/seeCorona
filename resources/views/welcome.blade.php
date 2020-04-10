@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="See Coronavirus CoronaVirus COVID-19 Covid-19 statistics data live in countries and worldwide">
 
         <title>Seecoronastats</title>
 
