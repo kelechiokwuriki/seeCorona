@@ -3,15 +3,22 @@
     <div class="card">
         <div class="card-header bg-dark">
             <h5 class="card-title text-white">Summary</h5>
-            <h6 class="card-subtitle mb-2 text-white">Global statistics</h6>
+            <h6 class="card-subtitle mb-2 text-white">
+            <span class="text-primary app-font">
+                <i class="fas fa-globe"></i>            
+            </span>
+             Global statistics</h6>
         </div>
         <div class="card-body">
             <div class="form-group row">
                 <template v-if="summary">
                 
                     <!--global confirmed cases-->
-                    <label class="col-sm-6 col-form-label">
-                        <p>Global Total Confirmed Cases</p>
+                    <label class="col-sm-6 col-form-label">   
+                        <span class="text-danger app-font">
+                            <i class="fas fa-head-side-mask"></i>            
+                        </span>
+                        Global Total Confirmed Cases
                     </label>
                     <label class="col-sm-6 col-form-label">
                         {{summary.TotalConfirmed.toLocaleString()}}
@@ -21,7 +28,10 @@
 
                     <!--global deaths-->
                     <label class="col-sm-6 col-form-label">
-                        <p>Global Total Deaths</p>
+                        <span class="text-dark app-font">
+                            <i class="fas fa-skull-crossbones"></i>            
+                        </span>
+                        Global Total Deaths
                     </label>
                     <label class="col-sm-6 col-form-label">
                         {{summary.TotalDeaths.toLocaleString()}}
@@ -31,7 +41,10 @@
 
                     <!--global recovered-->
                     <label class="col-sm-6 col-form-label">
-                        <p>Global Total Recovered</p>
+                        <span class="text-success app-font">
+                            <i class="fas fa-heartbeat"></i>            
+                        </span>
+                        Global Total Recovered
                     </label>
                     <label class="col-sm-6 col-form-label">
                         {{summary.TotalRecovered.toLocaleString()}}
@@ -41,7 +54,7 @@
 
                     <!--progress bar-->
                         <label class="col-sm-6 col-form-label">
-                            <p>Global recovered percentage</p>
+                            Global recovered percentage
                         </label>
                         <label class="col-sm-6 col-form-label">
                             <div class="progress">

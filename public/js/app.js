@@ -1950,6 +1950,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2045,6 +2049,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -72575,7 +72592,10 @@ var staticRenderFns = [
       _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Countries")]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-        _vm._v("Statistics by countries")
+        _c("span", { staticClass: "text-primary app-font" }, [
+          _c("i", { staticClass: "fas fa-flag" })
+        ]),
+        _vm._v("\n                    Statistics by countries")
       ])
     ])
   },
@@ -72661,7 +72681,11 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _vm._v(
+                    "\n                        Global recovered percentage\n                    "
+                  )
+                ]),
                 _vm._v(" "),
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _c("div", { staticClass: "progress" }, [
@@ -72703,7 +72727,10 @@ var staticRenderFns = [
       _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Summary")]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-        _vm._v("Global statistics")
+        _c("span", { staticClass: "text-primary app-font" }, [
+          _c("i", { staticClass: "fas fa-globe" })
+        ]),
+        _vm._v("\n         Global statistics")
       ])
     ])
   },
@@ -72712,7 +72739,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("Global Total Confirmed Cases")])
+      _c("span", { staticClass: "text-danger app-font" }, [
+        _c("i", { staticClass: "fas fa-head-side-mask" })
+      ]),
+      _vm._v(
+        "\n                    Global Total Confirmed Cases\n                "
+      )
     ])
   },
   function() {
@@ -72720,7 +72752,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("Global Total Deaths")])
+      _c("span", { staticClass: "text-dark app-font" }, [
+        _c("i", { staticClass: "fas fa-skull-crossbones" })
+      ]),
+      _vm._v("\n                    Global Total Deaths\n                ")
     ])
   },
   function() {
@@ -72728,15 +72763,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("Global Total Recovered")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("Global recovered percentage")])
+      _c("span", { staticClass: "text-success app-font" }, [
+        _c("i", { staticClass: "fas fa-heartbeat" })
+      ]),
+      _vm._v("\n                    Global Total Recovered\n                ")
     ])
   }
 ]
@@ -84914,6 +84944,8 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SummaryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SummaryComponent */ "./resources/js/components/SummaryComponent.vue");
 /* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_router__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -84940,6 +84972,7 @@ Vue.component('Home', __webpack_require__(/*! ./components/HomeComponent.vue */ 
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // import dt from 'datatables.net'
+
 
 
 
@@ -85138,6 +85171,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SummaryComponent_vue_vue_type_template_id_2b3b8ee2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SummaryComponent_vue_vue_type_template_id_2b3b8ee2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/router.js":
+/*!********************************!*\
+  !*** ./resources/js/router.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 
 

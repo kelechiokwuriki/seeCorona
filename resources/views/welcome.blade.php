@@ -30,12 +30,11 @@
 
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-
-        
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+        {{-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> --}}
         <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/9f7685b59f.js" crossorigin="anonymous"></script>
     </head>
     <body>
     <header>
@@ -51,12 +50,12 @@
                         <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/information">Information <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Information <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <span class="navbar-text">
                     <a class="btn btn-primary" role="button" target="__blank" href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129">
-                        Follow me on <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                         <i class="fab fa-linkedin"></i> Follow me on linkedin
                     </a>
                 </span>
             </div>

@@ -37,6 +37,8 @@ Vue.component('Home', require('./components/HomeComponent.vue').default);
 import Summary from './components/SummaryComponent'
 import Home from './components/HomeComponent'
 
+import router from './router'
+
 
 const app = new Vue({
     el: '#main',

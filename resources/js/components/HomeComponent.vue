@@ -10,7 +10,11 @@
                 <div class="card">
                     <div class="card-header bg-dark">
                         <h5 class="card-title text-white">Countries</h5>
-                        <h6 class="card-subtitle mb-2 text-white">Statistics by countries</h6>
+                        <h6 class="card-subtitle mb-2 text-white">
+                        <span class="text-primary app-font">
+                            <i class="fas fa-flag"></i>                        
+                        </span>
+                        Statistics by countries</h6>
                     </div>
                     <div id="data-table_wrapper" class="dataTables_wrapper p-3 no-footer">
                         <table id="countryTable" class="table display table-hover" style="width:100%">
