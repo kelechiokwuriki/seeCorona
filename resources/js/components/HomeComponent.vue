@@ -56,22 +56,58 @@
                 axios.get(this.apiUrl)
                 .then(response => {
                     this.statistics = response.data;
+                    const object = {statsValue: this.statistics, timeStamp: moment().minutes()}
+                    const parsed = JSON.stringify(object);
+                    localStorage.setItem('stats', parsed);
 
                 }).finally(() => {
-                    $(document).ready(function () {
-                        var table = $('#countryTable').DataTable({
+                        $('#countryTable').DataTable({
                             "ordering": true,
                             "aaSorting": [],
                             stateSave: true,
                             pageLength: 10,
                             lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
                         });
-                    });
                 })
             },
         },
         created() {
-            this.getStats();
+            if (localStorage.getItem('stats')) {
+                try {
+                    let cacheObject = JSON.parse(localStorage.getItem("stats")),
+                    cacheTime = cacheObject.timeStamp,
+                    cacheTimePlusFifteenminutes = cacheTime + 2, //add 15 minutes to time from cache
+                    now = moment().minutes();
+
+                    console.log('cacheTime: ' + cacheTime);
+                    console.log('cacheTimePlusFifteenminutes: ' + cacheTimePlusFifteenminutes);
+                    console.log('now: ' + now);
+
+
+                    if(now >= cacheTimePlusFifteenminutes) {
+                        console.log('time for refresh');
+                        this.getStats();
+                    } else {
+                        console.log('using old data');
+
+                        this.statistics = cacheObject.statsValue;
+                        
+                        setTimeout(function(){
+                            $('#countryTable').DataTable({
+                                "ordering": true,
+                                "aaSorting": [],
+                                stateSave: true,
+                                pageLength: 10,
+                                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+                            });
+                        },);
+                    }
+                } catch(e) {
+                    localStorage.removeItem('stats');
+                }
+            } else {
+                this.getStats();
+            }
         }
     }
 </script>
