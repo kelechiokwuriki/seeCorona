@@ -1954,8 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: [],
-      percentage: 0,
-      cacheDataTimeToLiveInMinutes: 1,
+      cacheDataTimeToLiveInMinutes: 10,
       //10 minutes
       apiUrl: 'https://api.covid19api.com/summary'
     };
@@ -1974,12 +1973,6 @@ __webpack_require__.r(__webpack_exports__);
     }(function (date) {
       return moment(date);
     }),
-    calculatePercentage: function calculatePercentage() {
-      console.log('data: ' + this.statistics.Global.TotalConfirmed); // let globalCases = this.statistics.Global.TotalConfirmed;
-      // let globalRecoveries = (this.statistics.Global.TotalRecovered * 100);
-
-      this.percentage = Math.round(this.statistics.Global.TotalRecovered * 100 / this.statistics.Global.TotalConfirmed);
-    },
     getDataFromCache: function getDataFromCache() {
       try {
         var cacheObject = JSON.parse(localStorage.getItem("stats"));
@@ -2037,10 +2030,6 @@ __webpack_require__.r(__webpack_exports__);
       this.getDataFromCache();
     } else {
       this.getStats();
-    }
-
-    if (this.statistics) {
-      this.calculatePercentage();
     }
   }
 });
@@ -2107,6 +2096,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2114,10 +2117,12 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     summary: {
       type: Object
-    },
-    percentage: {
-      type: Number,
-      "default": 0
+    }
+  },
+  computed: {
+    percentage: function percentage() {
+      //progress bar
+      return Math.round(this.summary.TotalRecovered * 100 / this.summary.TotalConfirmed);
     }
   }
 });
@@ -72496,14 +72501,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-sm-4" },
-        [
-          _c("Summary", {
-            attrs: {
-              summary: _vm.statistics.Global,
-              percentage: _vm.percentage
-            }
-          })
-        ],
+        [_c("Summary", { attrs: { summary: _vm.statistics.Global } })],
         1
       ),
       _vm._v(" "),
@@ -72661,11 +72659,33 @@ var render = function() {
                       _vm._s(_vm.summary.TotalRecovered.toLocaleString()) +
                       "\n                "
                   )
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _c("div", { staticClass: "progress" }, [
+                    _vm.percentage
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "progress-bar",
+                            style: { width: _vm.percentage + "%" },
+                            attrs: {
+                              role: "progressbar",
+                              "aria-valuemin": "0",
+                              "aria-valuemax": "100"
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.percentage) + "%")]
+                        )
+                      : _vm._e()
+                  ])
                 ])
               ]
             : [
                 _c("p", { staticClass: "card-text" }, [
-                  _vm._v("No data available")
+                  _vm._v("Loading data...")
                 ])
               ]
         ],
@@ -72709,6 +72729,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
       _c("p", [_vm._v("Global Total Recovered")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("p", [_vm._v("Global recovered percentage")])
     ])
   }
 ]

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <!--start summary view-->
-                    <Summary :summary="statistics.Global" :percentage="percentage"></Summary>
+                    <Summary :summary="statistics.Global"></Summary>
                 <!--end summary view-->
             </div>
             <div class="col-sm-8">
@@ -45,21 +45,13 @@
         data() {
             return{
                 statistics: [],
-                percentage: 0,
-                cacheDataTimeToLiveInMinutes: 1, //10 minutes
+                cacheDataTimeToLiveInMinutes: 10, //10 minutes
                 apiUrl: 'https://api.covid19api.com/summary'
             }
         },
         methods: {
             moment(date) {
                 return moment(date);
-            },
-            calculatePercentage() {
-                console.log('data: ' + this.statistics.Global.TotalConfirmed);
-
-                // let globalCases = this.statistics.Global.TotalConfirmed;
-                // let globalRecoveries = (this.statistics.Global.TotalRecovered * 100);
-                this.percentage = Math.round((this.statistics.Global.TotalRecovered * 100) / this.statistics.Global.TotalConfirmed);                   
             },
             getDataFromCache() {
                 try {
@@ -117,11 +109,6 @@
             } else{
                 this.getStats();
             }
-            if(this.statistics)
-            {
-                this.calculatePercentage();
-            }
-
         }
     }
 </script>
