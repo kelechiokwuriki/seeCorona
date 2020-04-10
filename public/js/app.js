@@ -1975,13 +1975,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get(this.apiUrl).then(function (response) {
-        _this.statistics = response.data;
-        var object = {
-          statsValue: _this.statistics,
-          timeStamp: moment().minutes()
-        };
-        var parsed = JSON.stringify(object);
-        localStorage.setItem('stats', parsed);
+        _this.statistics = response.data; // const object = {statsValue: this.statistics, timeStamp: moment()}
+        // const parsed = JSON.stringify(object);
+        // localStorage.setItem('stats', parsed);
       })["finally"](function () {
         $('#countryTable').DataTable({
           "ordering": true,
@@ -1994,39 +1990,42 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    if (localStorage.getItem('stats')) {
-      try {
-        var cacheObject = JSON.parse(localStorage.getItem("stats")),
-            cacheTime = cacheObject.timeStamp,
-            cacheTimePlusFifteenminutes = cacheTime + 2,
-            //add 15 minutes to time from cache
-        now = moment().minutes();
-        console.log('cacheTime: ' + cacheTime);
-        console.log('cacheTimePlusFifteenminutes: ' + cacheTimePlusFifteenminutes);
-        console.log('now: ' + now);
-
-        if (now >= cacheTimePlusFifteenminutes) {
-          console.log('time for refresh');
-          this.getStats();
-        } else {
-          console.log('using old data');
-          this.statistics = cacheObject.statsValue;
-          setTimeout(function () {
-            $('#countryTable').DataTable({
-              "ordering": true,
-              "aaSorting": [],
-              stateSave: true,
-              pageLength: 10,
-              lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
-            });
-          });
-        }
-      } catch (e) {
-        localStorage.removeItem('stats');
-      }
-    } else {
-      this.getStats();
-    }
+    this.getStats(); // if (!localStorage.getItem('stats')) {
+    //     this.getStats();
+    // }
+    // try {
+    //     let cacheObject = JSON.parse(localStorage.getItem("stats"));
+    //     let cacheTime = cacheObject.timeStamp;
+    //     let now = moment();
+    //     let diff = cacheTime.diff(now);
+    //     console.log('cacheTime: ' + cacheTime);
+    //     console.log('cacheTime22: ' + diff);
+    //     // console.log('cacheTimePlusFifteenminutes: ' + cacheTimePlusFifteenminutes);
+    //     // console.log('now: ' + now);
+    //     //15 minutes elapsed, get new data
+    //     // if(now >= cacheTimePlusFifteenminutes) {
+    //     //     console.log('new');
+    //     //     localStorage.removeItem('stats');
+    //     //     this.getStats();
+    //     // } else {
+    //     //     console.log('old');
+    //     //     this.statistics = cacheObject.statsValue;
+    //     //     //datatables acts weird, it needs a call back to be reactivated
+    //     //     //tried using a self invoking function but that didn't work
+    //     //     //this seemed like the best idea
+    //     //     setTimeout(function(){
+    //     //         $('#countryTable').DataTable({
+    //     //             "ordering": true,
+    //     //             "aaSorting": [],
+    //     //             stateSave: true,
+    //     //             pageLength: 10,
+    //     //             lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+    //     //         });
+    //     //     },);
+    //     // }
+    // } catch(e) {
+    //     localStorage.removeItem('stats');
+    // }
   }
 });
 
