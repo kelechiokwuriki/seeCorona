@@ -1954,6 +1954,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: [],
+      timeForCacheDataToExpire: 10,
+      //5 minutes
       apiUrl: 'https://api.covid19api.com/summary'
     };
   },
@@ -1975,9 +1977,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get(this.apiUrl).then(function (response) {
-        _this.statistics = response.data; // const object = {statsValue: this.statistics, timeStamp: moment()}
-        // const parsed = JSON.stringify(object);
-        // localStorage.setItem('stats', parsed);
+        _this.statistics = response.data;
+        var object = {
+          statsValue: _this.statistics,
+          timeStamp: moment()
+        };
+        var parsed = JSON.stringify(object);
+        localStorage.setItem('stats', parsed);
       })["finally"](function () {
         $('#countryTable').DataTable({
           "ordering": true,
@@ -1990,42 +1996,38 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getStats(); // if (!localStorage.getItem('stats')) {
-    //     this.getStats();
-    // }
-    // try {
-    //     let cacheObject = JSON.parse(localStorage.getItem("stats"));
-    //     let cacheTime = cacheObject.timeStamp;
-    //     let now = moment();
-    //     let diff = cacheTime.diff(now);
-    //     console.log('cacheTime: ' + cacheTime);
-    //     console.log('cacheTime22: ' + diff);
-    //     // console.log('cacheTimePlusFifteenminutes: ' + cacheTimePlusFifteenminutes);
-    //     // console.log('now: ' + now);
-    //     //15 minutes elapsed, get new data
-    //     // if(now >= cacheTimePlusFifteenminutes) {
-    //     //     console.log('new');
-    //     //     localStorage.removeItem('stats');
-    //     //     this.getStats();
-    //     // } else {
-    //     //     console.log('old');
-    //     //     this.statistics = cacheObject.statsValue;
-    //     //     //datatables acts weird, it needs a call back to be reactivated
-    //     //     //tried using a self invoking function but that didn't work
-    //     //     //this seemed like the best idea
-    //     //     setTimeout(function(){
-    //     //         $('#countryTable').DataTable({
-    //     //             "ordering": true,
-    //     //             "aaSorting": [],
-    //     //             stateSave: true,
-    //     //             pageLength: 10,
-    //     //             lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
-    //     //         });
-    //     //     },);
-    //     // }
-    // } catch(e) {
-    //     localStorage.removeItem('stats');
-    // }
+    // this.getStats();
+    if (!localStorage.getItem('stats')) {
+      this.getStats();
+    }
+
+    try {
+      var cacheObject = JSON.parse(localStorage.getItem("stats"));
+      var cacheTime = cacheObject.timeStamp;
+      var now = moment();
+      var tell = moment(now.diff(cacheTime)).format("m"); //10 minutes elapsed, get new data
+
+      if (tell >= this.timeForCacheDataToExpire) {
+        console.log('new');
+        localStorage.removeItem('stats');
+        this.getStats();
+      } else {
+        console.log('old');
+        this.statistics = cacheObject.statsValue; //best method to reactivate datatable
+
+        setTimeout(function () {
+          $('#countryTable').DataTable({
+            "ordering": true,
+            "aaSorting": [],
+            stateSave: true,
+            pageLength: 10,
+            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+          });
+        });
+      }
+    } catch (e) {
+      localStorage.removeItem('stats');
+    }
   }
 });
 

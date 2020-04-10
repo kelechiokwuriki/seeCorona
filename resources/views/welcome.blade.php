@@ -10,7 +10,7 @@
 
         gtag('config', 'UA-163348996-1');
         </script>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="See Coronavirus CoronaVirus COVID-19 Covid-19 statistics data live in countries and worldwide">
@@ -66,9 +66,14 @@
 
     <footer class="footer bg-dark text-white">
       <div class="container text-center p-2">
-        <h5>Developed by 
-            <span><a href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129" target="__blank" style="text-decoration:none;">Kelechi Okwuriki</span>
-        </h5>
+        {{-- <h5>Developed by 
+            <span>
+                <a href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129" target="__blank" style="text-decoration:none;">Kelechi Okwuriki</a>
+            </span>
+        </h5> --}}
+        <p>seecoronastats is a free app to view COVID-19 stats Globally. As there are multiple sources of mutating information, 
+        please perform verification of information gotten from this app. The developer will not be held responsible for 
+        any misinterpretation of data. </p>
       </div>
     </footer>
     <script src="{{ mix('js/app.js') }}"></script>
