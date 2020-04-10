@@ -46,7 +46,7 @@
             return{
                 statistics: [],
                 percentage: 0,
-                cacheDataTimeToLiveInMinutes: 10, //10 minutes
+                cacheDataTimeToLiveInMinutes: 1, //10 minutes
                 apiUrl: 'https://api.covid19api.com/summary'
             }
         },
@@ -55,9 +55,11 @@
                 return moment(date);
             },
             calculatePercentage() {
-                let globalCases = this.statistics.Global.TotalConfirmed;
-                let globalRecoveries = this.statistics.Global.TotalRecovered * 100;
-                this.percentage = Math.round(globalRecoveries / globalCases);        
+                console.log('data: ' + this.statistics.Global.TotalConfirmed);
+
+                // let globalCases = this.statistics.Global.TotalConfirmed;
+                // let globalRecoveries = (this.statistics.Global.TotalRecovered * 100);
+                this.percentage = Math.round((this.statistics.Global.TotalRecovered * 100) / this.statistics.Global.TotalConfirmed);                   
             },
             getDataFromCache() {
                 try {
@@ -115,7 +117,11 @@
             } else{
                 this.getStats();
             }
-            this.calculatePercentage();
+            if(this.statistics)
+            {
+                this.calculatePercentage();
+            }
+
         }
     }
 </script>

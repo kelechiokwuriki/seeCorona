@@ -1955,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       statistics: [],
       percentage: 0,
-      cacheDataTimeToLiveInMinutes: 10,
+      cacheDataTimeToLiveInMinutes: 1,
       //10 minutes
       apiUrl: 'https://api.covid19api.com/summary'
     };
@@ -1975,9 +1975,10 @@ __webpack_require__.r(__webpack_exports__);
       return moment(date);
     }),
     calculatePercentage: function calculatePercentage() {
-      var globalCases = this.statistics.Global.TotalConfirmed;
-      var globalRecoveries = this.statistics.Global.TotalRecovered * 100;
-      this.percentage = Math.round(globalRecoveries / globalCases);
+      console.log('data: ' + this.statistics.Global.TotalConfirmed); // let globalCases = this.statistics.Global.TotalConfirmed;
+      // let globalRecoveries = (this.statistics.Global.TotalRecovered * 100);
+
+      this.percentage = Math.round(this.statistics.Global.TotalRecovered * 100 / this.statistics.Global.TotalConfirmed);
     },
     getDataFromCache: function getDataFromCache() {
       try {
@@ -2038,7 +2039,9 @@ __webpack_require__.r(__webpack_exports__);
       this.getStats();
     }
 
-    this.calculatePercentage();
+    if (this.statistics) {
+      this.calculatePercentage();
+    }
   }
 });
 
@@ -72658,26 +72661,6 @@ var render = function() {
                       _vm._s(_vm.summary.TotalRecovered.toLocaleString()) +
                       "\n                "
                   )
-                ]),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-                  _c("div", { staticClass: "progress" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "progress-bar",
-                        style: { width: _vm.percentage + "%" },
-                        attrs: {
-                          role: "progressbar",
-                          "aria-valuemin": "0",
-                          "aria-valuemax": "100"
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.percentage) + "%")]
-                    )
-                  ])
                 ])
               ]
             : [
@@ -72726,14 +72709,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
       _c("p", [_vm._v("Global Total Recovered")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
-      _c("p", [_vm._v("Global recovered percentage")])
     ])
   }
 ]
