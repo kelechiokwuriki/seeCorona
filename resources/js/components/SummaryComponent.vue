@@ -9,8 +9,8 @@
             <div class="form-group row">
                 <template v-if="summary">
                     <label class="col-sm-6 col-form-label">
-                    <p>Global Total Confirmed Cases</p>
-                </label>
+                        <p>Global Total Confirmed Cases</p>
+                    </label>
                     <label class="col-sm-6 col-form-label">
                         {{summary.TotalConfirmed.toLocaleString()}}
                     </label>
@@ -28,7 +28,18 @@
                     <label class="col-sm-6 col-form-label">
                         {{summary.TotalRecovered.toLocaleString()}}
                     </label>
+
+                    <label class="col-sm-6 col-form-label">
+                        <p>Global recovered percentage</p>
+                    </label>
+                    <label class="col-sm-6 col-form-label">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" v-bind:style="{ width: percentage + '%'}" 
+                            aria-valuemin="0" aria-valuemax="100">{{ percentage }}%</div>
+                        </div>
+                    </label>
                 </template>
+                
                 <template v-else>
                     <p class="card-text">No data available</p>
                 </template>
@@ -46,6 +57,10 @@
         props: {
             summary: {
                 type: Object
+            },
+            percentage: {
+                type: Number,
+                default: 0
             }
         }
     }

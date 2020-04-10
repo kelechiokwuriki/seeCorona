@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <!--start summary view-->
-                    <Summary :summary="statistics.Global"></Summary>
+                    <Summary :summary="statistics.Global" :percentage="percentage"></Summary>
                 <!--end summary view-->
             </div>
             <div class="col-sm-8">
@@ -57,19 +57,17 @@
             calculatePercentage() {
                 let globalCases = this.statistics.Global.TotalConfirmed;
                 let globalRecoveries = this.statistics.Global.TotalRecovered * 100;
-                this.percentage = Math.round(globalRecoveries / globalCases);      
-                console.log('gr ' + this.percentage);
-  
+                this.percentage = Math.round(globalRecoveries / globalCases);        
             },
             getDataFromCache() {
                 try {
                     let cacheObject = JSON.parse(localStorage.getItem("stats"));
                     let cacheTime = cacheObject.timeStamp;
                     let now = moment();
-                    let tell = moment(now.diff(cacheTime)).format("m")
+                    let minutesElapsed = moment(now.diff(cacheTime)).format("m")
                 
                     //10 minutes elapsed, get new data
-                    if(tell >= this.cacheDataTimeToLiveInMinutes) {
+                    if(minutesElapsed >= this.cacheDataTimeToLiveInMinutes) {
                         localStorage.removeItem('stats');
                         this.getStats();
                     } else {
@@ -100,13 +98,13 @@
                     localStorage.setItem('stats', parsed);
 
                 }).finally(() => {
-                        $('#countryTable').DataTable({
-                            "ordering": true,
-                            "aaSorting": [],
-                            stateSave: true,
-                            pageLength: 10,
-                            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
-                        });
+                    $('#countryTable').DataTable({
+                        "ordering": true,
+                        "aaSorting": [],
+                        stateSave: true,
+                        pageLength: 10,
+                        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+                    });
                 })
             },
         },
@@ -118,7 +116,6 @@
                 this.getStats();
             }
             this.calculatePercentage();
-            
         }
     }
 </script>

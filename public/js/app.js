@@ -1978,16 +1978,15 @@ __webpack_require__.r(__webpack_exports__);
       var globalCases = this.statistics.Global.TotalConfirmed;
       var globalRecoveries = this.statistics.Global.TotalRecovered * 100;
       this.percentage = Math.round(globalRecoveries / globalCases);
-      console.log('gr ' + this.percentage);
     },
     getDataFromCache: function getDataFromCache() {
       try {
         var cacheObject = JSON.parse(localStorage.getItem("stats"));
         var cacheTime = cacheObject.timeStamp;
         var now = moment();
-        var tell = moment(now.diff(cacheTime)).format("m"); //10 minutes elapsed, get new data
+        var minutesElapsed = moment(now.diff(cacheTime)).format("m"); //10 minutes elapsed, get new data
 
-        if (tell >= this.cacheDataTimeToLiveInMinutes) {
+        if (minutesElapsed >= this.cacheDataTimeToLiveInMinutes) {
           localStorage.removeItem('stats');
           this.getStats();
         } else {
@@ -2094,6 +2093,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -2101,6 +2111,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     summary: {
       type: Object
+    },
+    percentage: {
+      type: Number,
+      "default": 0
     }
   }
 });
@@ -72479,7 +72493,14 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-sm-4" },
-        [_c("Summary", { attrs: { summary: _vm.statistics.Global } })],
+        [
+          _c("Summary", {
+            attrs: {
+              summary: _vm.statistics.Global,
+              percentage: _vm.percentage
+            }
+          })
+        ],
         1
       ),
       _vm._v(" "),
@@ -72637,6 +72658,26 @@ var render = function() {
                       _vm._s(_vm.summary.TotalRecovered.toLocaleString()) +
                       "\n                "
                   )
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                  _c("div", { staticClass: "progress" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress-bar",
+                        style: { width: _vm.percentage + "%" },
+                        attrs: {
+                          role: "progressbar",
+                          "aria-valuemin": "0",
+                          "aria-valuemax": "100"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.percentage) + "%")]
+                    )
+                  ])
                 ])
               ]
             : [
@@ -72685,6 +72726,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
       _c("p", [_vm._v("Global Total Recovered")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("p", [_vm._v("Global recovered percentage")])
     ])
   }
 ]
