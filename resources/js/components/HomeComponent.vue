@@ -85,11 +85,9 @@
             
                 //10 minutes elapsed, get new data
                 if(tell >= this.timeForCacheDataToExpire) {
-                    console.log('new');
                     localStorage.removeItem('stats');
                     this.getStats();
                 } else {
-                    console.log('old');
                     this.statistics = cacheObject.statsValue;
                     //best method to reactivate datatable
                     setTimeout(function(){
