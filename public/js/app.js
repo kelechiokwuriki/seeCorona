@@ -1954,8 +1954,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: [],
-      timeForCacheDataToExpire: 10,
-      //5 minutes
+      percentage: 0,
+      cacheDataTimeToLiveInMinutes: 10,
+      //10 minutes
       apiUrl: 'https://api.covid19api.com/summary'
     };
   },
@@ -1973,6 +1974,41 @@ __webpack_require__.r(__webpack_exports__);
     }(function (date) {
       return moment(date);
     }),
+    calculatePercentage: function calculatePercentage() {
+      var globalCases = this.statistics.Global.TotalConfirmed;
+      var globalRecoveries = this.statistics.Global.TotalRecovered * 100;
+      this.percentage = Math.round(globalRecoveries / globalCases);
+      console.log('gr ' + this.percentage);
+    },
+    getDataFromCache: function getDataFromCache() {
+      try {
+        var cacheObject = JSON.parse(localStorage.getItem("stats"));
+        var cacheTime = cacheObject.timeStamp;
+        var now = moment();
+        var tell = moment(now.diff(cacheTime)).format("m"); //10 minutes elapsed, get new data
+
+        if (tell >= this.cacheDataTimeToLiveInMinutes) {
+          localStorage.removeItem('stats');
+          this.getStats();
+        } else {
+          this.statistics = cacheObject.statsValue; //best method to reactivate datatable
+
+          setTimeout(function () {
+            $('#countryTable').DataTable({
+              "ordering": true,
+              "aaSorting": [],
+              stateSave: true,
+              pageLength: 10,
+              lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
+            });
+          });
+        }
+      } catch (e) {
+        //assume data is corrupted so remove and get new one
+        localStorage.removeItem('stats');
+        this, getStats();
+      }
+    },
     getStats: function getStats() {
       var _this = this;
 
@@ -1997,35 +2033,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     // this.getStats();
-    if (!localStorage.getItem('stats')) {
+    if (localStorage.getItem('stats')) {
+      this.getDataFromCache();
+    } else {
       this.getStats();
     }
 
-    try {
-      var cacheObject = JSON.parse(localStorage.getItem("stats"));
-      var cacheTime = cacheObject.timeStamp;
-      var now = moment();
-      var tell = moment(now.diff(cacheTime)).format("m"); //10 minutes elapsed, get new data
-
-      if (tell >= this.timeForCacheDataToExpire) {
-        localStorage.removeItem('stats');
-        this.getStats();
-      } else {
-        this.statistics = cacheObject.statsValue; //best method to reactivate datatable
-
-        setTimeout(function () {
-          $('#countryTable').DataTable({
-            "ordering": true,
-            "aaSorting": [],
-            stateSave: true,
-            pageLength: 10,
-            lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
-          });
-        });
-      }
-    } catch (e) {
-      localStorage.removeItem('stats');
-    }
+    this.calculatePercentage();
   }
 });
 
