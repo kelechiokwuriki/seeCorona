@@ -21,7 +21,7 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" media="screen">
+        <link  href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" media="screen">
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" media="screen">
@@ -68,6 +68,6 @@
       </div>
     </footer>
     <script src="{{ mix('js/app.js') }}"></script>
-    <script src="https://kit.fontawesome.com/9f7685b59f.js" crossorigin="anonymous" defer></script>
+    <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None;Secure crossorigin="anonymous" defer></script>
     </body>
 </html>
