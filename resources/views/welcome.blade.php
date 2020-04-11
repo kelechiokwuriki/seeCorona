@@ -17,17 +17,20 @@
         <meta name="keywords" content="Covid-19 COVID-19 Coronavirus CoronaVirus Corona virus Corona Virus statistics worldwide health">
         <meta name="author" content="Kelechi Matthew Okwuriki">
 
+
         <title>Seecoronastats</title>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link  href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" media="screen">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
+
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet" media="screen">
         <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
-        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
+
+        <!-- Scripts -->
 
     </head>
     <body>
@@ -49,7 +52,7 @@
                 </ul>
                 <span class="navbar-text">
                     <a class="btn btn-primary" role="button" target="__blank" href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129">
-                         <i class="fab fa-linkedin"></i> Follow me on linkedin
+                         <i class="fab fa-linkedin"></i> Follow me on Linkedin
                     </a>
                 </span>
             </div>
@@ -64,10 +67,11 @@
       <div class="container text-center p-2">
         <p>seecoronastats is a free app to view COVID-19 stats Globally. As there are multiple sources of mutating information, 
         please perform verification of information gotten from this app. The developer will not be held responsible for 
-        any misinterpretation of data. </p>
+        any misinterpretation of data.</p>
       </div>
     </footer>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" async></script>
     <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None;Secure crossorigin="anonymous" defer></script>
+
     </body>
 </html>
