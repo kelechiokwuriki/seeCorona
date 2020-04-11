@@ -45,5 +45,6 @@ const app = new Vue({
     components: {
         Summary,
         Home
-    }
+    },
+    router
 }).$mount('#main');
