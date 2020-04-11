@@ -2014,7 +2014,7 @@ __webpack_require__.r(__webpack_exports__);
       } catch (e) {
         //assume data is corrupted so remove and get new one
         localStorage.removeItem('stats');
-        this, getStats();
+        this.getStats();
       }
     },
     getStats: function getStats() {
@@ -2042,7 +2042,14 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     // this.getStats();
     if (localStorage.getItem('stats')) {
-      this.getDataFromCache();
+      var data = JSON.parse(localStorage.getItem("stats"));
+
+      if (data.statsValue === '') {
+        localStorage.removeItem('stats');
+        this.getStats();
+      } else {
+        this.getDataFromCache();
+      }
     } else {
       this.getStats();
     }

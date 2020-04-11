@@ -95,7 +95,7 @@
                 } catch(e) {
                     //assume data is corrupted so remove and get new one
                     localStorage.removeItem('stats');
-                    this,getStats();
+                    this.getStats();
                 }    
             },
             getStats() {
@@ -120,7 +120,13 @@
         created() {
             // this.getStats();
             if (localStorage.getItem('stats')) {
-                this.getDataFromCache();
+                let data = JSON.parse(localStorage.getItem("stats"));
+                if(data.statsValue === '') {
+                    localStorage.removeItem('stats');
+                    this.getStats();
+                } else{
+                    this.getDataFromCache();
+                }
             } else{
                 this.getStats();
             }
