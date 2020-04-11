@@ -14,27 +14,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="See Coronavirus CoronaVirus COVID-19 Covid-19 statistics data live in countries and worldwide">
+        <meta name="keywords" content="Covid-19 COVID-19 Coronavirus CoronaVirus Corona virus Corona Virus statistics worldwide health">
+        <meta name="author" content="Kelechi Matthew Okwuriki">
 
         <title>Seecoronastats</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- scripts -->
-
-        <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" media="screen">
 
         <!-- Styles -->
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet" media="screen">
+        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
 
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-        {{-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> --}}
-        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
-
-        <script src="https://kit.fontawesome.com/9f7685b59f.js" crossorigin="anonymous"></script>
     </head>
     <body>
     <header>
@@ -68,16 +62,12 @@
 
     <footer class="footer bg-dark text-white">
       <div class="container text-center p-2">
-        {{-- <h5>Developed by 
-            <span>
-                <a href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129" target="__blank" style="text-decoration:none;">Kelechi Okwuriki</a>
-            </span>
-        </h5> --}}
         <p>seecoronastats is a free app to view COVID-19 stats Globally. As there are multiple sources of mutating information, 
         please perform verification of information gotten from this app. The developer will not be held responsible for 
         any misinterpretation of data. </p>
       </div>
     </footer>
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/9f7685b59f.js" crossorigin="anonymous" defer></script>
     </body>
 </html>
