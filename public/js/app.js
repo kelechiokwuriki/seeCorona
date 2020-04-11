@@ -72766,7 +72766,8 @@ var staticRenderFns = [
             "a",
             {
               attrs: {
-                href: "https://www.who.int/health-topics/coronavirus#tab=tab_1"
+                href: "https://www.who.int/health-topics/coronavirus#tab=tab_1",
+                target: "__blank"
               }
             },
             [_vm._v("World Health Organization")]
@@ -72776,7 +72777,8 @@ var staticRenderFns = [
             "a",
             {
               attrs: {
-                href: "https://www.nhs.uk/conditions/coronavirus-covid-19/"
+                href: "https://www.nhs.uk/conditions/coronavirus-covid-19/",
+                target: "__blank"
               }
             },
             [_vm._v("National Health Service U.K")]

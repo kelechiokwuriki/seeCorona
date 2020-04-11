@@ -2,8 +2,8 @@
     <div class="container mt-4">
         <h5>Sources: 
             <span>
-                <a href="https://www.who.int/health-topics/coronavirus#tab=tab_1">World Health Organization</a>
-                <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/">National Health Service U.K</a>
+                <a href="https://www.who.int/health-topics/coronavirus#tab=tab_1" target="__blank">World Health Organization</a>
+                <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/" target="__blank">National Health Service U.K</a>
             </span>
         </h5>
         <div class="card">
