@@ -1,49 +1,58 @@
 <template>
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <div class="col-sm-4">
-                <!--start summary view-->
-                    <Summary :summary="statistics.Global"></Summary>
-                <!--end summary view-->
-            </div>
-            <div class="col-sm-8">
-                <div class="card">
-                    <div class="card-header bg-dark">
-                        <h5 class="card-title text-white">Countries</h5>
-                        <h6 class="card-subtitle mb-2 text-white">
-                        <span class="text-primary app-font">
-                            <i class="fas fa-flag"></i>                        
-                        </span>
-                        Statistics by countries</h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="data-table_wrapper" class="dataTables_wrapper no-footer">
-                            <table id="countryTable" class="table display table-hover" style="width:100%">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Country</th>
-                                        <th scope="col">Total Confirmed Cases</th>
-                                        <th scope="col">Total Deaths</th>
-                                        <th scope="col">Total Recovered</th>
-                                        <th scope="col">Date Updated</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="stat in statistics.Countries">
-                                        <td>{{ stat.Country }}</td>
-                                        <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
-                                        <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
-                                        <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
-                                        <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+    <div>
+        <div class="container-fluid mt-4" v-if="summary">
+            <div class="row">
+                <div class="col-sm-4">
+                    <!--start summary view-->
+                        <Summary :summary="statistics.Global"></Summary>
+                    <!--end summary view-->
+                </div>
+                <div class="col-sm-8">
+                    <div class="card">
+                        <div class="card-header bg-dark">
+                            <h5 class="card-title text-white">Countries</h5>
+                            <h6 class="card-subtitle mb-2 text-white">
+                            <span class="text-primary app-font">
+                                <i class="fas fa-flag"></i>                        
+                            </span>
+                            Statistics by countries</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+                                <table id="countryTable" class="table display table-hover" style="width:100%">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Country</th>
+                                            <th scope="col">Total Confirmed Cases</th>
+                                            <th scope="col">Total Deaths</th>
+                                            <th scope="col">Total Recovered</th>
+                                            <th scope="col">Date Updated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="stat in statistics.Countries">
+                                            <td>{{ stat.Country }}</td>
+                                            <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
+                                            <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
+                                            <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
+                                            <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="jumbotron jumbotron-fluid" v-else>
+            <div class="container">
+                <h1 class="display-4">Site under maintenance</h1>
+                <p class="lead">You can still view information about COVID-19 <a href="/information">here</a></p>
+            </div>
+        </div>
     </div>
+   
 </template>
 
 <script>
