@@ -16,27 +16,29 @@
                         </span>
                         Statistics by countries</h6>
                     </div>
-                    <div id="data-table_wrapper" class="dataTables_wrapper p-3 no-footer">
-                        <table id="countryTable" class="table display table-hover" style="width:100%">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Country</th>
-                                    <th scope="col">Total Confirmed Cases</th>
-                                    <th scope="col">Total Deaths</th>
-                                    <th scope="col">Total Recovered</th>
-                                    <th scope="col">Date Updated</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="stat in statistics.Countries">
-                                    <td>{{ stat.Country }}</td>
-                                    <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
-                                    <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
-                                    <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
-                                    <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body">
+                        <div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+                            <table id="countryTable" class="table display table-hover" style="width:100%">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">Total Confirmed Cases</th>
+                                        <th scope="col">Total Deaths</th>
+                                        <th scope="col">Total Recovered</th>
+                                        <th scope="col">Date Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="stat in statistics.Countries">
+                                        <td>{{ stat.Country }}</td>
+                                        <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
+                                        <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
+                                        <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
+                                        <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

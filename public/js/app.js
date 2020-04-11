@@ -1954,6 +1954,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2035,6 +2037,112 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.getStats();
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InformationComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InformationComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
   }
 });
 
@@ -72526,58 +72634,60 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "dataTables_wrapper p-3 no-footer",
-              attrs: { id: "data-table_wrapper" }
-            },
-            [
-              _c(
-                "table",
-                {
-                  staticClass: "table display table-hover",
-                  staticStyle: { width: "100%" },
-                  attrs: { id: "countryTable" }
-                },
-                [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.statistics.Countries, function(stat) {
-                      return _c("tr", [
-                        _c("td", [_vm._v(_vm._s(stat.Country))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(stat.TotalConfirmed.toLocaleString()))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(stat.TotalDeaths.toLocaleString()))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(stat.TotalRecovered.toLocaleString()))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            _vm._s(
-                              _vm
-                                .moment(stat.Date)
-                                .format("MMMM Do YYYY, h:mm:ss a")
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dataTables_wrapper no-footer",
+                attrs: { id: "data-table_wrapper" }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table display table-hover",
+                    staticStyle: { width: "100%" },
+                    attrs: { id: "countryTable" }
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.statistics.Countries, function(stat) {
+                        return _c("tr", [
+                          _c("td", [_vm._v(_vm._s(stat.Country))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(stat.TotalConfirmed.toLocaleString()))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(stat.TotalDeaths.toLocaleString()))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(stat.TotalRecovered.toLocaleString()))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm
+                                  .moment(stat.Date)
+                                  .format("MMMM Do YYYY, h:mm:ss a")
+                              )
                             )
-                          )
+                          ])
                         ])
-                      ])
-                    }),
-                    0
-                  )
-                ]
-              )
-            ]
-          )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
         ])
       ])
     ])
@@ -72616,6 +72726,286 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Recovered")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Updated")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container mt-4" }, [
+      _c("h5", [
+        _vm._v("Sources: \n        "),
+        _c("span", [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.who.int/health-topics/coronavirus#tab=tab_1"
+              }
+            },
+            [_vm._v("World Health Organization")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.nhs.uk/conditions/coronavirus-covid-19/"
+              }
+            },
+            [_vm._v("National Health Service U.K")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c(
+            "ul",
+            {
+              staticClass: "nav nav-pills card-header-pills",
+              attrs: { id: "myTab", role: "tablist" }
+            },
+            [
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link active",
+                    attrs: {
+                      id: "home-tab",
+                      "data-toggle": "tab",
+                      href: "#home",
+                      role: "tab",
+                      "aria-controls": "home",
+                      "aria-selected": "true"
+                    }
+                  },
+                  [_vm._v("Overview")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: {
+                      id: "profile-tab",
+                      "data-toggle": "tab",
+                      href: "#profile",
+                      role: "tab",
+                      "aria-controls": "profile",
+                      "aria-selected": "false"
+                    }
+                  },
+                  [_vm._v("Prevention")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: {
+                      id: "contact-tab",
+                      "data-toggle": "tab",
+                      href: "#contact",
+                      role: "tab",
+                      "aria-controls": "contact",
+                      "aria-selected": "false"
+                    }
+                  },
+                  [_vm._v("Symptoms")]
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "div",
+            { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade show active",
+                  attrs: {
+                    id: "home",
+                    role: "tabpanel",
+                    "aria-labelledby": "home-tab"
+                  }
+                },
+                [
+                  _c("p", [
+                    _vm._v(
+                      "Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and \n                        recover without requiring special treatment.  \n                        Older people, and those with underlying medical problems like cardiovascular disease, diabetes, \n                        chronic respiratory disease, and cancer are more likely to develop serious illness."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, \n                        the disease it causes and how it spreads. Protect yourself and others from infection by washing \n                        your hands or using an alcohol based rub frequently and not touching your face."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an \n                        infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow).\n                        At this time, there are no specific vaccines or treatments for COVID-19. \n                        However, there are many ongoing clinical trials evaluating potential treatments. \n                        WHO will continue to provide updated information as soon as clinical findings become available."
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade",
+                  attrs: {
+                    id: "profile",
+                    role: "tabpanel",
+                    "aria-labelledby": "profile-tab"
+                  }
+                },
+                [
+                  _c("p", [
+                    _vm._v(
+                      "To prevent infection and to slow transmission of COVID-19, do the following:"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        "Wash your hands with soap and water often – do this for at least 20 seconds."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Maintain a distance of 2 metres from anyone outside of your household."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Wash your hands as soon as you get home.")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Cover your mouth and nose with a tissue or your sleeve (not your hands) when you cough or sneeze."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Put used tissues in the bin immediately and wash your hands afterwards."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Stay home if you feel unwell.")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Refrain from smoking and other activities that weaken the lungs."
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade",
+                  attrs: {
+                    id: "contact",
+                    role: "tabpanel",
+                    "aria-labelledby": "contact-tab"
+                  }
+                },
+                [
+                  _c("p", [
+                    _vm._v(
+                      "The COVID-19 virus affects different people in different ways.  COVID-19 is a respiratory disease and most \n                    infected people will develop mild to moderate symptoms and recover without requiring special treatment.  \n                    People who have underlying medical conditions and those over 60 years old have a \n                    higher risk of developing severe disease and death."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", [
+                    _c("li", [_vm._v("Fever.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Dry cough.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Tiredness.")])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Other symptoms include:")]),
+                  _vm._v(" "),
+                  _c("ul", [
+                    _c("li", [_vm._v("Shortness of breath.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Aches and pains.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Sore throat.")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Very few people report diarrhoea, nausea or a runny nose."
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(
+                      "People with mild symptoms who are otherwise healthy should self-isolate and \n                    contact their medical provider or a COVID-19 information line for advice on testing and referral."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-danger" }, [
+                    _vm._v(
+                      "People with fever, cough or difficulty breathing should call their doctor and seek medical attention."
+                    )
+                  ])
+                ]
+              )
+            ]
+          )
+        ])
       ])
     ])
   }
@@ -88038,6 +88428,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/InformationComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/InformationComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InformationComponent.vue?vue&type=template&id=b8a36cc8& */ "./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8&");
+/* harmony import */ var _InformationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InformationComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/InformationComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InformationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/InformationComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/InformationComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/InformationComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./InformationComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InformationComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./InformationComponent.vue?vue&type=template&id=b8a36cc8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InformationComponent.vue?vue&type=template&id=b8a36cc8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformationComponent_vue_vue_type_template_id_b8a36cc8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/SummaryComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/SummaryComponent.vue ***!
@@ -88120,6 +88579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
+/* harmony import */ var _components_InformationComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/InformationComponent */ "./resources/js/components/InformationComponent.vue");
+
 
 
 
@@ -88128,6 +88589,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   routes: [{
     path: '/',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/information',
+    component: _components_InformationComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   }],
   mode: 'history'
 }));

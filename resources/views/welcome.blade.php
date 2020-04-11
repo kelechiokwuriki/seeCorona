@@ -36,7 +36,7 @@
     <body>
     <header>
          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">CoronaVirusStats</a>
+            <a class="navbar-brand" href="/">CovidNineteenStats</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,7 +47,7 @@
                         <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Information <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/information">Information <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -60,7 +60,7 @@
     </header>
 
     <main role="main" class="main" id="main">
-        <Home></Home>
+        <router-view></router-view>
     </main>
 
     <footer class="footer bg-dark text-white">
@@ -72,6 +72,5 @@
     </footer>
     <script src="{{ mix('js/app.js') }}" async></script>
     <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None;Secure crossorigin="anonymous" defer></script>
-
     </body>
 </html>
