@@ -60,7 +60,13 @@
     </header>
 
     <main role="main" class="main" id="main">
-        <router-view></router-view>
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Site under maintenance</h1>
+    <p class="lead">Please check back later.</p>
+  </div>
+</div>
+        {{-- <router-view></router-view> --}}
     </main>
 
     <footer class="footer bg-dark text-white">
