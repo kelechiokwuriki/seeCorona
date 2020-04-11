@@ -43,6 +43,15 @@ window.moment = require('moment');
 //     encrypted: true
 // });
 require('jquery');
-require('datatables.net'); 
-require('datatables.net-buttons-dt'); 
+// require('datatables.net'); 
+// require('datatables.net-buttons-dt'); 
+
+// require( 'pdfmake' );
+require( 'datatables.net-bs4' );
+require( 'datatables.net-buttons-bs4' );
+require( 'datatables.net-buttons/js/buttons.html5.js' );
+require( 'datatables.net-responsive-bs4' );
+require( 'datatables.net-scroller-bs4' );
+require( 'datatables.net-searchpanes-bs4' );
+
 
