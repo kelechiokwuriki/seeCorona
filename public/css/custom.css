@@ -14,3 +14,10 @@ footer {
 .app-font{
   font-size: 15px;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #data-table_wrapper {
+    margin-bottom: 20%;
+  }
+}
