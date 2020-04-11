@@ -72827,7 +72827,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card information-card" }, [
         _c("div", { staticClass: "card-header" }, [
           _c(
             "ul",

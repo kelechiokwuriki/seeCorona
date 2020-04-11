@@ -6,7 +6,7 @@
                 <a href="https://www.nhs.uk/conditions/coronavirus-covid-19/" target="__blank">National Health Service U.K</a>
             </span>
         </h5>
-        <div class="card">
+        <div class="card information-card">
             <div class="card-header">
                 <ul class="nav nav-pills card-header-pills" id="myTab" role="tablist">
                     <li class="nav-item">
