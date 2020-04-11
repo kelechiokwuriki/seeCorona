@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="summary">
+        <div class="container-fluid mt-4" v-if="statistics">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->

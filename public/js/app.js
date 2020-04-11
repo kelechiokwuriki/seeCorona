@@ -72631,7 +72631,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.summary
+    _vm.statistics
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
