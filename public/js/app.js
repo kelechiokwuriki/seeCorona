@@ -1975,6 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    initialize: function initialize() {},
     isStatisticsObjEmpty: function isStatisticsObjEmpty(obj) {
       for (var key in obj) {
         if (obj.hasOwnProperty(key)) return false;
@@ -74305,7 +74306,7 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "dataTables_wrapper no-footer",
+                      staticClass: "dataTables_wrapper no-footer text-center",
                       attrs: { id: "data-table_wrapper" }
                     },
                     [
@@ -74399,13 +74400,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Country")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Total Confirmed Cases")
-        ]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cases")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Deaths")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Deaths")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Total Recovered")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Recovered")]),
         _vm._v(" "),
         _c(
           "th",
@@ -74413,7 +74412,7 @@ var staticRenderFns = [
             staticClass: "d-none d-sm-none d-md-block d-sm-block",
             attrs: { scope: "col" }
           },
-          [_vm._v("Date Updated")]
+          [_vm._v("Updated")]
         )
       ])
     ])

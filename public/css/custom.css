@@ -20,4 +20,8 @@ footer {
   #data-table_wrapper, .information-card {
     margin-bottom: 20%;
   }
+  #data-table_wrapper{
+    font-size: 12px;
+  }
+
 }

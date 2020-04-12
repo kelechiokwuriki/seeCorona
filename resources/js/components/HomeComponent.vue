@@ -18,15 +18,15 @@
                             Statistics by countries</h6>
                         </div>
                         <div class="card-body">
-                            <div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+                            <div id="data-table_wrapper" class="dataTables_wrapper no-footer text-center">
                                 <table id="countryTable" class="table display table-hover" style="width:100%">
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col">Country</th>
-                                            <th scope="col">Total Confirmed Cases</th>
-                                            <th scope="col">Total Deaths</th>
-                                            <th scope="col">Total Recovered</th>
-                                            <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Date Updated</th>
+                                            <th scope="col">Cases</th>
+                                            <th scope="col">Deaths</th>
+                                            <th scope="col">Recovered</th>
+                                            <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Updated</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,6 +65,9 @@
             }
         },
         methods: {
+            initialize() {
+
+            },
             isStatisticsObjEmpty(obj) {
                 for(var key in obj) {
                     if(obj.hasOwnProperty(key))
