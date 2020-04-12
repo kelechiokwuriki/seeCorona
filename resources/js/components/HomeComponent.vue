@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="statistics.length">
+        <div class="container-fluid mt-4" v-if="Object.keys(statistics).length !== 0">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
@@ -60,7 +60,7 @@
         data() {
             return{
                 statistics: [],
-                cacheDataTimeToLiveInMinutes: 10, //10 minutes
+                cacheDataTimeToLiveInMinutes: 15, //15 minutes
                 apiUrl: 'https://api.covid19api.com/summary'
             }
         },

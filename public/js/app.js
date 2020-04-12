@@ -1969,8 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: [],
-      cacheDataTimeToLiveInMinutes: 10,
-      //10 minutes
+      cacheDataTimeToLiveInMinutes: 15,
+      //15 minutes
       apiUrl: 'https://api.covid19api.com/summary'
     };
   },
@@ -74280,7 +74280,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.statistics.length
+    Object.keys(_vm.statistics).length !== 0
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
