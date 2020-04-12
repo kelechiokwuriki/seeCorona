@@ -74421,7 +74421,7 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "lead" }, [
-        _vm._v("You can still view information about COVID-19 "),
+        _vm._v("You can still view information about the COVID-19 "),
         _c("a", { attrs: { href: "/information" } }, [_vm._v("here")])
       ])
     ])

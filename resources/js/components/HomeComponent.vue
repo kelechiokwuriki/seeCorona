@@ -48,7 +48,7 @@
         <div class="jumbotron jumbotron-fluid" v-else>
             <div class="container">
                 <h1 class="display-4">Site under maintenance</h1>
-                <p class="lead">You can still view information about COVID-19 <a href="/information">here</a></p>
+                <p class="lead">You can still view information about the COVID-19 <a href="/information">here</a></p>
             </div>
         </div>
     </div>
