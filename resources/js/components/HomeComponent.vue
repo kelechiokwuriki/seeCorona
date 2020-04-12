@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="statistics">
+        <div class="container-fluid mt-4" v-if="statistics.length">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
@@ -26,7 +26,7 @@
                                             <th scope="col">Total Confirmed Cases</th>
                                             <th scope="col">Total Deaths</th>
                                             <th scope="col">Total Recovered</th>
-                                            <th scope="col">Date Updated</th>
+                                            <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Date Updated</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -35,7 +35,7 @@
                                             <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
                                             <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
                                             <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
-                                            <td>{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
+                                            <td class="d-none d-sm-none d-md-block d-sm-block">{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
