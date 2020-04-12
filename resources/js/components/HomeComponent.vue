@@ -18,8 +18,8 @@
                             Statistics by countries</h6>
                         </div>
                         <div class="card-body">
-                            <div id="data-table_wrapper" class="dataTables_wrapper no-footer text-center">
-                                <table id="countryTable" class="table display table-hover" style="width:100%">
+                            <div id="data-table_wrapper" class="dataTables_wrapper no-footer">
+                                <table id="countryTable" class="table display table-hover text-center" style="width:100%">
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col">Country</th>

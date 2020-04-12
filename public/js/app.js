@@ -74306,14 +74306,14 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "dataTables_wrapper no-footer text-center",
+                      staticClass: "dataTables_wrapper no-footer",
                       attrs: { id: "data-table_wrapper" }
                     },
                     [
                       _c(
                         "table",
                         {
-                          staticClass: "table display table-hover",
+                          staticClass: "table display table-hover text-center",
                           staticStyle: { width: "100%" },
                           attrs: { id: "countryTable" }
                         },
