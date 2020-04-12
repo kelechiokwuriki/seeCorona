@@ -74423,11 +74423,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
       _c("h1", { staticClass: "display-4" }, [
-        _vm._v("Site under maintenance")
+        _vm._v("Site under maintenance "),
+        _c("i", { staticClass: "fas fa-tools" })
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "lead" }, [
-        _vm._v("You can still view information about the COVID-19 "),
+        _vm._v(
+          "We'll be back shortly, in the mean time view information about the COVID-19 "
+        ),
         _c("a", { attrs: { href: "/information" } }, [_vm._v("here")])
       ])
     ])
