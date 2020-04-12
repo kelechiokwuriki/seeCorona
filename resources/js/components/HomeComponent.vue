@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="Object.keys(statistics).length !== 0">
+        <div class="container-fluid mt-4" v-if="!isStatisticsObjEmpty(statistics)">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
@@ -65,6 +65,13 @@
             }
         },
         methods: {
+            isStatisticsObjEmpty(obj) {
+                for(var key in obj) {
+                    if(obj.hasOwnProperty(key))
+                        return false;
+                }
+                return true;
+            },
             moment(date) {
                 return moment(date);
             },

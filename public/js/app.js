@@ -1975,6 +1975,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    isStatisticsObjEmpty: function isStatisticsObjEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+
+      return true;
+    },
     moment: function (_moment) {
       function moment(_x) {
         return _moment.apply(this, arguments);
@@ -74280,7 +74287,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    Object.keys(_vm.statistics).length !== 0
+    !_vm.isStatisticsObjEmpty(_vm.statistics)
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
