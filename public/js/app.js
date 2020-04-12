@@ -2061,17 +2061,6 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.getStats();
     }
-  },
-  computed: {
-    isStatisticsObjEmpty: function isStatisticsObjEmpty() {
-      var obj = this.statistics;
-
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) return false;
-      }
-
-      return true;
-    }
   }
 });
 
@@ -74299,7 +74288,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    !_vm.isStatisticsObjEmpty
+    !_vm.isStatisticsObjEmpty(_vm.statistics)
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
