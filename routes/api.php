@@ -3,6 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Psr\Container\ContainerInterface;
+
+
+use App\Services\Statistics\CountryStatisticsService;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +25,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('statistics', 'StatisticsApiController');
+Route::resource('countrystatistics', 'CountryStatisticsApiController');
+
+Route::resource('globalstatistics', 'GlobalStatisticsApiController');
+
+

@@ -3,13 +3,15 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 abstract class BaseRepository {
 
     protected $model;
 
-    public function __construct(Model $model) 
+    public function __construct(Model $model)
     {
         $this->model = $model;
     }
@@ -19,7 +21,7 @@ abstract class BaseRepository {
         return $this->model->all();
     }
 
-    public function findById(int $id)
+    public function find(int $id)
     {
         return $this->model->find($id);
     }
@@ -29,7 +31,7 @@ abstract class BaseRepository {
         return $this->model->where($column, $value)->get();
     }
 
-    public function create(array $data) 
+    public function create(array $data)
     {
         return $this->model->create($data);
     }
@@ -41,7 +43,6 @@ abstract class BaseRepository {
 
     public function delete(int $id)
     {
-        return $this->model->delete($id);
+        return $this->model->destroy($id);
     }
-
 }

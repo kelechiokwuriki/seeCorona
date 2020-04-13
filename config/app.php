@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'api_url' => env('API_URL', 'https://api.covid19api.com'),
+    'covid_19_api_url' => env('COVID_19_API_URL', 'https://api.covid19api.com'),
 
     /*
     |--------------------------------------------------------------------------

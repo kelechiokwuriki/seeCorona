@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
+use App\Services\Statistics\GlobalStatisticsService;
 
 
-
-class StatisticsApiController extends Controller
+class GlobalStatisticsApiController extends Controller
 {
+    protected $globalStatisticsService;
+
+    public function __construct(GlobalStatisticsService $globalStatisticsService)
+    {
+        $this->globalStatisticsService = $globalStatisticsService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,24 +23,7 @@ class StatisticsApiController extends Controller
      */
     public function index()
     {
-        $url = config('app.api_url');
-
-        $data = Http::get($url.'/summary');
-
-        $enc = json_encode($data);
-
-        // if($data) {
-        //     return $data['Countries'];
-        // }
-        $res = [];
-
-        foreach($data['Countries'] as $value) {
-            $res[] = $value['Country'];
-        }
-
-        return $res;
-    
-        
+        return $this->globalStatisticsService->getAllGlobalStatistics();
     }
 
     /**
