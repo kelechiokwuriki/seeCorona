@@ -4,8 +4,12 @@
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
-                        <Summary :summary="statistics.Global"></Summary>
+                    <Summary :summary="statistics.Global"></Summary>
                     <!--end summary view-->
+
+                    <!-- news view-->
+                    <!-- <News></News> -->
+                    <!--end news view-->
                 </div>
                 <div class="col-sm-8">
                     <div class="card">

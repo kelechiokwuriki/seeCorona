@@ -23,6 +23,8 @@ window.Vue = require('vue');
 
 Vue.component('Summary', require('./components/SummaryComponent.vue').default);
 Vue.component('Home', require('./components/HomeComponent.vue').default);
+Vue.component('News', require('./components/NewsComponent.vue').default);
+
 
 
 /**
@@ -36,6 +38,9 @@ Vue.component('Home', require('./components/HomeComponent.vue').default);
 
 import Summary from './components/SummaryComponent'
 import Home from './components/HomeComponent'
+import News from './components/NewsComponent'
+
+
 
 import router from './router'
 
@@ -44,7 +49,8 @@ const app = new Vue({
     el: '#main',
     components: {
         Summary,
-        Home
+        Home,
+        News
     },
     router
 }).$mount('#main');
