@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\Subscription\SubscriptionService;
 
 class SubscriptionApiController extends Controller
 {
+    protected $subscriptionService;
+
+    public function __construct(SubscriptionService $subscriptionService)
+    {
+        $this->subscriptionService = $subscriptionService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,7 @@ class SubscriptionApiController extends Controller
      */
     public function index()
     {
-        //
+        return $this->subscriptionService->getAllSubscriptionData();
     }
 
     /**
@@ -23,7 +30,6 @@ class SubscriptionApiController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +40,7 @@ class SubscriptionApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->subscriptionService->createSubscription($request->toArray());
     }
 
     /**

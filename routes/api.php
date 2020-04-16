@@ -29,4 +29,7 @@ Route::resource('countrystatistics', 'CountryStatisticsApiController');
 
 Route::resource('globalstatistics', 'GlobalStatisticsApiController');
 
+Route::resource('subscription', 'SubscriptionApiController');
+
+
 
