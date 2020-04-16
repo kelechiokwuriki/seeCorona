@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Subscription\SubscriptionService;
+use Illuminate\Support\Facades\Log;
+
 
 class SubscriptionApiController extends Controller
 {
@@ -39,7 +41,7 @@ class SubscriptionApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         return $this->subscriptionService->createSubscription($request->toArray());
     }
 

@@ -2229,13 +2229,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      subscriptionApiUrl: '/api/subscription',
       reg: /[a-z0-9]+([-+._][a-z0-9]+){0,2}@.*?(\.(a(?:[cdefgilmnoqrstuwxz]|ero|(?:rp|si)a)|b(?:[abdefghijmnorstvwyz]iz)|c(?:[acdfghiklmnoruvxyz]|at|o(?:m|op))|d[ejkmoz]|e(?:[ceghrstu]|du)|f[ijkmor]|g(?:[abdefghilmnpqrstuwy]|ov)|h[kmnrtu]|i(?:[delmnoqrst]|n(?:fo|t))|j(?:[emop]|obs)|k[eghimnprwyz]|l[abcikrstuvy]|m(?:[acdeghklmnopqrstuvwxyz]|il|obi|useum)|n(?:[acefgilopruz]|ame|et)|o(?:m|rg)|p(?:[aefghklmnrstwy]|ro)|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t(?:[cdfghjklmnoprtvwz]|(?:rav)?el)|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw])\b){1,2}/,
-      subscribtion: {
+      subscription: {
         country: '',
         email: ''
+      },
+      errors: {
+        subscriptionEmailClass: '',
+        subscriptionCountryClass: ''
       },
       emailInvalid: 'is-invalid',
       emailValid: 'is-valid'
@@ -2247,14 +2260,44 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    updateSubscriptionCountry: function updateSubscriptionCountry(country) {
+      this.errors.subscriptionCountryClass = this.emailValid;
+      var obj = JSON.stringify(country);
+      this.subscription.country = country.Country;
+    },
     checkEmail: function checkEmail(emailString) {
       return this.reg.test(emailString) ? true : false;
+    },
+    isSubscriptionDataValid: function isSubscriptionDataValid(subObject) {
+      var _true;
+
+      switch (true) {
+        case subObject.country === '':
+          this.errors.subscriptionCountryClass = this.emailInvalid;
+
+        case subObject.email === '':
+          this.errors.subscriptionEmailClass = this.emailInvalid;
+
+        default:
+          break;
+      }
+
+      if (this.errors.subscriptionCountryClass === '' || this.errors.subscriptionEmailClass === '') return (_true = true) !== null && _true !== void 0 ? _true : false;
+    },
+    submitSubscription: function submitSubscription(e) {
+      e.preventDefault();
+      console.log(this.isSubscriptionDataValid(this.subscription));
+      if (!this.isSubscriptionDataValid(this.subscription)) return;
+      axios.post(this.subscriptionApiUrl, this.subscription).then(function (response) {
+        console.log(response);
+      });
     }
   },
   computed: {
     emailClass: function emailClass() {
-      if (this.subscribtion.email.length > 1) {
-        return this.checkEmail(this.subscribtion.email) ? this.emailValid : this.emailInvalid;
+      if (this.subscription.email.length > 1) {
+        this.errors.subscriptionEmailClass = '';
+        return this.checkEmail(this.subscription.email) ? this.emailValid : this.emailInvalid;
       }
     }
   },
@@ -75471,13 +75514,31 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("v-select", {
+                  class: _vm.errors.subscriptionCountryClass,
                   attrs: {
                     label: "Country",
                     options: _vm.countries,
-                    value: _vm.countries.country,
+                    value: _vm.countries.Country,
                     required: ""
+                  },
+                  on: {
+                    input: function(country) {
+                      return _vm.updateSubscriptionCountry(country)
+                    }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "valid-feedback" }, [
+                  _vm._v(
+                    "\n                        Looks good!\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Did you forget to select your country?\n                    "
+                  )
+                ])
               ],
               1
             ),
@@ -75492,12 +75553,12 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.subscribtion.email,
-                    expression: "subscribtion.email"
+                    value: _vm.subscription.email,
+                    expression: "subscription.email"
                   }
                 ],
                 staticClass: "form-control",
-                class: _vm.emailClass,
+                class: [_vm.emailClass, _vm.errors.subscriptionEmailClass],
                 attrs: {
                   type: "email",
                   id: "exampleInputEmail1",
@@ -75505,26 +75566,26 @@ var render = function() {
                   placeholder: "Enter email",
                   required: ""
                 },
-                domProps: { value: _vm.subscribtion.email },
+                domProps: { value: _vm.subscription.email },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.subscribtion, "email", $event.target.value)
+                    _vm.$set(_vm.subscription, "email", $event.target.value)
                   }
                 }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "valid-feedback" }, [
                 _vm._v(
-                  "\n                        Looks good\n                    "
+                  "\n                        Looks good!\n                    "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "invalid-feedback" }, [
                 _vm._v(
-                  "\n                        That doesn't look right\n                    "
+                  "\n                        That doesn't look right...\n                    "
                 )
               ]),
               _vm._v(" "),
@@ -75538,7 +75599,17 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "text-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.submitSubscription }
+                },
+                [_vm._v("Subscribe")]
+              )
+            ])
           ]
         )
       ])
@@ -75561,18 +75632,6 @@ var staticRenderFns = [
         ]),
         _vm._v(" Select your country to get notified")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Subscribe")]
-      )
     ])
   }
 ]
