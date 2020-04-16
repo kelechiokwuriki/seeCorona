@@ -8,7 +8,7 @@
                     <!--end summary view-->
 
                     <!-- news view-->
-                    <!-- <News></News> -->
+                    <Subscribe :countries="statistics.Countries"></Subscribe>
                     <!--end news view-->
                 </div>
                 <div class="col-sm-8">

@@ -23,7 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('Summary', require('./components/SummaryComponent.vue').default);
 Vue.component('Home', require('./components/HomeComponent.vue').default);
-Vue.component('News', require('./components/NewsComponent.vue').default);
+Vue.component('Subscribe', require('./components/SubscribeComponent.vue').default);
 
 
 
@@ -35,14 +35,17 @@ Vue.component('News', require('./components/NewsComponent.vue').default);
 
 // import dt from 'datatables.net'
 
-
-import Summary from './components/SummaryComponent'
-import Home from './components/HomeComponent'
-import News from './components/NewsComponent'
-
-
-
+import Vue from 'vue'
 import router from './router'
+
+import Summary from './components/SummaryComponent';
+import Home from './components/HomeComponent';
+import Subscribe from './components/SubscribeComponent';
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+
+
+Vue.component('v-select', vSelect)
 
 
 const app = new Vue({
@@ -50,7 +53,7 @@ const app = new Vue({
     components: {
         Summary,
         Home,
-        News
+        Subscribe
     },
     router
 }).$mount('#main');
