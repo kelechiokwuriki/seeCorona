@@ -54,6 +54,7 @@
     export default {
         data() {
             return {
+                subscribed: false,
                 subscriptionApiUrl: '/api/subscription',
                 reg: /[a-z0-9]+([-+._][a-z0-9]+){0,2}@.*?(\.(a(?:[cdefgilmnoqrstuwxz]|ero|(?:rp|si)a)|b(?:[abdefghijmnorstvwyz]iz)|c(?:[acdfghiklmnoruvxyz]|at|o(?:m|op))|d[ejkmoz]|e(?:[ceghrstu]|du)|f[ijkmor]|g(?:[abdefghilmnpqrstuwy]|ov)|h[kmnrtu]|i(?:[delmnoqrst]|n(?:fo|t))|j(?:[emop]|obs)|k[eghimnprwyz]|l[abcikrstuvy]|m(?:[acdeghklmnopqrstuvwxyz]|il|obi|useum)|n(?:[acefgilopruz]|ame|et)|o(?:m|rg)|p(?:[aefghklmnrstwy]|ro)|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t(?:[cdfghjklmnoprtvwz]|(?:rav)?el)|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw])\b){1,2}/,
                 subscription: {
@@ -83,6 +84,8 @@
                 return (this.reg.test(emailString)) ? true : false;
             },
             isSubscriptionDataValid(subObject) {
+                //adding a break causes only the first case to be evaluated
+                //weird
                 switch (true) {
                     case (subObject.country === ''):
                         this.errors.subscriptionCountryClass = this.emailInvalid;
@@ -94,12 +97,11 @@
                         break;
                 }
 
+                //if there's any error between them, just return false
                 if(this.errors.subscriptionCountryClass === '' || this.errors.subscriptionEmailClass === '') return true ?? false;
             },
             submitSubscription(e) {
                 e.preventDefault();
-
-                console.log(this.isSubscriptionDataValid(this.subscription));
 
                 if(!this.isSubscriptionDataValid(this.subscription)) return;
 
@@ -111,7 +113,7 @@
         computed: {
             emailClass() {
                 if(this.subscription.email.length > 1) {
-                    this.errors.subscriptionEmailClass = '';
+                    this.errors.subscriptionEmailClass = ''; 
                     return this.checkEmail(this.subscription.email) ? this.emailValid : this.emailInvalid;
                 }
             }

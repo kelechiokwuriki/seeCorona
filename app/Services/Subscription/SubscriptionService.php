@@ -4,6 +4,7 @@ namespace App\Services\Subscription;
 
 use App\Repositories\Subscription\SubscriptionRepository;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Collection;
 
 
 
@@ -23,6 +24,12 @@ class SubscriptionService
 
     public function createSubscription(array $data)
     {
-        return $this->subscriptionRepository->create($data);
+        $exists = $this->checkIfEmailExists($data['email']);
+        // return $this->subscriptionRepository->create($data);
+    }
+
+    private function checkIfEmailExists(string $email)
+    {
+        return $this->subscriptionRepository->where('email', $email)->first();
     }
 }

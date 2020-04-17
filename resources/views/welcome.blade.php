@@ -28,11 +28,15 @@
 
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet" media="screen">
+          <link href="{{ asset('css/all.css') }}" rel="stylesheet"> <!--load all styles -->
+
         {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet" media="screen"> --}}
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" media="screen">
 
 
         <!-- Scripts -->
+        {{-- <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None crossorigin="anonymous" defer></script> --}}
+        <script src="{{ asset('js/all.js') }}" async></script>
 
     </head>
     <body>
@@ -76,6 +80,6 @@
       </div>
     </footer>
     <script src="{{ mix('js/app.js') }}" async></script>
-    <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None;Secure crossorigin="anonymous" defer></script>
+
     </body>
 </html>
