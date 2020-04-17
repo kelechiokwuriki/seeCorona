@@ -10,7 +10,7 @@
                 </span> Select your country to get notified</h6>
         </div>
         <div class="card-body">
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate v-if="subscriptionResponseData.code !== 409">
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Country</label>
                     <v-select
@@ -44,6 +44,14 @@
                     <button type="submit" class="btn btn-primary" @click="submitSubscription">Subscribe</button>
                 </div>
             </form>
+            <div v-if="subscriptionResponseData.code === 409">
+                <h2><i class="fab fa-angellist"></i>You've already subscribed</h2>
+                <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country}}</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary" @click="subscriptionResponseData.code = ''">That's cool</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -54,7 +62,10 @@
     export default {
         data() {
             return {
-                subscribed: false,
+                subscriptionResponseData: {
+                    code: '',
+                    country: ''
+                },
                 subscriptionApiUrl: '/api/subscription',
                 reg: /[a-z0-9]+([-+._][a-z0-9]+){0,2}@.*?(\.(a(?:[cdefgilmnoqrstuwxz]|ero|(?:rp|si)a)|b(?:[abdefghijmnorstvwyz]iz)|c(?:[acdfghiklmnoruvxyz]|at|o(?:m|op))|d[ejkmoz]|e(?:[ceghrstu]|du)|f[ijkmor]|g(?:[abdefghilmnpqrstuwy]|ov)|h[kmnrtu]|i(?:[delmnoqrst]|n(?:fo|t))|j(?:[emop]|obs)|k[eghimnprwyz]|l[abcikrstuvy]|m(?:[acdeghklmnopqrstuvwxyz]|il|obi|useum)|n(?:[acefgilopruz]|ame|et)|o(?:m|rg)|p(?:[aefghklmnrstwy]|ro)|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t(?:[cdfghjklmnoprtvwz]|(?:rav)?el)|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw])\b){1,2}/,
                 subscription: {
@@ -65,8 +76,8 @@
                     subscriptionEmailClass: '',
                     subscriptionCountryClass: ''
                 },
-                emailInvalid: 'is-invalid',
-                emailValid: 'is-valid',
+                entryInValid: 'is-invalid',
+                entryValid: 'is-valid',
             }
         },
         props:{
@@ -76,9 +87,9 @@
         },
         methods: {
             updateSubscriptionCountry(country) {
-                this.errors.subscriptionCountryClass = this.emailValid;
+                this.errors.subscriptionCountryClass = this.entryValid; //a country has been chosen
                 let obj = JSON.stringify(country);
-                this.subscription.country = country.Country;
+                this.subscription.country = country.Slug;
             },
             checkEmail(emailString) {
                 return (this.reg.test(emailString)) ? true : false;
@@ -88,10 +99,10 @@
                 //weird
                 switch (true) {
                     case (subObject.country === ''):
-                        this.errors.subscriptionCountryClass = this.emailInvalid;
+                        this.errors.subscriptionCountryClass = this.entryInValid;
 
                     case (subObject.email === ''):
-                        this.errors.subscriptionEmailClass = this.emailInvalid;
+                        this.errors.subscriptionEmailClass = this.entryInValid;
 
                     default:
                         break;
@@ -106,7 +117,8 @@
                 if(!this.isSubscriptionDataValid(this.subscription)) return;
 
                 axios.post(this.subscriptionApiUrl, this.subscription).then(response => {
-                    console.log(response);
+                    this.subscriptionResponseData.code = response.data.code;
+                    this.subscriptionResponseData.country = response.data.data.country;
                 })
             }
         },
@@ -114,7 +126,7 @@
             emailClass() {
                 if(this.subscription.email.length > 1) {
                     this.errors.subscriptionEmailClass = ''; 
-                    return this.checkEmail(this.subscription.email) ? this.emailValid : this.emailInvalid;
+                    return this.checkEmail(this.subscription.email) ? this.entryValid : this.entryInValid;
                 }
             }
         },
