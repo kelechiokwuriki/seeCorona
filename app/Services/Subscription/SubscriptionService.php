@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionMail;
 
 
-
-
 class SubscriptionService 
 {
     protected $subscriptionRepository;
@@ -30,8 +28,7 @@ class SubscriptionService
     {
         $exists = $this->checkIfEmailExists($data['email']);
         if($exists) {
-            //show them the data they subscribed to  
-            return $this->responseData($exists);
+            return $this->sendResponse($exists, '409'); //used for front end logic
         }
         return $this->subscriptionRepository->create($data);
     }
@@ -40,9 +37,11 @@ class SubscriptionService
     {
         $subscriptions = $this->getAllSubscriptionData();
 
-        foreach($subscription as $sub) {
+        foreach($subscriptions as $sub) {
             Mail::to($sub->email)->send(new SubscriptionMail($sub->country));
         }
+
+        return 'Done';
     }
 
     private function checkIfEmailExists(string $email)
@@ -51,12 +50,11 @@ class SubscriptionService
     }
 
 
-    private function responseData($data) 
+    private function sendResponse($data, $code) 
     {
         $response = [
-            'code' => 409,
+            'code' => $code,
             'data' => $data,
-            'reason' => 'Resource exists'
         ];
 
         return json_encode($response);
