@@ -5,17 +5,17 @@
         <div class="card-header bg-dark">
             <h5 class="card-title text-white">Subscribe for daily notification</h5>
             <h6 class="card-subtitle mb-2 text-white">
-                <span class="text-primary app-font">
+                <span class="text-primary app-font pr-1">
                     <i class="fas fa-bell"></i>                        
-                </span> Select your country to get notified</h6>
+                </span>Select your country to get notified</h6>
         </div>
         <div class="card-body">
-            <form class="needs-validation" novalidate v-if="subscriptionResponseData.code !== 409">
+            <form class="needs-validation" novalidate v-if="subscriptionResponseData.code !== '409' && subscriptionResponseData.code !== '200'">
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Country</label>
                     <v-select
                     label="Country" 
-                    :class="errors.subscriptionCountryClass"
+                    :class="[countryClass, errors.subscriptionCountryClass]"
                     :options="countries"
                     @input="country => updateSubscriptionCountry(country)"
                     :value="countries.Country" required/>
@@ -44,11 +44,26 @@
                     <button type="submit" class="btn btn-primary" @click="submitSubscription">Subscribe</button>
                 </div>
             </form>
-            <div v-if="subscriptionResponseData.code === 409">
-                <h2><i class="fab fa-angellist"></i>You've already subscribed</h2>
+            <div v-else-if="subscriptionResponseData.code === '409'">
+                <h2>
+                    <span class="text-primary text-success">
+                        <i class="fab fa-angellist pr-1"></i>You've already subscribed
+                    </span>
+                </h2>
                 <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country}}</h4>
                 <div class="text-center">
-                    <button class="btn btn-primary" @click="subscriptionResponseData.code = ''">That's cool</button>
+                    <button class="btn btn-primary" @click="clearFeedbackClasses">That's cool</button>
+                </div>
+            </div>
+            <div v-else>
+                <h2>
+                    <span class="text-primary text-success">
+                        <i class="fab fa-angellist pr-1"></i>All good now.
+                    </span>
+                </h2>
+                <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country}}</h4>
+                <div class="text-center">
+                    <button class="btn btn-primary" @click="clearFeedbackClasses">That's cool</button>
                 </div>
             </div>
 
@@ -62,6 +77,7 @@
     export default {
         data() {
             return {
+                countrySelected: false, //keep track of country selected
                 subscriptionResponseData: {
                     code: '',
                     country: ''
@@ -86,7 +102,14 @@
             },
         },
         methods: {
+            clearFeedbackClasses() {
+                this.subscriptionResponseData.code = '';
+                this.errors.subscriptionEmailClass = '';
+                this.errors.subscriptionCountryClass = '';
+                this.countrySelected = false;
+            },
             updateSubscriptionCountry(country) {
+                this.countrySelected = true;
                 this.errors.subscriptionCountryClass = this.entryValid; //a country has been chosen
                 let obj = JSON.stringify(country);
                 this.subscription.country = country.Slug;
@@ -109,7 +132,7 @@
                 }
 
                 //if there's any error between them, just return false
-                if(this.errors.subscriptionCountryClass === '' || this.errors.subscriptionEmailClass === '') return true ?? false;
+                if(this.errors.subscriptionCountryClass !== this.entryInValid || this.errors.subscriptionEmailClass !== this.entryInValid) return true ?? false;
             },
             submitSubscription(e) {
                 e.preventDefault();
@@ -117,6 +140,7 @@
                 if(!this.isSubscriptionDataValid(this.subscription)) return;
 
                 axios.post(this.subscriptionApiUrl, this.subscription).then(response => {
+                    // console.log(response);
                     this.subscriptionResponseData.code = response.data.code;
                     this.subscriptionResponseData.country = response.data.data.country;
                 })
@@ -128,6 +152,15 @@
                     this.errors.subscriptionEmailClass = ''; 
                     return this.checkEmail(this.subscription.email) ? this.entryValid : this.entryInValid;
                 }
+            },
+            countryClass() {
+                if(this.countrySelected) {
+                    if(this.subscription.country === '') {
+                        return this.entryInValid;
+                    } else{
+                        return this.entryValid;
+                    }
+                } 
             }
         },
         created() {

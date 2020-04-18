@@ -16,10 +16,9 @@
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-white">Countries</h5>
                             <h6 class="card-subtitle mb-2 text-white">
-                            <span class="text-primary app-font">
+                            <span class="text-primary app-font pr-1">
                                 <i class="fas fa-flag"></i>                        
-                            </span>
-                            Statistics by countries</h6>
+                            </span>Statistics by countries</h6>
                         </div>
                         <div class="card-body">
                             <div id="data-table_wrapper" class="dataTables_wrapper no-footer">

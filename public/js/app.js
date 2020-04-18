@@ -1968,7 +1968,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2245,9 +2244,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      countrySelected: false,
+      //keep track of country selected
       subscriptionResponseData: {
         code: '',
         country: ''
@@ -2272,7 +2288,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    clearFeedbackClasses: function clearFeedbackClasses() {
+      this.subscriptionResponseData.code = '';
+      this.errors.subscriptionEmailClass = '';
+      this.errors.subscriptionCountryClass = '';
+      this.countrySelected = false;
+    },
     updateSubscriptionCountry: function updateSubscriptionCountry(country) {
+      this.countrySelected = true;
       this.errors.subscriptionCountryClass = this.entryValid; //a country has been chosen
 
       var obj = JSON.stringify(country);
@@ -2298,7 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
       } //if there's any error between them, just return false
 
 
-      if (this.errors.subscriptionCountryClass === '' || this.errors.subscriptionEmailClass === '') return (_true = true) !== null && _true !== void 0 ? _true : false;
+      if (this.errors.subscriptionCountryClass !== this.entryInValid || this.errors.subscriptionEmailClass !== this.entryInValid) return (_true = true) !== null && _true !== void 0 ? _true : false;
     },
     submitSubscription: function submitSubscription(e) {
       var _this = this;
@@ -2306,6 +2329,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       if (!this.isSubscriptionDataValid(this.subscription)) return;
       axios.post(this.subscriptionApiUrl, this.subscription).then(function (response) {
+        // console.log(response);
         _this.subscriptionResponseData.code = response.data.code;
         _this.subscriptionResponseData.country = response.data.data.country;
       });
@@ -2316,6 +2340,15 @@ __webpack_require__.r(__webpack_exports__);
       if (this.subscription.email.length > 1) {
         this.errors.subscriptionEmailClass = '';
         return this.checkEmail(this.subscription.email) ? this.entryValid : this.entryInValid;
+      }
+    },
+    countryClass: function countryClass() {
+      if (this.countrySelected) {
+        if (this.subscription.country === '') {
+          return this.entryInValid;
+        } else {
+          return this.entryValid;
+        }
       }
     }
   },
@@ -2335,7 +2368,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -75160,10 +75192,10 @@ var staticRenderFns = [
       _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Countries")]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-        _c("span", { staticClass: "text-primary app-font" }, [
+        _c("span", { staticClass: "text-primary app-font pr-1" }, [
           _c("i", { staticClass: "fas fa-flag" })
         ]),
-        _vm._v("\n                        Statistics by countries")
+        _vm._v("Statistics by countries")
       ])
     ])
   },
@@ -75519,7 +75551,8 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _vm.subscriptionResponseData.code !== 409
+        _vm.subscriptionResponseData.code !== "409" &&
+        _vm.subscriptionResponseData.code !== "200"
           ? _c(
               "form",
               { staticClass: "needs-validation", attrs: { novalidate: "" } },
@@ -75535,7 +75568,10 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("v-select", {
-                      class: _vm.errors.subscriptionCountryClass,
+                      class: [
+                        _vm.countryClass,
+                        _vm.errors.subscriptionCountryClass
+                      ],
                       attrs: {
                         label: "Country",
                         options: _vm.countries,
@@ -75633,9 +75669,7 @@ var render = function() {
                 ])
               ]
             )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.subscriptionResponseData.code === 409
+          : _vm.subscriptionResponseData.code === "409"
           ? _c("div", [
               _vm._m(1),
               _vm._v(" "),
@@ -75651,17 +75685,33 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary",
-                    on: {
-                      click: function($event) {
-                        _vm.subscriptionResponseData.code = ""
-                      }
-                    }
+                    on: { click: _vm.clearFeedbackClasses }
                   },
                   [_vm._v("That's cool")]
                 )
               ])
             ])
-          : _vm._e()
+          : _c("div", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("h4", [
+                _vm._v(
+                  "You'll be notified by email of your country: " +
+                    _vm._s(this.subscriptionResponseData.country)
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.clearFeedbackClasses }
+                  },
+                  [_vm._v("That's cool")]
+                )
+              ])
+            ])
       ])
     ])
   ])
@@ -75677,10 +75727,10 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-        _c("span", { staticClass: "text-primary app-font" }, [
+        _c("span", { staticClass: "text-primary app-font pr-1" }, [
           _c("i", { staticClass: "fas fa-bell" })
         ]),
-        _vm._v(" Select your country to get notified")
+        _vm._v("Select your country to get notified")
       ])
     ])
   },
@@ -75689,8 +75739,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h2", [
-      _c("i", { staticClass: "fab fa-angellist" }),
-      _vm._v("You've already subscribed")
+      _c("span", { staticClass: "text-primary text-success" }, [
+        _c("i", { staticClass: "fab fa-angellist pr-1" }),
+        _vm._v("You've already subscribed\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", [
+      _c("span", { staticClass: "text-primary text-success" }, [
+        _c("i", { staticClass: "fab fa-angellist pr-1" }),
+        _vm._v("All good now.\n                    ")
+      ])
     ])
   }
 ]
@@ -75801,10 +75864,10 @@ var staticRenderFns = [
       _c("h5", { staticClass: "card-title text-white" }, [_vm._v("Summary")]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
-        _c("span", { staticClass: "text-primary app-font" }, [
+        _c("span", { staticClass: "text-primary app-font pr-1" }, [
           _c("i", { staticClass: "fas fa-globe" })
         ]),
-        _vm._v("\n         Global statistics")
+        _vm._v("Global statistics")
       ])
     ])
   },
@@ -75817,7 +75880,7 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-head-side-mask" })
       ]),
       _vm._v(
-        "\n                    Global Total Confirmed Cases\n                "
+        " \n                    Global Total Confirmed Cases\n                "
       )
     ])
   },

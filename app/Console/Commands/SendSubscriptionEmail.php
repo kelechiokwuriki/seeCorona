@@ -12,7 +12,7 @@ class SendSubscriptionEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'daily:subscriptionemail';
+    protected $signature = 'daily:sendsubscriptionemail';
 
     /**
      * The console command description.
@@ -42,7 +42,6 @@ class SendSubscriptionEmail extends Command
      */
     public function handle()
     {
-        $response = $this->subscriptionService->sendSubscriptionEmail();
-        dd($response);
+        $this->subscriptionService->sendSubscriptionEmail();
     }
 }

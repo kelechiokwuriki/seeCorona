@@ -4,10 +4,9 @@
         <div class="card-header bg-dark">
             <h5 class="card-title text-white">Summary</h5>
             <h6 class="card-subtitle mb-2 text-white">
-            <span class="text-primary app-font">
+            <span class="text-primary app-font pr-1">
                 <i class="fas fa-globe"></i>            
-            </span>
-             Global statistics</h6>
+            </span>Global statistics</h6>
         </div>
         <div class="card-body">
             <div class="form-group row">
@@ -17,7 +16,7 @@
                     <label class="col-sm-6 col-form-label">   
                         <span class="text-danger app-font">
                             <i class="fas fa-head-side-mask"></i>            
-                        </span>
+                        </span> 
                         Global Total Confirmed Cases
                     </label>
                     <label class="col-sm-6 col-form-label">

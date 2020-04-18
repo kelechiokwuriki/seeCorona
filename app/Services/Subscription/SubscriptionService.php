@@ -27,10 +27,14 @@ class SubscriptionService
     public function createSubscription(array $data)
     {
         $exists = $this->checkIfEmailExists($data['email']);
+
         if($exists) {
             return $this->sendResponse($exists, '409'); //used for front end logic
         }
-        return $this->subscriptionRepository->create($data);
+
+        $eloqResponse = $this->subscriptionRepository->create($data);
+
+        return $this->sendResponse($eloqResponse, '200');
     }
 
     public function sendSubscriptionEmail()
@@ -40,8 +44,6 @@ class SubscriptionService
         foreach($subscriptions as $sub) {
             Mail::to($sub->email)->send(new SubscriptionMail($sub->country));
         }
-
-        return 'Done';
     }
 
     private function checkIfEmailExists(string $email)
