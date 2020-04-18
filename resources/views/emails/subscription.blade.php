@@ -2,7 +2,6 @@
 use Carbon\Carbon; 
 ?>
 
-
 @component('mail::message')
 # Hello from Seecoronastats
 
@@ -10,6 +9,14 @@ You subscribed to receive daily notification about the COVID-19 statistics in {{
 
 @component('mail::button', ['url' => 'http://127.0.0.1:8000/countries/'.$country])
 View in browser
+@endcomponent
+
+@component('mail::panel')
+@component('mail::table')
+| New Cases               | Total Cases                | New Deaths            | Total Deaths            | New Recovered            | Total Recovered            |
+| ------------------------|:--------------------------:| ---------------------:| -----------------------:| ------------------------:| --------------------------:|
+{{$total['NewConfirmed']}}|{{$total['TotalConfirmed']}}|{{$total['NewDeaths']}}|{{$total['TotalDeaths']}}|{{$total['NewRecovered']}}|{{$total['TotalRecovered']}}|
+@endcomponent
 @endcomponent
 
 @component('mail::table')

@@ -16,7 +16,8 @@ class SubscriptionMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $country;
+    protected $country;
+
 
     /**
      * Create a new message instance.
@@ -34,16 +35,33 @@ class SubscriptionMail extends Mailable
      * @return $this
      */
     public function build()
-    {   
-        $response = Http::get('https://api.covid19api.com/total/country/'.$this->country);
+    { 
+        $apiUrl = config('app.covid_19_api_url');
+        //get total country data (a timeline you might say)
+        //retry after 10 seconds 3 times if no response
+        $countryTotalResponse = Http::retry(3, 10000)->get($apiUrl.'/total/country/'.$this->country);
 
-        $country = $response->json()[0]['Country'];
+        //use this to get the summary of all countries 
+        //(we use this to get the total data of the country)
+        //retry after 10 seconds 3 times if no response
+        $summaryResponse = Http::retry(3, 10000)->get($apiUrl.'/summary');
 
-        $reversed = array_reverse($response->json());
+        $country = $countryTotalResponse->json()[0]['Country'];
+
+        //search the summary data for the country, get the key
+        $key = array_search($country, array_column($summaryResponse['Countries'], 'Country'));
+
+        //retreive the country object
+        $countryTotalStats = $summaryResponse['Countries'][$key];
+
+
+        //show latest first.. order by date (descending order)
+        $reversed = array_reverse($countryTotalResponse->json());
 
         return $this->markdown('emails.subscription')->with([
             'response' => $reversed, 
-            'country' => $country
+            'country' => $country,
+            'total' => $countryTotalStats
         ]);
     }
 }
