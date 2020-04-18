@@ -17,6 +17,7 @@ View in browser
 | ------------------------|:--------------------------:| ---------------------:| -----------------------:| ------------------------:| --------------------------:|
 {{$total['NewConfirmed']}}|{{$total['TotalConfirmed']}}|{{$total['NewDeaths']}}|{{$total['TotalDeaths']}}|{{$total['NewRecovered']}}|{{$total['TotalRecovered']}}|
 @endcomponent
+Date: {{Carbon::parse($total['Date'])->format('M d Y')}}
 @endcomponent
 
 @component('mail::table')
