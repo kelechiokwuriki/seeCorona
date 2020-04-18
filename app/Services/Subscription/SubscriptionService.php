@@ -5,7 +5,7 @@ namespace App\Services\Subscription;
 use App\Repositories\Subscription\SubscriptionRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 
 class SubscriptionService 
@@ -35,9 +35,18 @@ class SubscriptionService
     public function sendSubscriptionEmail()
     {
         $subscriptions = $this->getAllSubscriptionData();
-        $url = config('app.covid_19_api_url');
+        // $url = config('app.covid_19_api_url');
 
-        $response = Http::get('http://test.com');
+        foreach($subscriptions as $subscription) {
+            //get the data
+            $response = Http::get('https://api.covid19api.com/total/country/'.$subscription->country);
+
+            //make graph
+
+            //send mail
+            Mail
+        }
+
 
     }
 
