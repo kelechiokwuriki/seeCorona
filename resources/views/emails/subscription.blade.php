@@ -30,4 +30,14 @@ Date: {{Carbon::parse($total['Date'])->format('M d Y')}}
 
 Thanks,<br>
 {{ config('app.name') }}
+
+
+@component('mail::subcopy')
+
+@component('mail::button', ['url' => 'http://127.0.0.1/unsubscribe/'.$uniqueIdentifier])
+Unsubscribe 
+@endcomponent
+
+@endcomponent
+
 @endcomponent

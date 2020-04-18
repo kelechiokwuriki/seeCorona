@@ -46,7 +46,7 @@
             </form>
             <div v-else-if="subscriptionResponseData.code === '409'">
                 <h2>
-                    <span class="text-primary text-success">
+                    <span class="text-primary text-danger">
                         <i class="fab fa-angellist pr-1"></i>You've already subscribed
                     </span>
                 </h2>

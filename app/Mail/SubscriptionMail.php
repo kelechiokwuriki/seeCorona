@@ -18,15 +18,18 @@ class SubscriptionMail extends Mailable
 
     protected $country;
 
+    protected $uniqueIdentifier;
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($country)
+    public function __construct($country, $uniqueIdentifier)
     {
         $this->country = $country;
+        $this->uniqueIdentifier = $uniqueIdentifier;
     }
 
     /**
@@ -61,7 +64,8 @@ class SubscriptionMail extends Mailable
         return $this->markdown('emails.subscription')->with([
             'response' => $reversed, 
             'country' => $country,
-            'total' => $countryTotalStats
+            'total' => $countryTotalStats,
+            'uniqueIdentifier' => $this->uniqueIdentifier
         ]);
     }
 }

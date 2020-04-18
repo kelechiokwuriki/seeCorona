@@ -75739,7 +75739,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h2", [
-      _c("span", { staticClass: "text-primary text-success" }, [
+      _c("span", { staticClass: "text-primary text-danger" }, [
         _c("i", { staticClass: "fab fa-angellist pr-1" }),
         _vm._v("You've already subscribed\n                    ")
       ])

@@ -32,6 +32,8 @@ class SubscriptionService
             return $this->sendResponse($exists, '409'); //used for front end logic
         }
 
+        $data['unique_identifier'] = substr(str_shuffle(MD5(microtime())), 0, 10);
+
         $eloqResponse = $this->subscriptionRepository->create($data);
 
         return $this->sendResponse($eloqResponse, '200');
@@ -50,7 +52,6 @@ class SubscriptionService
     {
         return $this->subscriptionRepository->where('email', $email)->first();
     }
-
 
     private function sendResponse($data, $code) 
     {

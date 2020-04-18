@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Subscription;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SubscriptionMail;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +17,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/email', function() {
-//     $subscription = Subscription::all();
+Route::get('/email', function() {
+    $subscriptions = Subscription::all();
 
-    
-// });
+    foreach($subscriptions as $sub) {
+        Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
+    }
+});
 
 Route::get('/{any}', function () {
     return view('welcome');
