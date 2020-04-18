@@ -6,6 +6,10 @@ use App\Repositories\Subscription\SubscriptionRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SubscriptionMail;
+
+
 
 
 class SubscriptionService 
@@ -35,19 +39,10 @@ class SubscriptionService
     public function sendSubscriptionEmail()
     {
         $subscriptions = $this->getAllSubscriptionData();
-        // $url = config('app.covid_19_api_url');
 
-        foreach($subscriptions as $subscription) {
-            //get the data
-            $response = Http::get('https://api.covid19api.com/total/country/'.$subscription->country);
-
-            //make graph
-
-            //send mail
-            Mail
+        foreach($subscription as $sub) {
+            Mail::to($sub->email)->send(new SubscriptionMail($sub->country));
         }
-
-
     }
 
     private function checkIfEmailExists(string $email)
