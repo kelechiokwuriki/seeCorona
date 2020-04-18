@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Psr\Container\ContainerInterface;
 
 
-use App\Services\Statistics\CountryStatisticsService;
-
 
 
 /*
@@ -25,11 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('countrystatistics', 'CountryStatisticsApiController');
 
-Route::resource('globalstatistics', 'GlobalStatisticsApiController');
-
-Route::resource('subscription', 'SubscriptionApiController');
+Route::resource('subscription', 'API\SubscriptionApiController');
 
 
 

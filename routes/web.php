@@ -17,13 +17,15 @@ use App\Mail\SubscriptionMail;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/email', function() {
-    $subscriptions = Subscription::all();
+// Route::get('/email', function() {
+//     $subscriptions = Subscription::all();
 
-    foreach($subscriptions as $sub) {
-        Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
-    }
-});
+//     foreach($subscriptions as $sub) {
+//         Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
+//     }
+// });
+
+Route::get('/unsubscribe/{uuid}', 'SubscriptionController@removeSubscription');
 
 Route::get('/{any}', function () {
     return view('welcome');

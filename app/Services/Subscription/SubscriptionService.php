@@ -39,12 +39,17 @@ class SubscriptionService
         return $this->sendResponse($eloqResponse, '200');
     }
 
+    public function deleteSubscription($id)
+    {
+        return $this->subscriptionRepository->where('unique_identifier', $id)->first()->delete();
+    }
+
     public function sendSubscriptionEmail()
     {
         $subscriptions = $this->getAllSubscriptionData();
 
         foreach($subscriptions as $sub) {
-            Mail::to($sub->email)->send(new SubscriptionMail($sub->country));
+            Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
         }
     }
 
