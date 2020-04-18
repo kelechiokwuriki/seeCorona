@@ -13,6 +13,8 @@ use App\Mail\SubscriptionMail;
 class SubscriptionService 
 {
     protected $subscriptionRepository;
+    private $successResponseCode = '200';
+    private $resourceExistsResponseCode = '409';
 
     public function __construct(SubscriptionRepository $subscriptionRepository)
     {
@@ -29,14 +31,14 @@ class SubscriptionService
         $exists = $this->checkIfEmailExists($data['email']);
 
         if($exists) {
-            return $this->sendResponse($exists, '409'); //used for front end logic
+            return $this->sendResponse($exists, $this->resourceExistsResponseCode); //used for front end logic
         }
 
         $data['unique_identifier'] = substr(str_shuffle(MD5(microtime())), 0, 10);
 
-        $eloqResponse = $this->subscriptionRepository->create($data);
+        $eloqResult = $this->subscriptionRepository->create($data);
 
-        return $this->sendResponse($eloqResponse, '200');
+        return $this->sendResponse($eloqResult, $this->successResponseCode);
     }
 
     public function deleteSubscription($id)
@@ -49,7 +51,8 @@ class SubscriptionService
         $subscriptions = $this->getAllSubscriptionData();
 
         foreach($subscriptions as $sub) {
-            Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
+            //unique identifier used for unsubscribing fromm email
+            Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier)); 
         }
     }
 
@@ -58,6 +61,7 @@ class SubscriptionService
         return $this->subscriptionRepository->where('email', $email)->first();
     }
 
+    //front end uses response data for UI logic
     private function sendResponse($data, $code) 
     {
         $response = [

@@ -18,7 +18,7 @@ class SubscriptionMail extends Mailable
 
     protected $country;
 
-    protected $uniqueIdentifier;
+    protected $uniqueIdentifier; //used to unsubscribe from email
 
 
     /**
@@ -65,7 +65,7 @@ class SubscriptionMail extends Mailable
             'response' => $reversed, 
             'country' => $country,
             'total' => $countryTotalStats,
-            'uniqueIdentifier' => $this->uniqueIdentifier
+            'uniqueIdentifier' => $this->uniqueIdentifier  //used for unsubscribing from email 
         ]);
     }
 }

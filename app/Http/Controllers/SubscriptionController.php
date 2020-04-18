@@ -18,7 +18,7 @@ class SubscriptionController extends Controller
 
     public function removeSubscription($uuid)
     {
-        $result = $this->subscriptionService->deleteSubscription($uuid);  
-        Log::debug($result); 
+        $this->subscriptionService->deleteSubscription($uuid);  
+        return view('subscription.unsubscribe');
     }
 }

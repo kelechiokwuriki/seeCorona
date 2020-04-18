@@ -70,6 +70,7 @@
 
     <main role="main" class="main" id="main">
         <router-view></router-view>
+        @yield('content')
     </main>
 
     <footer class="footer bg-dark text-white">
