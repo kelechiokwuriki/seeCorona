@@ -5,21 +5,22 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Services\Subscription\SubscriptionService;
 
-class SendSubscriptionEmail extends Command
+
+class DeleteUnconfirmedSubscriptions extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:sendsubscriptionemail';
+    protected $signature = 'command:deleteunconfirmedsubscriptions';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Sends an email to subscribers of COVID-19 data by country.';
+    protected $description = 'Deletes unconfired subscriptions after 12 hours of user registeration';
 
     protected $subscriptionService;
 
@@ -42,6 +43,6 @@ class SendSubscriptionEmail extends Command
      */
     public function handle()
     {
-        $this->subscriptionService->sendSubscriptionEmail();
+        $this->subscriptionService->deleteUnconfirmedSubscriptions();
     }
 }

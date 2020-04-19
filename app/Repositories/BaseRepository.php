@@ -28,7 +28,7 @@ abstract class BaseRepository {
 
     public function where($column, $value)
     {
-        return $this->model->where($column, $value)->get();
+        return $this->model->where($column, $value);
     }
 
     public function create(array $data)

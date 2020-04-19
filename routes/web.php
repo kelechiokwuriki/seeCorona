@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Subscription;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionMail;
+use Carbon\Carbon;
 
 
 /*
@@ -18,11 +19,7 @@ use App\Mail\SubscriptionMail;
 |
 */
 // Route::get('/email', function() {
-//     $subscriptions = Subscription::all();
-
-//     foreach($subscriptions as $sub) {
-//         Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier));
-//     }
+//     return Carbon::now()->subHours(12)->toDateTimeString();
 // });
 
 Route::get('/unsubscribe/{uuid}', 'SubscriptionController@removeSubscription');
