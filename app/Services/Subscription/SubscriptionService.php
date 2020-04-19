@@ -59,7 +59,7 @@ class SubscriptionService
     public function confirmSubscription(string $id)
     {
         return $this->subscriptionRepository->where('unique_identifier', $id)->first()->update([
-            'status' => 'confirmed'
+            'status' => 'Confirmed'
         ]);
     }
 
