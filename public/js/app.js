@@ -75095,13 +75095,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-sm-4" },
-              [
-                _c("Summary", { attrs: { summary: _vm.statistics.Global } }),
-                _vm._v(" "),
-                _c("Subscribe", {
-                  attrs: { countries: _vm.statistics.Countries }
-                })
-              ],
+              [_c("Summary", { attrs: { summary: _vm.statistics.Global } })],
               1
             ),
             _vm._v(" "),
@@ -75676,7 +75670,12 @@ var render = function() {
               _c("h4", [
                 _vm._v(
                   "You'll be notified by email of your country: " +
-                    _vm._s(this.subscriptionResponseData.country)
+                    _vm._s(
+                      this.subscriptionResponseData.country.replace(
+                        /^./,
+                        this.subscriptionResponseData.country[0].toUpperCase()
+                      )
+                    )
                 )
               ]),
               _vm._v(" "),
@@ -75740,7 +75739,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h2", [
       _c("span", { staticClass: "text-primary text-danger" }, [
-        _c("i", { staticClass: "fab fa-angellist pr-1" }),
+        _c("i", { staticClass: "fas fa-exclamation-circle" }),
         _vm._v("You've already subscribed\n                    ")
       ])
     ])
