@@ -50,7 +50,7 @@
                         <i class="fab fa-angellist pr-1"></i>You've already subscribed
                     </span>
                 </h2>
-                <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country}}</h4>
+                <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country.replace(/^./, this.subscriptionResponseData.country[0].toUpperCase()) }}</h4>
                 <div class="text-center">
                     <button class="btn btn-primary" @click="clearFeedbackClasses">That's cool</button>
                 </div>
