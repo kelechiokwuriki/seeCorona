@@ -68,17 +68,11 @@ class SubscriptionService
     {
         $date = Carbon::now()->subHours(12)->toDateTimeString();
 
-        // Log::debug('Date');
-        error_log('date', $date);
-
-        $unconfirmedSubs = $this->subscriptionRepository->where('status', 'Not confirmed')->where('created_at', '>=', $date)->get();
-        
-        // Log::debug('Subs');
-        error_log('sub', $unconfirmedSubs);
-        
-        // foreach($unconfirmedSubs as $unconfirmedSub) {
-        //     $unconfirmedSub->delete();
-        // }
+        $unconfirmedSubs = $this->subscriptionRepository->where('status', 'Not confirmed')->where('created_at', '<=', $date)->get();
+                
+        foreach($unconfirmedSubs as $unconfirmedSub) {
+            $unconfirmedSub->delete();
+        }
     }
 
     public function sendSubscriptionEmail()
