@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 You subscribed to receive daily notification about the COVID-19 statistics in {{ucfirst($country)}}.
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/countries/'.$country])
+@component('mail::button', ['url' => $viewInBrowserCountryUrl])
 View in browser
 @endcomponent
 
@@ -34,7 +34,7 @@ Thanks,<br>
 
 @component('mail::subcopy')
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/unsubscribe/'.$uniqueIdentifier])
+@component('mail::button', ['url' => $unsubscribeUrl])
 Unsubscribe 
 @endcomponent
 

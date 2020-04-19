@@ -3,7 +3,7 @@
 
 You subscribed to receive a daily notification of the statistics in {{ ucfirst($country) }}.
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/confirmsubscription/'.$uniqueIdentifier])
+@component('mail::button', ['url' => $actionUrl])
 Confirm my subscription
 @endcomponent
 

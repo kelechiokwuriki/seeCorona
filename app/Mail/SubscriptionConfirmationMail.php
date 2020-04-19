@@ -32,9 +32,11 @@ class SubscriptionConfirmationMail extends Mailable
      */
     public function build()
     {
+        $appProductionUrl = config('app.production_url');
         return $this->markdown('emails.confirmsubscription')->with([
             'country' => $this->country,
-            'uniqueIdentifier' => $this->uniqueIdentifier
+            'uniqueIdentifier' => $this->uniqueIdentifier,
+            'actionUrl' => $appProductionUrl.'/confirmsubscription/'.$this->uniqueIdentifier
         ]);
     }
 }

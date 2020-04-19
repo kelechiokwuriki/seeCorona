@@ -61,11 +61,16 @@ class SubscriptionMail extends Mailable
         //show latest first.. order by date (descending order)
         $reversed = array_reverse($countryTotalResponse->json());
 
+        $viewInBrowserCountryUrl = config('app.production_url').'/countries/'.$this->country;
+        $unsubscribeUrl = config('app.production_url').'/unsubscribe/'.$this->uniqueIdentifier;
+
         return $this->markdown('emails.subscription')->with([
             'response' => $reversed, 
             'country' => $country,
             'total' => $countryTotalStats,
-            'uniqueIdentifier' => $this->uniqueIdentifier  //used for unsubscribing from email 
+            'uniqueIdentifier' => $this->uniqueIdentifier  //used for unsubscribing from email,
+            'viewInBrowserCountryUrl' => $viewInBrowserCountryUrl,
+            'unsubscribeUrl' => $unsubscribeUrl
         ]);
     }
 }

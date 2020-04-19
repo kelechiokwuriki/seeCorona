@@ -65,6 +65,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'production_url' => env('APP_PRODUCTION_URL', 'https://www.seecoronastats.live'),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*
