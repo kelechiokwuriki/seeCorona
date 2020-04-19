@@ -11,19 +11,20 @@ class Cron extends Model
 
     protected $fillable = ['command', 'next_run', 'last_run'];
 
-    public static function shouldRun($command, $minutes)
+    public static function shouldRun($command, $days)
     {
         $cron = Cron::find($command);
         $now = Carbon::now();
 
-        //if next run date is greater than now date, don't run. Else, HEROKU scheduler missed the timing, so run
-        if(empty($cron) || date('Y-m-d H:i', strtotime($cron->next_run)) > date('Y-m-d H:i', strtotime($now))
-        {
+        //A command should be run if command is found in database and the next run is less than the current time.
+        if(empty($cron) || date('Y-m-d H:i', strtotime($cron->next_run)) > date('Y-m-d H:i', strtotime($now))) {
             return false;
         }
 
-        $cron->next_run = Carbon::parse($cron->next_run)->addMinutes($minutes);
-
-
+        $cron->next_run = Carbon::parse($cron->next_run)->addDays($days);
+        $cron->last_run = Carbon::now();
+        $cron->save();
+        
+        return true;
     }
 }

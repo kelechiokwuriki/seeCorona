@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use App\Cron;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -24,7 +26,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:sendsubscriptionemail')->withoutOverlapping()->onOneServer()->dailyAt('8:00');
+        $schedule->command('command:sendsubscriptionemail')->withoutOverlapping()->onOneServer()->everyMinute()->when(function() {
+            return Cron::shouldRun('command:sendsubscriptionemail', 1);
+        });
+
         $schedule->command('command:deleteunconfirmedsubscriptions')->withoutOverlapping()->onOneServer()->everyMinute();
     }
 
