@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('daily:sendsubscriptionemail')->withoutOverlapping()->onOneServer()->dailyAt('8:00');
+        $schedule->command('command:sendsubscriptionemail')->withoutOverlapping()->onOneServer()->dailyAt('8:00');
+        $schedule->command('command:deleteunconfirmedsubscriptions')->withoutOverlapping()->onOneServer()->everyMinute();
     }
 
     /**
