@@ -26,6 +26,8 @@ use App\Mail\SubscriptionMail;
 // });
 
 Route::get('/unsubscribe/{uuid}', 'SubscriptionController@removeSubscription');
+Route::get('/confirmsubscription/{uuid}', 'SubscriptionController@confirmSubscription');
+
 
 Route::get('/{any}', function () {
     return view('welcome');

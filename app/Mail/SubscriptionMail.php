@@ -51,7 +51,7 @@ class SubscriptionMail extends Mailable
 
         $country = $countryTotalResponse->json()[0]['Country'];
 
-        //search the summary data for the country, get the key
+        //search the summary data for the country, get the key which holds the country object data
         $key = array_search($country, array_column($summaryResponse['Countries'], 'Country'));
 
         //retreive the country object

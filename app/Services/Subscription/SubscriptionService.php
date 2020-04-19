@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SubscriptionMail;
+use App\Mail\SubscriptionConfirmationMail;
 
 
 class SubscriptionService 
@@ -31,19 +32,32 @@ class SubscriptionService
         $exists = $this->checkIfEmailExists($data['email']);
 
         if($exists) {
-            return $this->sendResponse($exists, $this->resourceExistsResponseCode); //used for front end logic
+            //used for front end UI logic
+            return $this->sendResponse($exists, $this->resourceExistsResponseCode); 
         }
 
-        $data['unique_identifier'] = substr(str_shuffle(MD5(microtime())), 0, 10);
+        //create a unique identifier for each subscription
+        $data['unique_identifier'] = substr(str_shuffle(MD5(microtime())), 0, 10); 
+        $data['status'] = 'Not confirmed';
 
         $eloqResult = $this->subscriptionRepository->create($data);
+
+        //users should confirm subscription
+        $this->sendConfirmationEmail($eloqResult->email, $eloqResult->country, $eloqResult->unique_identifier); 
 
         return $this->sendResponse($eloqResult, $this->successResponseCode);
     }
 
-    public function deleteSubscription($id)
+    public function deleteSubscription(string $id)
     {
         return $this->subscriptionRepository->where('unique_identifier', $id)->first()->delete();
+    }
+
+    public function confirmSubscription(string $id)
+    {
+        return $this->subscriptionRepository->where('unique_identifier', $id)->first()->update([
+            'status' => 'confirmed'
+        ]);
     }
 
     public function sendSubscriptionEmail()
@@ -54,6 +68,11 @@ class SubscriptionService
             //unique identifier used for unsubscribing fromm email
             Mail::to($sub->email)->send(new SubscriptionMail($sub->country, $sub->unique_identifier)); 
         }
+    }
+
+    private function sendConfirmationEmail($emailAddress, $country, $uniqueIdentifier)
+    {
+        Mail::to($emailAddress)->send(new SubscriptionConfirmationMail($country, $uniqueIdentifier));
     }
 
     private function checkIfEmailExists(string $email)

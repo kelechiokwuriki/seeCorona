@@ -75696,7 +75696,7 @@ var render = function() {
               _vm._v(" "),
               _c("h4", [
                 _vm._v(
-                  "You'll be notified by email of your country: " +
+                  "Please check your email for a confirmation link of your subscription to your country: " +
                     _vm._s(this.subscriptionResponseData.country)
                 )
               ]),

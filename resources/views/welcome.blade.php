@@ -18,7 +18,11 @@
         <meta name="author" content="Kelechi Matthew Okwuriki">
 
 
-        <title>Seecoronastats</title>
+        <title>{{ env('APP_NAME') }}</title>
+
+        <link rel="shortcut icon" type="image/jpg" href="/img/favicon.ico"/> 
+
+        {{-- <link rel="manifest" href="/site.webmanifest"> --}}
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -30,12 +34,10 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet" media="screen">
           <link href="{{ asset('css/all.css') }}" rel="stylesheet"> <!--load all styles -->
 
-        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet" media="screen"> --}}
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" media="screen">
 
 
         <!-- Scripts -->
-        {{-- <script src="https://kit.fontawesome.com/9f7685b59f.js" SameSite=None crossorigin="anonymous" defer></script> --}}
         <script src="{{ asset('js/all.js') }}" async></script>
 
     </head>

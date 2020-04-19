@@ -61,7 +61,7 @@
                         <i class="fab fa-angellist pr-1"></i>All good now.
                     </span>
                 </h2>
-                <h4>You'll be notified by email of your country: {{ this.subscriptionResponseData.country}}</h4>
+                <h4>Please check your email for a confirmation link of your subscription to your country: {{ this.subscriptionResponseData.country}}</h4>
                 <div class="text-center">
                     <button class="btn btn-primary" @click="clearFeedbackClasses">That's cool</button>
                 </div>

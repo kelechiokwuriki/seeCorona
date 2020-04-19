@@ -21,4 +21,10 @@ class SubscriptionController extends Controller
         $this->subscriptionService->deleteSubscription($uuid);  
         return view('subscription.unsubscribe');
     }
+
+    public function confirmSubscription($uuid)
+    {
+        $result = $this->subscriptionService->confirmSubscription($uuid);
+        return redirect('/');
+    }
 }
