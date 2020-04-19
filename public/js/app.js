@@ -75095,13 +75095,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-sm-4" },
-              [
-                _c("Summary", { attrs: { summary: _vm.statistics.Global } }),
-                _vm._v(" "),
-                _c("Subscribe", {
-                  attrs: { countries: _vm.statistics.Countries }
-                })
-              ],
+              [_c("Summary", { attrs: { summary: _vm.statistics.Global } })],
               1
             ),
             _vm._v(" "),
