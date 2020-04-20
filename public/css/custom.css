@@ -17,7 +17,7 @@ footer {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-  #data-table_wrapper, .information-card {
+  .main {
     margin-bottom: 20%;
   }
   #data-table_wrapper{
