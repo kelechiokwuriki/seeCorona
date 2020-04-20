@@ -97,9 +97,9 @@
                         //best method to reactivate datatable
                         setTimeout(function(){
                             $('#countryTable').DataTable({
-                                "ordering": true,
-                                "aaSorting": [],
-                                stateSave: true,
+                                // "ordering": [[2, "desc"]],
+                                // stateSave: true,
+                                "aaSorting": [[1, "desc"]],
                                 pageLength: 10,
                                 lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
                             });
@@ -121,9 +121,9 @@
 
                 }).finally(() => {
                     $('#countryTable').DataTable({
-                        "ordering": true,
-                        "aaSorting": [],
-                        stateSave: true,
+                        // "ordering": [[2, "desc"]],
+                        // stateSave: true,
+                        "aaSorting": [[1, "desc"]],
                         pageLength: 10,
                         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
                     });
@@ -143,6 +143,13 @@
             } else{
                 this.getStats();
             }
-        }
+        },
+        computed: {
+            sortedStatistics() {
+                return this.statistics.Countries.sort(function (a, b) {
+                    return b - a
+                });
+            }
+        },
     }
 </script>

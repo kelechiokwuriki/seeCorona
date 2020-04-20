@@ -2014,9 +2014,9 @@ __webpack_require__.r(__webpack_exports__);
 
           setTimeout(function () {
             $('#countryTable').DataTable({
-              "ordering": true,
-              "aaSorting": [],
-              stateSave: true,
+              // "ordering": [[2, "desc"]],
+              // stateSave: true,
+              "aaSorting": [[1, "desc"]],
               pageLength: 10,
               lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
             });
@@ -2041,9 +2041,9 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.setItem('stats', parsed);
       })["finally"](function () {
         $('#countryTable').DataTable({
-          "ordering": true,
-          "aaSorting": [],
-          stateSave: true,
+          // "ordering": [[2, "desc"]],
+          // stateSave: true,
+          "aaSorting": [[1, "desc"]],
           pageLength: 10,
           lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
         });
@@ -2063,6 +2063,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     } else {
       this.getStats();
+    }
+  },
+  computed: {
+    sortedStatistics: function sortedStatistics() {
+      return this.statistics.Countries.sort(function (a, b) {
+        return b - a;
+      });
     }
   }
 });
