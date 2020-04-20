@@ -35,11 +35,14 @@ import Home from './components/HomeComponent';
 import Subscribe from './components/SubscribeComponent';
 import SingleCountryComponent from './components/SingleCountryComponent';
 
+//vue library components
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
+import Chartkick from 'vue-chartkick';
+import Chart from 'chart.js';
 
-
-Vue.component('v-select', vSelect)
+Vue.component('v-select', vSelect);
+Vue.use(Chartkick.use(Chart));
 
 
 const app = new Vue({
