@@ -143,13 +143,6 @@
             } else{
                 this.getStats();
             }
-        },
-        computed: {
-            sortedStatistics() {
-                return this.statistics.Countries.sort(function (a, b) {
-                    return b - a
-                });
-            }
-        },
+        }
     }
 </script>

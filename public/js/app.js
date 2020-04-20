@@ -2064,13 +2064,6 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.getStats();
     }
-  },
-  computed: {
-    sortedStatistics: function sortedStatistics() {
-      return this.statistics.Countries.sort(function (a, b) {
-        return b - a;
-      });
-    }
   }
 });
 
