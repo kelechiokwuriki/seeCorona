@@ -34,7 +34,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="stat in statistics.Countries">
-                                            <td><router-link :to="{ name:'country', params:{ country: stat.Slug } }">{{ stat.Country }}</router-link></td>
+                                            <td><router-link :to="{ name:'countries', params:{ country: stat.Slug } }">{{ stat.Country }}</router-link></td>
                                             <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
                                             <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
                                             <td>{{ stat.TotalRecovered.toLocaleString() }}</td>

@@ -11,7 +11,7 @@ export default new VueRouter({
     routes: [
         { path: '/', component: HomeComponent },
         { path: '/information', component: InformationComponent },
-        { path: '/country/:country', name:'country', component: SingleCountryComponent }
+        { path: '/countries/:country', name:'countries', component: SingleCountryComponent }
     ],
     mode: 'history'
 });

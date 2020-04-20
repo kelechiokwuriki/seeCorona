@@ -2261,6 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -95356,7 +95357,7 @@ var render = function() {
                                       {
                                         attrs: {
                                           to: {
-                                            name: "country",
+                                            name: "countries",
                                             params: { country: stat.Slug }
                                           }
                                         }
@@ -111951,8 +111952,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/information',
     component: _components_InformationComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/country/:country',
-    name: 'country',
+    path: '/countries/:country',
+    name: 'countries',
     component: _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }],
   mode: 'history'

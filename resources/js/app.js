@@ -26,7 +26,6 @@ Vue.component('Home', require('./components/HomeComponent.vue').default);
 Vue.component('Subscribe', require('./components/SubscribeComponent.vue').default);
 Vue.component('SingleCountryComponent', require('./components/SingleCountryComponent.vue').default);
 
-
 import Vue from 'vue'
 import router from './router'
 
@@ -43,7 +42,6 @@ import Chart from 'chart.js';
 
 Vue.component('v-select', vSelect);
 Vue.use(Chartkick.use(Chart));
-
 
 const app = new Vue({
     el: '#main',

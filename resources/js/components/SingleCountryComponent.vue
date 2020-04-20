@@ -50,6 +50,7 @@
                                 {{countrySummaryStatistics.TotalRecovered.toLocaleString()}}
                             </label>
                             <!--end global recored-->
+                            
 
                             <!--progress bar-->
                             <label class="col-sm-6 col-form-label">
