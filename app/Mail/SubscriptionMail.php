@@ -68,7 +68,7 @@ class SubscriptionMail extends Mailable
             'response' => $reversed, 
             'country' => $country,
             'total' => $countryTotalStats,
-            'uniqueIdentifier' => $this->uniqueIdentifier  //used for unsubscribing from email,
+            'uniqueIdentifier' => $this->uniqueIdentifier,  //used for unsubscribing from email,
             'viewInBrowserCountryUrl' => $viewInBrowserCountryUrl,
             'unsubscribeUrl' => $unsubscribeUrl
         ]);
