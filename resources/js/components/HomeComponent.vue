@@ -8,7 +8,7 @@
                     <!--end summary view-->
 
                     <!-- news view-->
-                    <!-- <Subscribe :countries="statistics.Countries"></Subscribe> -->
+                    <Subscribe :countries="statistics.Countries"></Subscribe>
                     <!--end news view-->
                 </div>
                 <div class="col-sm-8">
@@ -128,7 +128,7 @@
                         lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Everything']]
                     });
                 })
-            },
+            }
         },
         created() {
             // this.getStats();
