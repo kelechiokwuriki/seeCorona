@@ -2190,22 +2190,113 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       country: this.$route.params.country,
-      statistics: [],
-      apiUrl: 'https://api.covid19api.com/total/country/'
+      countryTotalStatistics: [],
+      countrySummaryStatistics: {},
+      countryApiUrl: 'https://api.covid19api.com/total/country/',
+      allDataUrl: 'https://api.covid19api.com/summary'
     };
   },
   methods: {
     getCountryData: function getCountryData() {
-      axios.get(this.apiUrl + this.country).then(function (response) {
-        console.log(response.data);
+      var _this = this;
+
+      axios.get(this.countryApiUrl + this.country).then(function (response) {
+        _this.countryTotalStatistics = response.data;
+      });
+    },
+    getAllStatisticsData: function getAllStatisticsData() {
+      var _this2 = this;
+
+      axios.get(this.allDataUrl).then(function (response) {
+        _this2.countrySummaryStatistics = response.data.Countries.find(function (_ref) {
+          var Slug = _ref.Slug;
+          return Slug === _this2.country;
+        });
       });
     }
   },
-  created: function created() {}
+  created: function created() {
+    this.getCountryData();
+    this.getAllStatisticsData();
+  },
+  computed: {
+    percentage: function percentage() {
+      //progress bar
+      return Math.round(this.countrySummaryStatistics.TotalRecovered * 100 / this.countrySummaryStatistics.TotalConfirmed);
+    }
+  }
 });
 
 /***/ }),
@@ -75598,9 +75689,129 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-4" })
+  return _c("div", { staticClass: "container-fluid mt-4" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header bg-dark" }, [
+            _c("h5", { staticClass: "card-title text-white" }, [
+              _vm._v(_vm._s(_vm.countrySummaryStatistics.Country))
+            ]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "card-subtitle mb-2 text-white" }, [
+              _vm._v("Total statistics")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group row" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(
+                      _vm.countrySummaryStatistics.TotalConfirmed.toLocaleString()
+                    ) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(
+                      _vm.countrySummaryStatistics.TotalDeaths.toLocaleString()
+                    ) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(
+                      _vm.countrySummaryStatistics.TotalRecovered.toLocaleString()
+                    ) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                _vm._v(
+                  "\n                        Percentage recovered\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+                _c("div", { staticClass: "progress" }, [
+                  _vm.percentage
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "progress-bar",
+                          style: { width: _vm.percentage + "%" },
+                          attrs: {
+                            role: "progressbar",
+                            "aria-valuemin": "0",
+                            "aria-valuemax": "100"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.percentage) + "%")]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-8" })
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("span", { staticClass: "text-danger app-font" }, [
+        _c("i", { staticClass: "fas fa-head-side-mask" })
+      ]),
+      _vm._v(
+        " \n                        Total Confirmed Cases\n                    "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("span", { staticClass: "text-dark app-font" }, [
+        _c("i", { staticClass: "fas fa-skull-crossbones" })
+      ]),
+      _vm._v("\n                        Total Deaths\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-sm-6 col-form-label" }, [
+      _c("span", { staticClass: "text-success app-font" }, [
+        _c("i", { staticClass: "fas fa-heartbeat" })
+      ]),
+      _vm._v("\n                        Total Recovered\n                    ")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -75901,7 +76112,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("label", { staticClass: "col-sm-6 col-form-label" }, [
                   _vm._v(
-                    "\n                        Global recovered percentage\n                    "
+                    "\n                        Global percentage recovered\n                    "
                   )
                 ]),
                 _vm._v(" "),

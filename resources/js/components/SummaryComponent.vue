@@ -53,7 +53,7 @@
 
                     <!--progress bar-->
                         <label class="col-sm-6 col-form-label">
-                            Global recovered percentage
+                            Global percentage recovered
                         </label>
                         <label class="col-sm-6 col-form-label">
                             <div class="progress">
