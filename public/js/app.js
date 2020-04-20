@@ -1980,11 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     initialize: function initialize() {},
     isStatisticsObjEmpty: function isStatisticsObjEmpty(obj) {
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) return false;
-      }
-
-      return true;
+      return Object.keys(obj).length === 0;
     },
     moment: function (_moment) {
       function moment(_x) {
