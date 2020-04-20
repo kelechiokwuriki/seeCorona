@@ -68,7 +68,7 @@
             </div>
             <div class="col-sm-8">
                 <!--start chart-->
-                <line-chart :data="chartData" />
+                <line-chart thousands="," :messages="{empty: 'No data'}" :data="chartData" />
                 <!--end chart-->
             </div>
         </div>
@@ -96,7 +96,6 @@
                     this.countryTotalStatistics = response.data;
 
                     this.transformDataForChart();
-
                 })
             },
             getAllStatisticsData() {

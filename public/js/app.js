@@ -95871,7 +95871,15 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-sm-8" },
-        [_c("line-chart", { attrs: { data: _vm.chartData } })],
+        [
+          _c("line-chart", {
+            attrs: {
+              thousands: ",",
+              messages: { empty: "No data" },
+              data: _vm.chartData
+            }
+          })
+        ],
         1
       )
     ])
