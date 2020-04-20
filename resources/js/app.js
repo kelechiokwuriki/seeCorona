@@ -24,16 +24,8 @@ window.Vue = require('vue');
 Vue.component('Summary', require('./components/SummaryComponent.vue').default);
 Vue.component('Home', require('./components/HomeComponent.vue').default);
 Vue.component('Subscribe', require('./components/SubscribeComponent.vue').default);
+Vue.component('SingleCountryComponent', require('./components/SingleCountryComponent.vue').default);
 
-
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// import dt from 'datatables.net'
 
 import Vue from 'vue'
 import router from './router'
@@ -41,6 +33,8 @@ import router from './router'
 import Summary from './components/SummaryComponent';
 import Home from './components/HomeComponent';
 import Subscribe from './components/SubscribeComponent';
+import SingleCountryComponent from './components/SingleCountryComponent';
+
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 
@@ -53,7 +47,8 @@ const app = new Vue({
     components: {
         Summary,
         Home,
-        Subscribe
+        Subscribe,
+        SingleCountryComponent
     },
     router
 }).$mount('#main');

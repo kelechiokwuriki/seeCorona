@@ -34,7 +34,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="stat in statistics.Countries">
-                                            <td>{{ stat.Country }}</td>
+                                            <td><router-link :to="{ name:'country', params:{ country: stat.Slug } }">{{ stat.Country }}</router-link></td>
                                             <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
                                             <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
                                             <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
@@ -72,7 +72,7 @@
 
             },
             isStatisticsObjEmpty(obj) {
-                return Object.keys(obj).length === 0;
+                 for(var i in obj); return !i; 
             },
             moment(date) {
                 return moment(date);
@@ -133,6 +133,7 @@
                 if(data.statsValue === '') {
                     localStorage.removeItem('stats');
                     this.getStats();
+
                 } else{
                     this.getDataFromCache();
                 }
