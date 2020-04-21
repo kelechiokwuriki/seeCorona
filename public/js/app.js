@@ -1923,7 +1923,9 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   methods: {
-    goToHome: function goToHome() {}
+    goToHome: function goToHome() {
+      window.location.replace('/');
+    }
   }
 });
 
@@ -95353,7 +95355,7 @@ var render = function() {
             staticClass: "btn btn-primary btn-lg",
             on: { click: _vm.goToHome }
           },
-          [_vm._v("Refresh")]
+          [_vm._v("Please help me")]
         )
       ])
     ])
@@ -95365,8 +95367,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h1", { staticClass: "display-4" }, [
-      _vm._v("Unable to retrieve data "),
-      _c("i", { staticClass: "fas fa-times" })
+      _vm._v("Are you lost? "),
+      _c("i", { staticClass: "fas fa-meh-rolling-eyes" })
     ])
   }
 ]
@@ -112107,6 +112109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
 /* harmony import */ var _components_InformationComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/InformationComponent */ "./resources/js/components/InformationComponent.vue");
 /* harmony import */ var _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/SingleCountryComponent */ "./resources/js/components/SingleCountryComponent.vue");
+/* harmony import */ var _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/404/PageNotFound */ "./resources/js/components/404/PageNotFound.vue");
+
 
 
 
@@ -112114,6 +112118,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: [{
     path: '/',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -112124,9 +112129,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/countries/:country',
     name: 'countries',
     component: _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
-  } // { path: "*", component: PageNotFound }
-  ],
-  mode: 'history'
+  }, {
+    path: "*",
+    component: _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }]
 }));
 
 /***/ }),
