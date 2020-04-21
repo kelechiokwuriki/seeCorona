@@ -1972,6 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: [],
+      error: '',
       cacheDataTimeToLiveInMinutes: 15,
       //15 minutes
       apiUrl: 'https://api.covid19api.com/summary'
@@ -2039,6 +2040,8 @@ __webpack_require__.r(__webpack_exports__);
         };
         var parsed = JSON.stringify(object);
         localStorage.setItem('stats', parsed);
+      })["catch"](function (error) {
+        _this.error = error;
       })["finally"](function () {
         $('#countryTable').DataTable({
           // "ordering": [[2, "desc"]],
@@ -95415,7 +95418,26 @@ var render = function() {
             ])
           ])
         ])
-      : _c("div", { staticClass: "jumbotron jumbotron-fluid" }, [_vm._m(2)])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.error
+      ? _c("div", { staticClass: "jumbotron jumbotron-fluid" }, [
+          _c("div", { staticClass: "container" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p", { staticClass: "lead" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-lg",
+                  on: { click: _vm.getStats }
+                },
+                [_vm._v("Refresh")]
+              )
+            ])
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -95463,18 +95485,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", { staticClass: "display-4" }, [
-        _vm._v("Site under maintenance "),
-        _c("i", { staticClass: "fas fa-tools" })
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "lead" }, [
-        _vm._v(
-          "We'll be back shortly, in the mean time view information about the COVID-19 "
-        ),
-        _c("a", { attrs: { href: "/information" } }, [_vm._v("here")])
-      ])
+    return _c("h1", { staticClass: "display-4" }, [
+      _vm._v("Unable to retrieve data "),
+      _c("i", { staticClass: "fas fa-times" })
     ])
   }
 ]

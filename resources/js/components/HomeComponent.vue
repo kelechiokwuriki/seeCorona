@@ -48,10 +48,10 @@
                 </div>
             </div>
         </div>
-        <div class="jumbotron jumbotron-fluid" v-else>
+        <div class="jumbotron jumbotron-fluid" v-if="error">
             <div class="container">
-                <h1 class="display-4">Site under maintenance <i class="fas fa-tools"></i></h1>
-                <p class="lead">We'll be back shortly, in the mean time view information about the COVID-19 <a href="/information">here</a></p>
+                <h1 class="display-4">Unable to retrieve data <i class="fas fa-times"></i></h1>
+                <p class="lead"><button class="btn btn-primary btn-lg" @click="getStats">Refresh</button></p>
             </div>
         </div>
     </div>
@@ -63,6 +63,7 @@
         data() {
             return{
                 statistics: [],
+                error: '',
                 cacheDataTimeToLiveInMinutes: 15, //15 minutes
                 apiUrl: 'https://api.covid19api.com/summary'
             }
@@ -115,6 +116,8 @@
                     const parsed = JSON.stringify(object);
                     localStorage.setItem('stats', parsed);
 
+                }).catch(error => {
+                    this.error = error;
                 }).finally(() => {
                     $('#countryTable').DataTable({
                         // "ordering": [[2, "desc"]],
