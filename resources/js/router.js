@@ -11,7 +11,8 @@ export default new VueRouter({
     routes: [
         { path: '/', component: HomeComponent },
         { path: '/information', component: InformationComponent },
-        { path: '/countries/:country', name:'countries', component: SingleCountryComponent }
+        { path: '/countries/:country', name:'countries', component: SingleCountryComponent },
+        // { path: "*", component: PageNotFound }
     ],
     mode: 'history'
 });

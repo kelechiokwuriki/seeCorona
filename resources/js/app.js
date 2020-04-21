@@ -25,6 +25,8 @@ Vue.component('Summary', require('./components/SummaryComponent.vue').default);
 Vue.component('Home', require('./components/HomeComponent.vue').default);
 Vue.component('Subscribe', require('./components/SubscribeComponent.vue').default);
 Vue.component('SingleCountryComponent', require('./components/SingleCountryComponent.vue').default);
+Vue.component('PageNotFound', require('./components/404/PageNotFound.vue').default);
+
 
 import Vue from 'vue'
 import router from './router'
@@ -33,6 +35,8 @@ import Summary from './components/SummaryComponent';
 import Home from './components/HomeComponent';
 import Subscribe from './components/SubscribeComponent';
 import SingleCountryComponent from './components/SingleCountryComponent';
+import PageNotFound from './components/404/PageNotFound';
+
 
 //vue library components
 import vSelect from 'vue-select';
@@ -49,7 +53,8 @@ const app = new Vue({
         Summary,
         Home,
         Subscribe,
-        SingleCountryComponent
+        SingleCountryComponent,
+        PageNotFound
     },
     router
 }).$mount('#main');

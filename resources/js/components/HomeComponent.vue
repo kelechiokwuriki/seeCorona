@@ -65,7 +65,7 @@
                 statistics: null,
                 error: '',
                 cacheDataTimeToLiveInMinutes: 15, //15 minutes
-                apiUrl: 'https://api.covid19api.com/summar'
+                apiUrl: 'https://api.covid19api.com/summary'
             }
         },
         methods: {
