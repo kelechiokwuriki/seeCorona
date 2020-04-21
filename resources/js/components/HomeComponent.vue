@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="!isStatisticsObjEmpty(statistics)">
+        <div class="container-fluid mt-4" v-if="statistics">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
@@ -51,7 +51,7 @@
         <div class="jumbotron jumbotron-fluid" v-if="error">
             <div class="container">
                 <h1 class="display-4">Unable to retrieve data <i class="fas fa-times"></i></h1>
-                <p class="lead"><button class="btn btn-primary btn-lg" @click="getStats">Refresh</button></p>
+                <p class="lead"><button class="btn btn-primary btn-lg" @click="refresh">Refresh</button></p>
             </div>
         </div>
     </div>
@@ -62,15 +62,16 @@
     export default {
         data() {
             return{
-                statistics: [],
+                statistics: null,
                 error: '',
                 cacheDataTimeToLiveInMinutes: 15, //15 minutes
-                apiUrl: 'https://api.covid19api.com/summary'
+                apiUrl: 'https://api.covid19api.com/summar'
             }
         },
         methods: {
-            initialize() {
-
+            refresh() {
+                this.error = null;
+                this.getStats();
             },
             isStatisticsObjEmpty(obj) {
                  for(var i in obj); return !i; 

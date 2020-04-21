@@ -1971,15 +1971,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      statistics: [],
+      statistics: null,
       error: '',
       cacheDataTimeToLiveInMinutes: 15,
       //15 minutes
-      apiUrl: 'https://api.covid19api.com/summary'
+      apiUrl: 'https://api.covid19api.com/summar'
     };
   },
   methods: {
-    initialize: function initialize() {},
+    refresh: function refresh() {
+      this.error = null;
+      this.getStats();
+    },
     isStatisticsObjEmpty: function isStatisticsObjEmpty(obj) {
       for (var i in obj) {
         ;
@@ -95310,7 +95313,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    !_vm.isStatisticsObjEmpty(_vm.statistics)
+    _vm.statistics
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
@@ -95430,7 +95433,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary btn-lg",
-                  on: { click: _vm.getStats }
+                  on: { click: _vm.refresh }
                 },
                 [_vm._v("Refresh")]
               )
