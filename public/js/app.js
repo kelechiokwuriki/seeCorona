@@ -112130,8 +112130,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/countries/:country',
     name: 'countries',
     component: _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
-  } // { path: "*", component: PageNotFound }
-  ]
+  }, {
+    path: "*",
+    component: _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }]
 }));
 
 /***/ }),
