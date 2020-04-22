@@ -2004,7 +2004,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       statistics: null,
-      error: '',
+      error: null,
       cacheDataTimeToLiveInMinutes: 15,
       //15 minutes
       apiUrl: 'https://api.covid19api.com/summary'
@@ -2116,6 +2116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -95394,7 +95395,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.statistics
+    _vm.statistics !== null && _vm.error === null
       ? _c("div", { staticClass: "container-fluid mt-4" }, [
           _c("div", { staticClass: "row" }, [
             _c(
@@ -112129,10 +112130,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/countries/:country',
     name: 'countries',
     component: _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, {
-    path: "*",
-    component: _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }]
+  } // { path: "*", component: PageNotFound }
+  ]
 }));
 
 /***/ }),

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid mt-4" v-if="statistics">
+        <div class="container-fluid mt-4" v-if="statistics !== null && error === null">
             <div class="row">
                 <div class="col-sm-4">
                     <!--start summary view-->
@@ -63,7 +63,7 @@
         data() {
             return{
                 statistics: null,
-                error: '',
+                error: null,
                 cacheDataTimeToLiveInMinutes: 15, //15 minutes
                 apiUrl: 'https://api.covid19api.com/summary'
             }
