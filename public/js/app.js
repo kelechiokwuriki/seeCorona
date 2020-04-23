@@ -2300,6 +2300,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2307,6 +2314,7 @@ __webpack_require__.r(__webpack_exports__);
       countryTotalStatistics: [],
       countrySummaryStatistics: {},
       chartData: [],
+      showLineChart: true,
       countryApiUrl: 'https://api.covid19api.com/total/country/',
       allDataUrl: 'https://api.covid19api.com/summary'
     };
@@ -2386,7 +2394,8 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Recovered',
         data: recoveredObj
       });
-    }
+    },
+    makeColumnChart: function makeColumnChart() {}
   },
   created: function created() {
     this.getCountryData();
@@ -95970,13 +95979,40 @@ var render = function() {
         "div",
         { staticClass: "col-sm-8" },
         [
-          _c("line-chart", {
-            attrs: {
-              thousands: ",",
-              messages: { empty: "No data" },
-              data: _vm.chartData
-            }
-          })
+          _vm.showLineChart
+            ? _c("line-chart", {
+                attrs: {
+                  thousands: ",",
+                  messages: { empty: "No data" },
+                  data: _vm.chartData
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.showLineChart
+            ? _c("column-chart", {
+                attrs: {
+                  thousands: ",",
+                  messages: { empty: "No data" },
+                  data: _vm.chartData
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-center mt-4" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                on: {
+                  click: function($event) {
+                    _vm.showLineChart = !_vm.showLineChart
+                  }
+                }
+              },
+              [_vm._v("Toggle chart")]
+            )
+          ])
         ],
         1
       )

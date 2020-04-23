@@ -69,8 +69,15 @@
             </div>
             <div class="col-sm-8">
                 <!--start chart-->
-                <line-chart thousands="," :messages="{empty: 'No data'}" :data="chartData" />
+                <line-chart thousands="," :messages="{empty: 'No data'}" :data="chartData"  v-if="showLineChart"/>
+
+
+                <column-chart thousands="," :messages="{empty: 'No data'}" :data="chartData" v-if="!showLineChart"/>
+
                 <!--end chart-->
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" @click="showLineChart = !showLineChart">Toggle chart</button>
+                </div>
             </div>
         </div>
     </div>
@@ -84,6 +91,7 @@
                 countryTotalStatistics: [],
                 countrySummaryStatistics: {},
                 chartData: [],
+                showLineChart: true,
                 countryApiUrl: 'https://api.covid19api.com/total/country/',
                 allDataUrl: 'https://api.covid19api.com/summary'
             }
@@ -138,6 +146,9 @@
                 this.chartData.push( {name:'Cases', data: confirmedObj} );
                 this.chartData.push( {name: 'Deaths', data: deathsObj} );
                 this.chartData.push( {name: 'Recovered', data: recoveredObj} );
+            },
+            makeColumnChart() {
+                
             }
         },
         created() {
