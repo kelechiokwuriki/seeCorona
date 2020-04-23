@@ -15,6 +15,8 @@ class SubscriptionApiController extends Controller
 
     public function __construct(SubscriptionService $subscriptionService)
     {
+        $this->middleware('auth:api');
+
         $this->subscriptionService = $subscriptionService;
     }
     /**
