@@ -19,7 +19,7 @@ class SendSubscriptionEmail extends Command
      *
      * @var string
      */
-    protected $description = 'Sends an email to subscribers of COVID-19 data by country.';
+    protected $description = 'Sends an email to confirmed subscribers of COVID-19 data by country.';
 
     protected $subscriptionService;
 
@@ -42,6 +42,6 @@ class SendSubscriptionEmail extends Command
      */
     public function handle()
     {
-        $this->subscriptionService->sendSubscriptionEmail();
+        $this->subscriptionService->sendSubscriptionEmailToConfirmedSubscribers();
     }
 }

@@ -53,14 +53,23 @@ class SubscriptionService
 
     public function deleteSubscription(string $id)
     {
-        return $this->subscriptionRepository->where('unique_identifier', $id)->first()->delete();
+        $result = $this->subscriptionRepository->where('unique_identifier', $id)->first();
+
+        if($result) {
+            return $result->delete();
+        }
+        return null;
     }
 
     public function confirmSubscription(string $id)
     {
-        return $this->subscriptionRepository->where('unique_identifier', $id)->first()->update([
-            'status' => 'Confirmed'
-        ]);
+        $result = $this->subscriptionRepository->where('unique_identifier', $id)->first();
+
+        if($result) {
+            return $result->update([
+                'status' => 'Confirmed'
+            ]);
+        }
     }
 
     //Deletes subscriptions where created date is 12 hours old or greater
@@ -75,9 +84,10 @@ class SubscriptionService
         }
     }
 
-    public function sendSubscriptionEmail()
+
+    public function sendSubscriptionEmailToConfirmedSubscribers()
     {
-        $subscriptions = $this->getAllSubscriptionData();
+        $subscriptions = $this->subscriptionRepository->where('status', 'Confirmed')->get();
 
         foreach($subscriptions as $sub) {
             //unique identifier used for unsubscribing fromm email
