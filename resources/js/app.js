@@ -27,6 +27,11 @@ Vue.component('Subscribe', require('./components/SubscribeComponent.vue').defaul
 Vue.component('SingleCountryComponent', require('./components/SingleCountryComponent.vue').default);
 Vue.component('PageNotFound', require('./components/404/PageNotFound.vue').default);
 
+//base layouts
+Vue.component('App', require('./components/Layouts/App.vue').default);
+Vue.component('Header', require('./components/Layouts/Header.vue').default);
+Vue.component('Footer', require('./components/Layouts/Footer.vue').default);
+
 
 import Vue from 'vue'
 import router from './router'
@@ -37,6 +42,10 @@ import Subscribe from './components/SubscribeComponent';
 import SingleCountryComponent from './components/SingleCountryComponent';
 import PageNotFound from './components/404/PageNotFound';
 
+//base layouts
+import App from './components/Layouts/App';
+import Header from './components/Layouts/Header';
+import Footer from './components/Layouts/Footer';
 
 //vue library components
 import vSelect from 'vue-select';
@@ -52,6 +61,9 @@ const app = new Vue({
     components: {
         Summary,
         Home,
+        App,
+        Header,
+        Footer,
         Subscribe,
         SingleCountryComponent,
         PageNotFound
