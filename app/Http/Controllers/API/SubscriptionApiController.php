@@ -24,7 +24,7 @@ class SubscriptionApiController extends Controller
      */
     public function index()
     {
-        return $this->subscriptionService->getAllSubscriptionData();
+        // return $this->subscriptionService->getAllSubscriptionData();
     }
 
     /**

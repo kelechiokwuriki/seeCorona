@@ -9,7 +9,7 @@ import PageNotFound from './components/404/PageNotFound'
 Vue.use(VueRouter);
 
 export default new VueRouter({
-        mode: 'history',
+    mode: 'history',
 
     routes: [
         { path: '/', component: HomeComponent },
