@@ -28,7 +28,7 @@
                                             <th scope="col">Country</th>
                                             <th scope="col">Cases</th>
                                             <th scope="col">Deaths</th>
-                                            <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Recovered</th>
+                                            <th scope="col">Recovered</th>
                                             <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Updated</th>
                                         </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                             <td><router-link :to="{ name:'countries', params:{ country: stat.Slug } }">{{ stat.Country }}</router-link></td>
                                             <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
                                             <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
-                                            <td class="d-none d-sm-none d-md-block d-sm-block">{{ stat.TotalRecovered.toLocaleString() }}</td>
+                                            <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
                                             <td class="d-none d-sm-none d-md-block d-sm-block">{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
                                         </tr>
                                     </tbody>
