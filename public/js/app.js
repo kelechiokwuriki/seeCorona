@@ -95548,11 +95548,20 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(stat.TotalRecovered.toLocaleString())
-                                  )
-                                ]),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass:
+                                      "d-none d-sm-none d-md-block d-sm-block"
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        stat.TotalRecovered.toLocaleString()
+                                      )
+                                    )
+                                  ]
+                                ),
                                 _vm._v(" "),
                                 _c(
                                   "td",
@@ -95633,7 +95642,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Deaths")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Recovered")]),
+        _c(
+          "th",
+          {
+            staticClass: "d-none d-sm-none d-md-block d-sm-block",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("Recovered")]
+        ),
         _vm._v(" "),
         _c(
           "th",
@@ -112007,8 +112023,8 @@ window.moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.
 //     encrypted: true
 // });
 
-__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // require('datatables.net'); 
-// require('datatables.net-buttons-dt'); 
+__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // require('datatables.net');
+// require('datatables.net-buttons-dt');
 // require( 'pdfmake' );
 
 

@@ -43,8 +43,8 @@ window.moment = require('moment');
 //     encrypted: true
 // });
 require('jquery');
-// require('datatables.net'); 
-// require('datatables.net-buttons-dt'); 
+// require('datatables.net');
+// require('datatables.net-buttons-dt');
 
 // require( 'pdfmake' );
 require( 'datatables.net-bs4' );

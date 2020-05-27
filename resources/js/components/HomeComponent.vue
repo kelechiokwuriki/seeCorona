@@ -17,7 +17,7 @@
                             <h5 class="card-title text-white">Countries</h5>
                             <h6 class="card-subtitle mb-2 text-white">
                             <span class="text-primary app-font pr-1">
-                                <i class="fas fa-flag"></i>                        
+                                <i class="fas fa-flag"></i>
                             </span>Statistics by countries</h6>
                         </div>
                         <div class="card-body">
@@ -28,7 +28,7 @@
                                             <th scope="col">Country</th>
                                             <th scope="col">Cases</th>
                                             <th scope="col">Deaths</th>
-                                            <th scope="col">Recovered</th>
+                                            <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Recovered</th>
                                             <th scope="col" class="d-none d-sm-none d-md-block d-sm-block">Updated</th>
                                         </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                             <td><router-link :to="{ name:'countries', params:{ country: stat.Slug } }">{{ stat.Country }}</router-link></td>
                                             <td>{{ stat.TotalConfirmed.toLocaleString() }}</td>
                                             <td>{{ stat.TotalDeaths.toLocaleString() }}</td>
-                                            <td>{{ stat.TotalRecovered.toLocaleString() }}</td>
+                                            <td class="d-none d-sm-none d-md-block d-sm-block">{{ stat.TotalRecovered.toLocaleString() }}</td>
                                             <td class="d-none d-sm-none d-md-block d-sm-block">{{ moment(stat.Date).format('MMMM Do YYYY, h:mm:ss a') }}</td>
                                         </tr>
                                     </tbody>
@@ -73,7 +73,7 @@
                 this.getStats();
             },
             isStatisticsObjEmpty(obj) {
-                 for(var i in obj); return !i; 
+                 for(var i in obj); return !i;
             },
             moment(date) {
                 return moment(date);
@@ -84,7 +84,7 @@
                     let cacheTime = cacheObject.timeStamp;
                     let now = moment();
                     let minutesElapsed = moment(now.diff(cacheTime)).format("m")
-                
+
                     //10 minutes elapsed, get new data
                     if(minutesElapsed >= this.cacheDataTimeToLiveInMinutes) {
                         localStorage.removeItem('stats');
@@ -106,7 +106,7 @@
                     //assume data is corrupted so remove and get new one
                     localStorage.removeItem('stats');
                     this.getStats();
-                }    
+                }
             },
             getStats() {
                 axios.get(this.apiUrl)
