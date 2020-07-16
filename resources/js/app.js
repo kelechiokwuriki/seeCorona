@@ -25,6 +25,7 @@ Vue.component('Summary', require('./components/SummaryComponent.vue').default);
 Vue.component('Home', require('./components/HomeComponent.vue').default);
 Vue.component('Subscribe', require('./components/SubscribeComponent.vue').default);
 Vue.component('SingleCountryComponent', require('./components/SingleCountryComponent.vue').default);
+Vue.component('Diagnosis', require('./components/DiagnosisComponent.vue').default);
 Vue.component('PageNotFound', require('./components/404/PageNotFound.vue').default);
 
 //base layouts

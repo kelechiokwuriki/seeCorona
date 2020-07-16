@@ -1931,6 +1931,145 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      person: {
+        sex: null,
+        age: null,
+        evidence: []
+      },
+      question: [],
+      currentStep: 1,
+      api: 'https://api.infermedica.com/covid19/diagnosis',
+      appId: '92b36903',
+      appKey: 'aa20be635bc40b4b523c613ae5328038'
+    };
+  },
+  watch: {
+    question: {
+      deep: true,
+      handler: function handler(question) {// console.log(question.items);
+      }
+    }
+  },
+  methods: {
+    selectAnswer: function selectAnswer(choiceId, choiceAnswer) {
+      var answer = {
+        'id': choiceId,
+        'choice_id': choiceAnswer
+      };
+      this.person.evidence.push(answer);
+    },
+    nextStep: function nextStep() {
+      if (this.currentStep === 1) {
+        this.fireFirstRequest();
+      }
+
+      if (this.currentStep === 2) {
+        this.fireSecondRequest();
+      }
+    },
+    fireFirstRequest: function fireFirstRequest() {
+      var _this = this;
+
+      axios.post(this.api, this.person, {
+        headers: {
+          'App-Id': this.appId,
+          'App-Key': this.appKey
+        }
+      }).then(function (response) {
+        _this.question = response.data.question;
+        _this.currentStep++;
+        console.log(response.data);
+      });
+    },
+    fireSecondRequest: function fireSecondRequest() {
+      axios.post(this.api, this.person);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HomeComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HomeComponent.vue?vue&type=script&lang=js& ***!
@@ -2115,6 +2254,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -95459,6 +95600,267 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container mt-4" }, [
+    _c("div", { staticClass: "card information-card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n            COVID-19 Diagnosis\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          [
+            _vm.currentStep === 1
+              ? [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-check form-check-inline" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.person.sex,
+                                expression: "person.sex"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: {
+                              type: "radio",
+                              name: "inlineRadioOptions",
+                              id: "maleGender",
+                              value: "male"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.person.sex, "male")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.person, "sex", "male")
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "maleGender" }
+                            },
+                            [_vm._v("Male")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-check form-check-inline" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.person.sex,
+                                expression: "person.sex"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: {
+                              type: "radio",
+                              name: "inlineRadioOptions",
+                              id: "femaleGender",
+                              value: "female"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.person.sex, "female")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.person, "sex", "female")
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "femaleGender" }
+                            },
+                            [_vm._v("Female")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-2" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.number",
+                            value: _vm.person.age,
+                            expression: "person.age",
+                            modifiers: { number: true }
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "number" },
+                        domProps: { value: _vm.person.age },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.person,
+                              "age",
+                              _vm._n($event.target.value)
+                            )
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.currentStep === 2
+              ? [
+                  _c("h4", [_vm._v(_vm._s(_vm.question.text))]),
+                  _vm._v(" "),
+                  _vm._l(_vm.question.items, function(item, index) {
+                    return _c("div", { key: index }, [
+                      _c("div", { staticClass: "form-group mt-4 row" }, [
+                        _c("h6", { staticClass: "col" }, [
+                          _vm._v(_vm._s(item.name))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col" },
+                          [
+                            _vm._l(item.choices, function(choice, index) {
+                              return [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    _c("input", {
+                                      staticClass: "form-check-input",
+                                      attrs: {
+                                        type: "radio",
+                                        name: item.id,
+                                        id: choice.id
+                                      },
+                                      domProps: { value: choice.id },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.selectAnswer(
+                                            choice.id,
+                                            item.id
+                                          )
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-check-label",
+                                        attrs: { for: "defaultCheck1" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(choice.label) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ])
+                  })
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: { click: _vm.nextStep }
+              },
+              [_vm._v("Next")]
+            )
+          ],
+          2
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-2" }, [
+      _c("label", [_vm._v("What is your Gender?")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-2" }, [
+      _c("label", [_vm._v("What is your Age?")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HomeComponent.vue?vue&type=template&id=782dcf83&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HomeComponent.vue?vue&type=template&id=782dcf83& ***!
@@ -96066,6 +96468,22 @@ var render = function() {
                     [
                       _c("i", { staticClass: "fas fa-tachometer-alt pr-1" }),
                       _vm._v("Dashboard")
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item active" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-link", attrs: { to: "/diagnosis" } },
+                    [
+                      _c("i", { staticClass: "fas fa-stethoscope pr-1" }),
+                      _vm._v("Diagnosis")
                     ]
                   )
                 ],
@@ -111923,6 +112341,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Summary', __webpack_requir
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Subscribe', __webpack_require__(/*! ./components/SubscribeComponent.vue */ "./resources/js/components/SubscribeComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('SingleCountryComponent', __webpack_require__(/*! ./components/SingleCountryComponent.vue */ "./resources/js/components/SingleCountryComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Diagnosis', __webpack_require__(/*! ./components/DiagnosisComponent.vue */ "./resources/js/components/DiagnosisComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('PageNotFound', __webpack_require__(/*! ./components/404/PageNotFound.vue */ "./resources/js/components/404/PageNotFound.vue")["default"]); //base layouts
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('App', __webpack_require__(/*! ./components/Layouts/App.vue */ "./resources/js/components/Layouts/App.vue")["default"]);
@@ -112084,6 +112503,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_2f1a8380___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_2f1a8380___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DiagnosisComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/DiagnosisComponent.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DiagnosisComponent.vue?vue&type=template&id=75c7d4b7& */ "./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7&");
+/* harmony import */ var _DiagnosisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosisComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DiagnosisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DiagnosisComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DiagnosisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DiagnosisComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DiagnosisComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DiagnosisComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./DiagnosisComponent.vue?vue&type=template&id=75c7d4b7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DiagnosisComponent.vue?vue&type=template&id=75c7d4b7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DiagnosisComponent_vue_vue_type_template_id_75c7d4b7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -112645,7 +113133,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
 /* harmony import */ var _components_InformationComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/InformationComponent */ "./resources/js/components/InformationComponent.vue");
 /* harmony import */ var _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/SingleCountryComponent */ "./resources/js/components/SingleCountryComponent.vue");
-/* harmony import */ var _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/404/PageNotFound */ "./resources/js/components/404/PageNotFound.vue");
+/* harmony import */ var _components_DiagnosisComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/DiagnosisComponent */ "./resources/js/components/DiagnosisComponent.vue");
+/* harmony import */ var _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/404/PageNotFound */ "./resources/js/components/404/PageNotFound.vue");
+
 
 
 
@@ -112666,8 +113156,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'countries',
     component: _components_SingleCountryComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
+    path: '/diagnosis',
+    name: 'diagnosis',
+    component: _components_DiagnosisComponent__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
     path: "*",
-    component: _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_404_PageNotFound__WEBPACK_IMPORTED_MODULE_6__["default"]
   }]
 }));
 

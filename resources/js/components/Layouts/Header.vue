@@ -12,6 +12,9 @@
                             <router-link to="/" class="nav-link"><i class="fas fa-tachometer-alt pr-1"></i>Dashboard</router-link>
                         </li>
                         <li class="nav-item active">
+                            <router-link to="/diagnosis" class="nav-link"><i class="fas fa-stethoscope pr-1"></i>Diagnosis</router-link>
+                        </li>
+                        <li class="nav-item active">
                             <router-link to="/information" class="nav-link"><i class="fas fa-info-circle pr-1"></i>Information</router-link>
                         </li>
                     </ul>
