@@ -95703,7 +95703,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
     _c("div", { staticClass: "card information-card" }, [
-      _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "card-header text-white bg-dark" }, [
         _vm._v("\n            COVID-19 Diagnosis\n        ")
       ]),
       _vm._v(" "),

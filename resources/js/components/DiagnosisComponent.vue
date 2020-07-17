@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-4">
         <div class="card information-card">
-            <div class="card-header">
+            <div class="card-header text-white bg-dark">
                 COVID-19 Diagnosis
             </div>
             <div class="card-body">
