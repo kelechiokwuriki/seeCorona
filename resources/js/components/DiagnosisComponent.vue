@@ -35,20 +35,38 @@
 
                     </template>
                     <template v-if="currentStep === 2">
-                        <h4>{{ question.text }}</h4>
-                        <div v-for="(item, index) in question.items" v-bind:key="index">
-                            <div class="form-group mt-4 row">
-                                <h6 class="col">{{ item.name }}</h6>
+                        <!-- <h4>{{ questions.text }}</h4> -->
+                        <div v-for="(item, index) in questions" v-bind:key="index">
+                            <h4>{{ item.text }}</h4>
+
+                            <div class="form-group mt-4 row" v-for="(itemToSee, index) in item.items" v-bind:key="index">
+                                <h6 class="col">{{ itemToSee.name }}</h6>
+
                                 <div class="col">
-                                    <template v-for="(choice, index) in item.choices">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" :name="item.id" :id="choice.id" :value="choice.id"
-                                            @click="selectAnswer(choice.id, item.id)">
-                                                <label class="form-check-label" for="defaultCheck1">
-                                                    {{ choice.label }}
-                                                </label>
-                                        </div>
-                                    </template>
+                                    <div class="form-check form-check-inline" v-for="(choice, index) in itemToSee.choices" v-bind:key="index">
+
+                                        <!--render if not group_single-->
+                                        <template v-if="item.type === 'group_multiple' || item.type === 'single'">
+                                            <input class="form-check-input" type="radio" :name="itemToSee.id" :id="choice.id" :value="choice.id"
+                                            @click="selectAnswer(itemToSee.id, choice.id)">
+
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                {{ choice.label }}
+                                            </label>
+                                        </template>
+                                        <!--end render if not group single-->
+
+                                        <!--render for single selection-->
+                                        <template v-if="item.type === 'group_single'">
+                                            <input class="form-check-input" type="radio" name="singleRadio" :id="choice.id" :value="choice.id"
+                                            @click="selectAnswer(itemToSee.id, choice.id, item.type)">
+
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                {{ choice.label }}
+                                            </label>
+                                        </template>
+                                        <!--end render for single selection-->
+                                    </div>
                                 </div>
 
                             </div>
@@ -56,9 +74,32 @@
 
                     </template>
 
-                    <button type="button" class="btn btn-success" @click="nextStep">Next</button>
+                    <template v-if="currentStep === 3">
+                        <h4>{{ triageResponse.description }}</h4>
+                        <h5>{{ triageResponse.label }}</h5>
 
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th scope="col">Symptom</th>
+                                <th scope="col">Seriousness</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in triageResponse.serious" v-bind:key="index">
+                                    <td :class="{ 'text-danger': item.is_emergency }">{{ item.name }}</td>
+                                    <td>
+                                        <span class="text-danger" v-if="item.is_emergency">Emergency</span>
+                                        <span v-if="!item.is_emergency">Not an emergency</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </template>
                 </form>
+                <button type="button" class="btn btn-secondary" @click="nextStep" v-if="currentStep !== 3">Next</button>
+                <router-link to="/diagnosis" type="button" class="btn btn-success" @click="nextStep" v-if="currentStep === 3">Redo diagnosis</router-link>
+
             </div>
         </div>
 
@@ -76,31 +117,39 @@
                     age: null,
                     evidence: []
                 },
-                question: [],
+                triageResponse: {},
+                questions: [],
                 currentStep: 1,
-                api: 'https://api.infermedica.com/covid19/diagnosis',
+                api: 'https://api.infermedica.com/covid19/',
+                diagnosisEndPoint: 'diagnosis',
+                triageEndPoint: 'triage',
                 appId: '92b36903',
                 appKey: 'aa20be635bc40b4b523c613ae5328038'
 
             }
         },
         watch: {
-            question: {
+            questions: {
                 deep: true,
-                handler(question) {
+                handler(questions) {
                     // console.log(question.items);
 
                 }
             }
         },
         methods: {
-            selectAnswer(choiceId, choiceAnswer) {
+            selectAnswer(choiceId, choiceAnswer, questionType) {
                 let answer = {
                     'id': choiceId,
                     'choice_id': choiceAnswer
                 };
 
-                this.person.evidence.push(answer);
+                if(questionType === 'group_single') {
+                    this.person.evidence = [];
+                    return this.person.evidence.push(answer);
+                }
+
+                return this.person.evidence.push(answer);
             },
             nextStep() {
 
@@ -113,15 +162,25 @@
                 }
 
             },
-
-            fireFirstRequest() {
-                axios.post(this.api, this.person, {
+            triageRequest() {
+                axios.post(this.api + this.triageEndPoint, this.person, {
                     headers: {
                         'App-Id': this.appId,
                         'App-Key': this.appKey
                     }
                 }).then(response => {
-                    this.question = response.data.question;
+                    this.triageResponse = response.data;
+                    console.log(response.data);
+                })
+            },
+            fireFirstRequest() {
+                axios.post(this.api + this.diagnosisEndPoint, this.person, {
+                    headers: {
+                        'App-Id': this.appId,
+                        'App-Key': this.appKey
+                    }
+                }).then(response => {
+                    this.questions.push(response.data.question);
 
                     this.currentStep++;
 
@@ -129,8 +188,25 @@
                 })
             },
             fireSecondRequest() {
+                axios.post(this.api + this.diagnosisEndPoint, this.person, {
+                    headers: {
+                        'App-Id': this.appId,
+                        'App-Key': this.appKey
+                    }
+                }).then(response => {
+                    console.log(response.data);
 
-                axios.post(this.api, this.person)
+                    if(response.data.should_stop === true) {
+                        this.triageRequest();
+
+                        return this.currentStep = 3;
+                    }
+
+                    this.questions.push(response.data.question);
+
+                    this.currentStep = 2;
+
+                })
             }
         },
     }
