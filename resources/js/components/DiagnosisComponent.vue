@@ -2,7 +2,8 @@
     <div class="container mt-4">
         <div class="card information-card">
             <div class="card-header text-white bg-dark">
-                COVID-19 Diagnosis
+                <h5 class="card-title">COVID-19 Diagnosis</h5>
+                <h6 class="card-subtitle mb-2">Powered by <a href="https://developer.infermedica.com/" target="_blank">Infermedica</a></h6>
             </div>
             <div class="card-body">
                 <form>

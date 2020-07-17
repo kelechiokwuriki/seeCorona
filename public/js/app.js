@@ -2048,6 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -95701,9 +95702,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
     _c("div", { staticClass: "card information-card" }, [
-      _c("div", { staticClass: "card-header text-white bg-dark" }, [
-        _vm._v("\n            COVID-19 Diagnosis\n        ")
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c(
@@ -95712,7 +95711,7 @@ var render = function() {
             _vm.currentStep === 1
               ? [
                   _c("div", { staticClass: "form-group row" }, [
-                    _vm._m(0),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-10" }, [
                       _c(
@@ -95800,7 +95799,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group row" }, [
-                    _vm._m(1),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-2" }, [
                       _c("input", {
@@ -95969,7 +95968,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("table", { key: 2, staticClass: "table table-hover" }, [
-                    _vm._m(2),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c(
                       "tbody",
@@ -96031,6 +96030,28 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-white bg-dark" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v("COVID-19 Diagnosis")]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "card-subtitle mb-2" }, [
+        _vm._v("Powered by "),
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "https://developer.infermedica.com/",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Infermedica")]
+        )
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -96615,9 +96636,8 @@ var staticRenderFns = [
     return _c("footer", { staticClass: "footer bg-dark text-white" }, [
       _c("div", { staticClass: "container text-center p-2" }, [
         _c("p", [
-          _vm._v(
-            "seecoronastats is a free app to view COVID-19 stats Globally. As there are multiple sources of mutating information,\n    please perform verification of information gotten from this app. The developer will not be held responsible for\n    any misinterpretation of data."
-          )
+          _vm._v("Powered by Makow Tech Services"),
+          _c("span", { staticClass: "ml-1" }, [_vm._v("©")])
         ])
       ])
     ])
