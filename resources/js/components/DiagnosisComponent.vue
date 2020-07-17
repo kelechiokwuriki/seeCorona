@@ -7,7 +7,6 @@
             <div class="card-body">
                 <form>
                     <template v-if="currentStep === 1">
-
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label>What is your Gender?</label>
@@ -32,11 +31,11 @@
                                 <input type="number" class="form-control" v-model.number="person.age"/>
                             </div>
                         </div>
-
                     </template>
+
                     <template v-if="currentStep === 2">
-                        <!-- <h4>{{ questions.text }}</h4> -->
                         <div v-for="(item, index) in questions" v-bind:key="index">
+
                             <h4>{{ item.text }}</h4>
 
                             <div class="form-group mt-4 row" v-for="(itemToSee, index) in item.items" v-bind:key="index">
@@ -68,17 +67,16 @@
                                         <!--end render for single selection-->
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
                     </template>
 
                     <template v-if="currentStep === 3">
-                        <h4>{{ triageResponse.description }}</h4>
-                        <h5>{{ triageResponse.label }}</h5>
+                        <h4 v-bind:key="0">{{ triageResponse.description }}</h4>
+                        <h5 v-bind:key="1">{{ triageResponse.label }}</h5>
 
-                        <table class="table table-hover">
+                        <table class="table table-hover" v-bind:key="2">
                             <thead>
                                 <tr>
                                 <th scope="col">Symptom</th>
@@ -97,6 +95,7 @@
                         </table>
                     </template>
                 </form>
+
                 <button type="button" class="btn btn-secondary" @click="nextStep" v-if="currentStep !== 3">Next</button>
                 <button type="button" class="btn btn-success" @click="reloadPage" v-if="currentStep === 3">Redo diagnosis</button>
 
@@ -105,7 +104,6 @@
 
 
     </div>
-    <!-- </transition> -->
 </template>
 
 <script>
@@ -215,6 +213,6 @@
     }
 </script>
 
-<style>
+<style scoped>
 
 </style>

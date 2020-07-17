@@ -19,9 +19,6 @@
                         </li>
                     </ul>
                     <span class="navbar-text">
-                        <a class="btn btn-primary" role="button" target="__blank" href="https://twitter.com/KellzGuy">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
                         <a class="btn btn-primary" role="button" target="__blank" href="https://www.linkedin.com/in/kelechi-okwuriki-5ab061129">
                             <i class="fab fa-linkedin"></i> Linkedin
                         </a>
