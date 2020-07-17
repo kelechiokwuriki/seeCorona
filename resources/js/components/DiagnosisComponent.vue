@@ -98,7 +98,7 @@
                     </template>
                 </form>
                 <button type="button" class="btn btn-secondary" @click="nextStep" v-if="currentStep !== 3">Next</button>
-                <router-link to="/diagnosis" type="button" class="btn btn-success" @click="nextStep" v-if="currentStep === 3">Redo diagnosis</router-link>
+                <button type="button" class="btn btn-success" @click="reloadPage" v-if="currentStep === 3">Redo diagnosis</button>
 
             </div>
         </div>
@@ -138,6 +138,9 @@
             }
         },
         methods: {
+            reloadPage() {
+                location.reload();
+            },
             selectAnswer(choiceId, choiceAnswer, questionType) {
                 let answer = {
                     'id': choiceId,

@@ -2076,6 +2076,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    reloadPage: function reloadPage() {
+      location.reload();
+    },
     selectAnswer: function selectAnswer(choiceId, choiceAnswer, questionType) {
       var answer = {
         'id': choiceId,
@@ -95704,333 +95707,324 @@ var render = function() {
         _vm._v("\n            COVID-19 Diagnosis\n        ")
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        [
-          _c(
-            "form",
-            [
-              _vm.currentStep === 1
-                ? [
-                    _c("div", { staticClass: "form-group row" }, [
-                      _vm._m(0),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          [
+            _vm.currentStep === 1
+              ? [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-check form-check-inline" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.person.sex,
+                                expression: "person.sex"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: {
+                              type: "radio",
+                              name: "inlineRadioOptions",
+                              id: "maleGender",
+                              value: "male"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.person.sex, "male")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.person, "sex", "male")
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "maleGender" }
+                            },
+                            [_vm._v("Male")]
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-10" }, [
-                        _c(
-                          "div",
-                          { staticClass: "form-check form-check-inline" },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.person.sex,
-                                  expression: "person.sex"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "inlineRadioOptions",
-                                id: "maleGender",
-                                value: "male"
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.person.sex, "male")
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.$set(_vm.person, "sex", "male")
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "label",
+                      _c(
+                        "div",
+                        { staticClass: "form-check form-check-inline" },
+                        [
+                          _c("input", {
+                            directives: [
                               {
-                                staticClass: "form-check-label",
-                                attrs: { for: "maleGender" }
-                              },
-                              [_vm._v("Male")]
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.person.sex,
+                                expression: "person.sex"
+                              }
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: {
+                              type: "radio",
+                              name: "inlineRadioOptions",
+                              id: "femaleGender",
+                              value: "female"
+                            },
+                            domProps: {
+                              checked: _vm._q(_vm.person.sex, "female")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.person, "sex", "female")
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "femaleGender" }
+                            },
+                            [_vm._v("Female")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-2" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.number",
+                            value: _vm.person.age,
+                            expression: "person.age",
+                            modifiers: { number: true }
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "number" },
+                        domProps: { value: _vm.person.age },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.person,
+                              "age",
+                              _vm._n($event.target.value)
                             )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.currentStep === 2
+              ? _vm._l(_vm.questions, function(item, index) {
+                  return _c(
+                    "div",
+                    { key: index },
+                    [
+                      _c("h4", [_vm._v(_vm._s(item.text))]),
+                      _vm._v(" "),
+                      _vm._l(item.items, function(itemToSee, index) {
+                        return _c(
                           "div",
-                          { staticClass: "form-check form-check-inline" },
+                          { key: index, staticClass: "form-group mt-4 row" },
                           [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.person.sex,
-                                  expression: "person.sex"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: {
-                                type: "radio",
-                                name: "inlineRadioOptions",
-                                id: "femaleGender",
-                                value: "female"
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.person.sex, "female")
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.$set(_vm.person, "sex", "female")
-                                }
-                              }
-                            }),
+                            _c("h6", { staticClass: "col" }, [
+                              _vm._v(_vm._s(itemToSee.name))
+                            ]),
                             _vm._v(" "),
                             _c(
-                              "label",
-                              {
-                                staticClass: "form-check-label",
-                                attrs: { for: "femaleGender" }
-                              },
-                              [_vm._v("Female")]
+                              "div",
+                              { staticClass: "col" },
+                              _vm._l(itemToSee.choices, function(
+                                choice,
+                                index
+                              ) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: index,
+                                    staticClass: "form-check form-check-inline"
+                                  },
+                                  [
+                                    item.type === "group_multiple" ||
+                                    item.type === "single"
+                                      ? [
+                                          _c("input", {
+                                            staticClass: "form-check-input",
+                                            attrs: {
+                                              type: "radio",
+                                              name: itemToSee.id,
+                                              id: choice.id
+                                            },
+                                            domProps: { value: choice.id },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.selectAnswer(
+                                                  itemToSee.id,
+                                                  choice.id
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass: "form-check-label",
+                                              attrs: { for: "defaultCheck1" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                            " +
+                                                  _vm._s(choice.label) +
+                                                  "\n                                        "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.type === "group_single"
+                                      ? [
+                                          _c("input", {
+                                            staticClass: "form-check-input",
+                                            attrs: {
+                                              type: "radio",
+                                              name: "singleRadio",
+                                              id: choice.id
+                                            },
+                                            domProps: { value: choice.id },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.selectAnswer(
+                                                  itemToSee.id,
+                                                  choice.id,
+                                                  item.type
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass: "form-check-label",
+                                              attrs: { for: "defaultCheck1" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                            " +
+                                                  _vm._s(choice.label) +
+                                                  "\n                                        "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      : _vm._e()
+                                  ],
+                                  2
+                                )
+                              }),
+                              0
                             )
                           ]
                         )
-                      ])
-                    ]),
+                      })
+                    ],
+                    2
+                  )
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.currentStep === 3
+              ? [
+                  _c("h4", [_vm._v(_vm._s(_vm.triageResponse.description))]),
+                  _vm._v(" "),
+                  _c("h5", [_vm._v(_vm._s(_vm.triageResponse.label))]),
+                  _vm._v(" "),
+                  _c("table", { staticClass: "table table-hover" }, [
+                    _vm._m(2),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-2" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model.number",
-                              value: _vm.person.age,
-                              expression: "person.age",
-                              modifiers: { number: true }
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "number" },
-                          domProps: { value: _vm.person.age },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.person,
-                                "age",
-                                _vm._n($event.target.value)
-                              )
-                            },
-                            blur: function($event) {
-                              return _vm.$forceUpdate()
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.currentStep === 2
-                ? _vm._l(_vm.questions, function(item, index) {
-                    return _c(
-                      "div",
-                      { key: index },
-                      [
-                        _c("h4", [_vm._v(_vm._s(item.text))]),
-                        _vm._v(" "),
-                        _vm._l(item.items, function(itemToSee, index) {
-                          return _c(
-                            "div",
-                            { key: index, staticClass: "form-group mt-4 row" },
-                            [
-                              _c("h6", { staticClass: "col" }, [
-                                _vm._v(_vm._s(itemToSee.name))
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "col" },
-                                _vm._l(itemToSee.choices, function(
-                                  choice,
-                                  index
-                                ) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      key: index,
-                                      staticClass:
-                                        "form-check form-check-inline"
-                                    },
-                                    [
-                                      item.type === "group_multiple" ||
-                                      item.type === "single"
-                                        ? [
-                                            _c("input", {
-                                              staticClass: "form-check-input",
-                                              attrs: {
-                                                type: "radio",
-                                                name: itemToSee.id,
-                                                id: choice.id
-                                              },
-                                              domProps: { value: choice.id },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.selectAnswer(
-                                                    itemToSee.id,
-                                                    choice.id
-                                                  )
-                                                }
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "label",
-                                              {
-                                                staticClass: "form-check-label",
-                                                attrs: { for: "defaultCheck1" }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                            " +
-                                                    _vm._s(choice.label) +
-                                                    "\n                                        "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      item.type === "group_single"
-                                        ? [
-                                            _c("input", {
-                                              staticClass: "form-check-input",
-                                              attrs: {
-                                                type: "radio",
-                                                name: "singleRadio",
-                                                id: choice.id
-                                              },
-                                              domProps: { value: choice.id },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.selectAnswer(
-                                                    itemToSee.id,
-                                                    choice.id,
-                                                    item.type
-                                                  )
-                                                }
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "label",
-                                              {
-                                                staticClass: "form-check-label",
-                                                attrs: { for: "defaultCheck1" }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                            " +
-                                                    _vm._s(choice.label) +
-                                                    "\n                                        "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        : _vm._e()
-                                    ],
-                                    2
-                                  )
-                                }),
-                                0
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.currentStep === 3
-                ? [
-                    _c("h4", [_vm._v(_vm._s(_vm.triageResponse.description))]),
-                    _vm._v(" "),
-                    _c("h5", [_vm._v(_vm._s(_vm.triageResponse.label))]),
-                    _vm._v(" "),
-                    _c("table", { staticClass: "table table-hover" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.triageResponse.serious, function(
-                          item,
-                          index
-                        ) {
-                          return _c("tr", { key: index }, [
-                            _c(
-                              "td",
-                              { class: { "text-danger": item.is_emergency } },
-                              [_vm._v(_vm._s(item.name))]
-                            ),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.triageResponse.serious, function(item, index) {
+                        return _c("tr", { key: index }, [
+                          _c(
+                            "td",
+                            { class: { "text-danger": item.is_emergency } },
+                            [_vm._v(_vm._s(item.name))]
+                          ),
+                          _vm._v(" "),
+                          _c("td", [
+                            item.is_emergency
+                              ? _c("span", { staticClass: "text-danger" }, [
+                                  _vm._v("Emergency")
+                                ])
+                              : _vm._e(),
                             _vm._v(" "),
-                            _c("td", [
-                              item.is_emergency
-                                ? _c("span", { staticClass: "text-danger" }, [
-                                    _vm._v("Emergency")
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !item.is_emergency
-                                ? _c("span", [_vm._v("Not an emergency")])
-                                : _vm._e()
-                            ])
+                            !item.is_emergency
+                              ? _c("span", [_vm._v("Not an emergency")])
+                              : _vm._e()
                           ])
-                        }),
-                        0
-                      )
-                    ])
-                  ]
-                : _vm._e()
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _vm.currentStep !== 3
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: { click: _vm.nextStep }
-                },
-                [_vm._v("Next")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.currentStep === 3
-            ? _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { to: "/diagnosis", type: "button" },
-                  on: { click: _vm.nextStep }
-                },
-                [_vm._v("Redo diagnosis")]
-              )
-            : _vm._e()
-        ],
-        1
-      )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                ]
+              : _vm._e()
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _vm.currentStep !== 3
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: { click: _vm.nextStep }
+              },
+              [_vm._v("Next")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.currentStep === 3
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: { click: _vm.reloadPage }
+              },
+              [_vm._v("Redo diagnosis")]
+            )
+          : _vm._e()
+      ])
     ])
   ])
 }
