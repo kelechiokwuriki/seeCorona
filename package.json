@@ -36,7 +36,7 @@
         "datatables.net-dt": "^1.10.20",
         "datatables.net-responsive-bs4": "^2.2.3",
         "jquery": "^3.4.1",
-        "moment": "^2.24.0",
+        "moment": "^2.29.2",
         "vue-axios": "^2.1.5",
         "vue-chartkick": "^0.6.0",
         "vue-router": "^3.1.6",
